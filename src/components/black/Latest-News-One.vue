@@ -3,32 +3,27 @@
 </script>
 
 <template>
-  <el-row :gutter="20">
-    <el-col :span="24" class="title-one">
-      <a href="#" class="content-hero">
-        <div class="title__media">
-          <img
-            src="http://magick.plugin/wp-content/uploads/2011/07/dcp_2082.jpg"
-            class="image"
-          />
-        </div>
-        <div class="tile__description">
-          <div class="title__heard">
-            <div class="tile__category">更新</div>
-            <div class="tile__headline">
-              Apple 女性健康研究促进月经相关科学发展
-            </div>
+  <el-col :span="24" class="title-one">
+    <a href="#" class="content-hero">
+      <div class="title__media">
+        <img
+          src="http://magick.plugin/wp-content/uploads/2023/03/9ec7908a5d9f8d94d26956c81a48f3d6.jpg"
+        />
+      </div>
+      <div class="tile__description">
+        <div class="title__heard">
+          <div class="tile__category">更新</div>
+          <div class="tile__headline">
+            Apple 女性健康研究促进月经相关科学发展
           </div>
-          <div class="tile__timestamp">2023 年 3 月 2 日</div>
         </div>
-      </a>
-    </el-col>
-  </el-row>
+        <div class="tile__timestamp">2023 年 3 月 2 日</div>
+      </div>
+    </a>
+  </el-col>
 </template>
 
 <style lang="less" scoped>
-
-
 .title-one {
   .content-hero {
     height: 365px;

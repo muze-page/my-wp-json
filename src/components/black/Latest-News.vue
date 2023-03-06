@@ -1,15 +1,17 @@
 <script setup>
 import LatestNewsOne from "./Latest-News-One.vue";
+import LatestNewsTwo from "./Latest-News-Two.vue";
 </script>
 
 <template>
   <section class="everdayfeed">
     <div class="section-content">
       <h2>最新消息</h2>
-      <LatestNewsOne></LatestNewsOne>
       <el-row :gutter="20">
-        <el-col :span="12"><div class="grid-content ep-bg-purple" /></el-col>
-        <el-col :span="12"><div class="grid-content ep-bg-purple" /></el-col>
+        <LatestNewsOne></LatestNewsOne>
+      </el-row>
+      <el-row :gutter="20">
+        <LatestNewsTwo></LatestNewsTwo>
       </el-row>
       <el-row :gutter="20">
         <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
