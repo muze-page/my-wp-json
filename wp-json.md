@@ -76,11 +76,45 @@ npm install axios
 
 ### 安装less
 
-- [(21条消息) vue3+vite 安装和配置less_vue3安装less_余温无痕的博客-CSDN博客](https://blog.csdn.net/u014678583/article/details/124008200)
+- https://blog.csdn.net/weixin_43575792/article/details/122841064
 
 ```shell
 npm i less-loader less 
 ```
+
+在以下路径新建global.less文件，写入全局变量。
+
+```shell
+src/assets/css/global.less
+```
+
+
+
+配置`vite.config.js`
+
+```js
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()],
+
+  css: {
+    preprocessorOptions: {
+      less: {
+        charset: false,
+        additionalData: '@import "./src/assets/css/global.less";',
+      },
+    },
+  },
+
+
+})
+
+```
+
+
 
 使用
 

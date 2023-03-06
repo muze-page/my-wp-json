@@ -27,8 +27,7 @@
 </template>
 
 <style lang="less" scoped>
-@redius: 16px;
-@font-color-assist: #6e6e73;
+
 
 .title-one {
   .content-hero {
