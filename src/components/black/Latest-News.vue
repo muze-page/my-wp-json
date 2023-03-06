@@ -8,22 +8,20 @@ import LatestNewsThree from "./Latest-News-Three.vue";
   <section class="everdayfeed">
     <div class="section-content">
       <h2>最新消息</h2>
-      <el-row :gutter="20">
+     
         <LatestNewsOne></LatestNewsOne>
-      </el-row>
-      <el-row :gutter="20">
+     
+      
         <LatestNewsTwo></LatestNewsTwo>
-      </el-row>
-      <el-row :gutter="20">
+      
         <LatestNewsThree></LatestNewsThree>
-      </el-row>
+      
     </div>
   </section>
 </template>
 
 <style lang="less" scoped>
-@redius: 16px;
-@font-color-assist: #6e6e73;
+
 .everdayfeed {
   padding-bottom: 80px;
   overflow: hidden;

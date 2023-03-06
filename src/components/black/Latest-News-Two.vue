@@ -37,6 +37,7 @@ const data = reactive({
 </script>
 
 <template>
+   <el-row :gutter="20">
   <el-col :span="12" v-for="item in data.list" style="margin-top: 36px">
     <a :href="item.link" class="tile-2up">
       
@@ -54,6 +55,7 @@ const data = reactive({
      
     </a>
   </el-col>
+</el-row>
 </template>
 
 <style lang="less" scoped>

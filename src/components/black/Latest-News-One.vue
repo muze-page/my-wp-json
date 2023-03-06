@@ -3,6 +3,7 @@
 </script>
 
 <template>
+   <el-row :gutter="20">
   <el-col :span="24">
     <a href="#" class="tile-hero">
       <div class="tile__media">
@@ -21,6 +22,7 @@
       </div>
     </a>
   </el-col>
+</el-row>
 </template>
 
 <style lang="less" scoped>
