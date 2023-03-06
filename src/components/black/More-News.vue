@@ -51,7 +51,7 @@ const data = reactive({
 
 <template>
   <h2 class="section-head">更多新闻</h2>
-  <el-row :gutter="20">
+  <el-row :gutter="0">
     <el-col :span="12" v-for="item in data.list">
       <div class="tile-item">
         <a :href="item.link" class="tile-list">
@@ -173,6 +173,21 @@ const data = reactive({
     }
   }
 }
+
+.el-col:nth-child(odd)::after {
+    width: calc(100% + (32px * 2));
+}
+
+.el-col::after {
+    content: '';
+    flex: 0 0 auto;
+    height: 1px;
+    display: block;
+    background-color: #d0d0d0;
+    margin-top: 32px;
+}
+
+
 //辅助
 .grid-content {
   background-color: rgb(120, 113, 113);
