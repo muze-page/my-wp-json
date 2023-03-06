@@ -1,5 +1,6 @@
 <script setup>
 //第一个
+
 </script>
 
 <template>
@@ -75,6 +76,8 @@
         }
       }
       .tile__timestamp {
+        font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
+          "Helvetica Neue", "Helvetica", "Arial", sans-serif;
         letter-spacing: 0em;
         font-size: 14px;
         line-height: 1.28577;
