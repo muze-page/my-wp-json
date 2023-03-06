@@ -7,21 +7,18 @@ import LatestNewsThree from "./Latest-News-Three.vue";
 <template>
   <section class="everdayfeed">
     <div class="section-content">
-      <h2>最新消息</h2>
-     
-        <LatestNewsOne></LatestNewsOne>
-     
-      
-        <LatestNewsTwo></LatestNewsTwo>
-      
-        <LatestNewsThree></LatestNewsThree>
-      
+      <h2 class="section-head">最新消息</h2>
+
+      <LatestNewsOne></LatestNewsOne>
+
+      <LatestNewsTwo></LatestNewsTwo>
+
+      <LatestNewsThree></LatestNewsThree>
     </div>
   </section>
 </template>
 
 <style lang="less" scoped>
-
 .everdayfeed {
   padding-bottom: 80px;
   overflow: hidden;
@@ -34,11 +31,7 @@ import LatestNewsThree from "./Latest-News-Three.vue";
   width: 980px;
 }
 
-.grid-content {
-  background-color: rgb(120, 113, 113);
-  border-radius: @redius;
-  min-height: 36px;
-}
+
 
 @media only screen and (max-width: 1068px) {
 }
