@@ -1,29 +1,46 @@
-<script setup></script>
+<script setup>
+import LatestNewsOne from "./Latest-News-One.vue";
+</script>
 
 <template>
-  简单准备下
-  <div class="ls">
-    555
-    <span>222</span>
-  </div>
-  <div style="font-size: 20px">
-    <!-- 由于SVG图标默认不携带任何属性 -->
-    <!-- 你需要直接提供它们 -->
-    <Edit style="width: 1em; height: 1em; margin-right: 8px" />
-    <Share style="width: 1em; height: 1em; margin-right: 8px" />
-    <Delete style="width: 1em; height: 1em; margin-right: 8px" />
-    <Search style="width: 1em; height: 1em; margin-right: 8px" />
-  </div>
+  <section class="everdayfeed">
+    <div class="section-content">
+      <h2>最新消息</h2>
+      <LatestNewsOne></LatestNewsOne>
+      <el-row :gutter="20">
+        <el-col :span="12"><div class="grid-content ep-bg-purple" /></el-col>
+        <el-col :span="12"><div class="grid-content ep-bg-purple" /></el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
+        <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
+        <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
+      </el-row>
+    </div>
+  </section>
 </template>
 
 <style lang="less" scoped>
-.ls {
-  color: red;
-  span {
-    color: black;
-  }
+@redius: 16px;
+@font-color-assist: #6e6e73;
+.everdayfeed {
+  padding-bottom: 80px;
+  overflow: hidden;
+  background-color: #f5f5f7;
+  margin-top: 0;
 }
-.read-the-docs {
-  color: #888;
+.section-content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 980px;
+}
+.el-row {
+  margin-bottom: 20px;
+}
+
+.grid-content {
+  background-color: rgb(120, 113, 113);
+  border-radius: @redius;
+  min-height: 36px;
 }
 </style>

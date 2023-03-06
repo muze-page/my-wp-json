@@ -7,13 +7,5 @@ import LatestNews from "./black/Latest-News.vue";
 </template>
 
 <style lang="less" scoped>
-.ls {
-  color: red;
-  span {
-    color: black;
-  }
-}
-.read-the-docs {
-  color: #888;
-}
+
 </style>

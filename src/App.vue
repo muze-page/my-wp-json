@@ -4,7 +4,9 @@ import Home from "./components/Home.vue";
 </script>
 
 <template>
+  <!--
   <HelloWorld msg="Vite + Vue" />
+  -->
   <Home></Home>
 </template>
 
