@@ -2,6 +2,8 @@
 
 模仿苹果官网博客，通过 wp-json 来获取数据
 
+- https://www.apple.com.cn/newsroom/
+
 # Vue 3 + Vite
 
 This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
