@@ -50,10 +50,10 @@ const data = reactive({
 </script>
 
 <template>
-  <h2 class="section-head">更多新闻</h2>
-  <el-row :gutter="0">
-    <el-col :span="12" v-for="item in data.list">
-      <div class="tile-item">
+  <section class="more-from-newsroom">
+    <h2 class="section-head">更多新闻</h2>
+    <el-row :gutter="0" class="section-tiles">
+      <el-col :span="12" class="tile-item" v-for="item in data.list">
         <a :href="item.link" class="tile-list">
           <div class="tile__media">
             <img :src="item.img" />
@@ -68,125 +68,148 @@ const data = reactive({
             <div class="tile__timestamp">{{ item.time }}</div>
           </div>
         </a>
-      </div>
-    </el-col>
-  </el-row>
+      </el-col>
+    </el-row>
+  </section>
 </template>
 
 <style lang="less" scoped>
-.tile-item {
-  display: flex;
-  flex-direction: column;
-  width: 457px;
-  margin-bottom: 32px;
-  margin-right: 64px;
-  flex-grow: 1;
-  position: relative;
-  .tile-list {
-    border-radius: revert;
-    overflow: revert;
-    z-index: revert;
-    position: revert;
-    background-color: transparent;
-    flex-direction: row;
-    width: 457px;
-
-    display: flex;
-    .tile__media {
-      width: 132px;
-      height: 132px;
-      min-height: auto;
-      flex-basis: auto;
-      flex-shrink: 1;
-
-      border-radius: 16px;
-      overflow: hidden;
-      z-index: 0;
-      position: relative;
-
-      direction: ltr;
-
-      flex-grow: 0;
-      img {
-        width: 100%;
-        height: auto;
-        transition: @img-tra;
-      }
-    }
-    .tile__description {
-      padding: 0 0 0 24px;
-      justify-content: center;
-      flex-basis: 0;
-
+.more-from-newsroom {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: #fff;
+  overflow: hidden;
+  .section-tiles {
+    margin-right: -64px;
+    margin-top: 0;
+    justify-content: flex-start;
+    .tile-item {
       display: flex;
       flex-direction: column;
-      flex-shrink: 0;
+      width: 457px;
+      margin-bottom: 32px;
+      margin-right: 0px;
       flex-grow: 1;
-      .tile__head {
-        .tile__category {
-          margin-bottom: 4px;
 
-          font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
-            "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+      .tile-list {
+        border-radius: revert;
+        overflow: revert;
+        z-index: revert;
+        position: revert;
+        background-color: transparent;
+        flex-direction: row;
+        width: 457px;
 
-          font-size: 12px;
-          line-height: 1.33337;
-          font-weight: 700;
-
-          color: @font-color-assist;
-        }
-        .tile__headline {
-          font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
-            "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-
-          letter-spacing: 0em;
-
-          font-size: 17px;
-          line-height: 1.23536;
-          font-weight: 700;
-
-          -webkit-line-clamp: 6;
-          -webkit-box-orient: vertical;
-          display: -webkit-box;
-          overflow: hidden;
-
-          color: @font-color-main;
-        }
-      }
-      .tile__timestamp {
-        margin-top: 8px;
-
-        font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
-          "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-
-        letter-spacing: 0em;
-
-        font-size: 14px;
-        line-height: 1.28577;
-        font-weight: 600;
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
+        .tile__media {
+          width: 132px;
+          height: 132px;
+          min-height: auto;
+          flex-basis: auto;
+          flex-shrink: 1;
 
-        color: @font-color-assist;
+          border-radius: 16px;
+          overflow: hidden;
+          z-index: 0;
+          position: relative;
+
+          direction: ltr;
+
+          flex-grow: 0;
+          img {
+            width: 100%;
+            height: auto;
+            transition: @img-tra;
+          }
+        }
+        .tile__description {
+          padding: 0 0 0 24px;
+          justify-content: center;
+          flex-basis: 0;
+
+          display: flex;
+          flex-direction: column;
+          flex-shrink: 0;
+          flex-grow: 1;
+          .tile__head {
+            .tile__category {
+              margin-bottom: 4px;
+
+              font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons",
+                "PingFang SC", "Helvetica Neue", "Helvetica", "Arial",
+                sans-serif;
+
+              font-size: 12px;
+              line-height: 1.33337;
+              font-weight: 700;
+
+              color: @font-color-assist;
+            }
+            .tile__headline {
+              font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons",
+                "PingFang SC", "Helvetica Neue", "Helvetica", "Arial",
+                sans-serif;
+
+              letter-spacing: 0em;
+
+              font-size: 17px;
+              line-height: 1.23536;
+              font-weight: 700;
+
+              -webkit-line-clamp: 6;
+              -webkit-box-orient: vertical;
+              display: -webkit-box;
+              overflow: hidden;
+
+              color: @font-color-main;
+            }
+          }
+          .tile__timestamp {
+            margin-top: 8px;
+
+            font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons",
+              "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+            letter-spacing: 0em;
+
+            font-size: 14px;
+            line-height: 1.28577;
+            font-weight: 600;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            color: @font-color-assist;
+          }
+        }
       }
     }
   }
 }
 
-.el-col:nth-child(odd)::after {
-    width: calc(100% + (32px * 2));
+.section-tiles {
+  align-items: stretch;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: 0;
+}
+.tile-item {
+  position: relative;
 }
 
-.el-col::after {
-    content: '';
-    flex: 0 0 auto;
-    height: 1px;
-    display: block;
-    background-color: #d0d0d0;
-    margin-top: 32px;
+.tile-item:nth-child(odd)::after {
+  width: calc(100% + (32px * 2));
 }
 
+.tile-item::after {
+  content: "";
+  flex: 0 0 auto;
+  height: 1px;
+  display: block;
+  background-color: #d0d0d0;
+  margin-top: 32px;
+}
 
 //辅助
 .grid-content {
