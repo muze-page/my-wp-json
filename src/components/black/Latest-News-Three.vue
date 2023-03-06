@@ -31,14 +31,28 @@ const data = reactive({
       tag: "新闻稿",
       title: "Apple 公布第一季度业绩",
       time: "2023 年 2 月 8 日",
+        },
+        {
+      link: "#",
+      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
+      tag: "新闻稿",
+      title: "Apple 公布第一季度业绩",
+      time: "2023 年 2 月 8 日",
+        },
+        {
+      link: "#",
+      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
+      tag: "新闻稿",
+      title: "Apple 公布第一季度业绩",
+      time: "2023 年 2 月 8 日",
     },
   ],
 });
 </script>
 
 <template>
-  <el-col :span="12" v-for="item in data.list" style="margin-top: 36px">
-    <a :href="item.link" class="tile-2up">
+  <el-col :span="8" v-for="item in data.list" style="margin-top: 36px">
+    <a :href="item.link" class="tile-3up">
       
         <div class="tile__media">
           <img :src="item.img" />
@@ -51,15 +65,15 @@ const data = reactive({
           </div>
           <div class="tile__timestamp">{{ item.time }}</div>
         </div>
-     
+      
     </a>
   </el-col>
 </template>
 
 <style lang="less" scoped>
-.tile-2up {
+.tile-3up {
   flex-direction: column;
-  width: 472px;
+  width: 303px;
   height: 100%;
 
   background-color: #fff;
@@ -70,7 +84,7 @@ const data = reactive({
   position: relative;
   .tile__media {
     width: 100%;
-    height: 266px;
+    height: 170px;
     min-height: auto;
     flex-basis: auto;
     flex-shrink: 1;
@@ -88,7 +102,7 @@ const data = reactive({
     }
   }
   .tile__description {
-    padding: 32px;
+    padding: 24px;
     justify-content: space-between;
     flex-basis: auto;
     display: flex;
@@ -136,7 +150,7 @@ const data = reactive({
     color: @font-color-assist;
   }
 }
-.tile-2up:hover .tile__media img {
+.tile-3up:hover .tile__media img {
   transform: scale(1.03);
   transition: @img-tra;
 }

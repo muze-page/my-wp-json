@@ -1,6 +1,7 @@
 <script setup>
 import LatestNewsOne from "./Latest-News-One.vue";
 import LatestNewsTwo from "./Latest-News-Two.vue";
+import LatestNewsThree from "./Latest-News-Three.vue";
 </script>
 
 <template>
@@ -14,9 +15,7 @@ import LatestNewsTwo from "./Latest-News-Two.vue";
         <LatestNewsTwo></LatestNewsTwo>
       </el-row>
       <el-row :gutter="20">
-        <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
-        <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
-        <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
+        <LatestNewsThree></LatestNewsThree>
       </el-row>
     </div>
   </section>
@@ -36,13 +35,15 @@ import LatestNewsTwo from "./Latest-News-Two.vue";
   margin-right: auto;
   width: 980px;
 }
-.el-row {
-  margin-bottom: 20px;
-}
 
 .grid-content {
   background-color: rgb(120, 113, 113);
   border-radius: @redius;
   min-height: 36px;
+}
+
+@media only screen and (max-width: 1068px) {
+}
+@media only screen and (max-width: 734px) {
 }
 </style>
