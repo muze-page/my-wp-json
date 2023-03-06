@@ -51,25 +51,32 @@ const data = reactive({
 
 <template>
   <section class="more-from-newsroom">
-    <h2 class="section-head">更多新闻</h2>
-    <el-row :gutter="0" class="section-tiles">
-      <el-col :span="12" class="tile-item" v-for="item in data.list">
-        <a :href="item.link" class="tile-list">
-          <div class="tile__media">
-            <img :src="item.img" />
-          </div>
-          <div class="tile__description">
-            <div class="tile__head">
-              <div class="tile__category">{{ item.tag }}</div>
-              <div class="tile__headline">
-                {{ item.title }}
-              </div>
+    <div class="section-content">
+      <h2 class="section-head">更多新闻</h2>
+      <el-row :gutter="0" class="section-tiles">
+        <el-col :span="12" class="tile-item" v-for="item in data.list">
+          <a :href="item.link" class="tile-list">
+            <div class="tile__media">
+              <img :src="item.img" />
             </div>
-            <div class="tile__timestamp">{{ item.time }}</div>
-          </div>
-        </a>
-      </el-col>
-    </el-row>
+            <div class="tile__description">
+              <div class="tile__head">
+                <div class="tile__category">{{ item.tag }}</div>
+                <div class="tile__headline">
+                  {{ item.title }}
+                </div>
+              </div>
+              <div class="tile__timestamp">{{ item.time }}</div>
+            </div>
+          </a>
+        </el-col>
+      </el-row>
+    </div>
+    <div class="view-archive-wrapper">
+      <el-button class="nr-cta-primary-light" round>
+        <a href="#"> 阅读历史文章 </a>
+      </el-button>
+    </div>
   </section>
 </template>
 
@@ -79,110 +86,143 @@ const data = reactive({
   padding-bottom: 80px;
   background-color: #fff;
   overflow: hidden;
-  .section-tiles {
-    margin-right: -64px;
-    margin-top: 0;
-    justify-content: flex-start;
-    .tile-item {
-      display: flex;
-      flex-direction: column;
-      width: 457px;
-      margin-bottom: 32px;
-      margin-right: 0px;
-      flex-grow: 1;
-
-      .tile-list {
-        border-radius: revert;
-        overflow: revert;
-        z-index: revert;
-        position: revert;
-        background-color: transparent;
-        flex-direction: row;
-        width: 457px;
-
+  .section-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 980px;
+    .section-tiles {
+      margin-right: -64px;
+      margin-top: 0;
+      justify-content: flex-start;
+      .tile-item {
         display: flex;
-        .tile__media {
-          width: 132px;
-          height: 132px;
-          min-height: auto;
-          flex-basis: auto;
-          flex-shrink: 1;
+        flex-direction: column;
+        width: 457px;
+        margin-bottom: 32px;
+        margin-right: 0px;
+        flex-grow: 1;
 
-          border-radius: 16px;
-          overflow: hidden;
-          z-index: 0;
-          position: relative;
-
-          direction: ltr;
-
-          flex-grow: 0;
-          img {
-            width: 100%;
-            height: auto;
-            transition: @img-tra;
-          }
-        }
-        .tile__description {
-          padding: 0 0 0 24px;
-          justify-content: center;
-          flex-basis: 0;
+        .tile-list {
+          border-radius: revert;
+          overflow: revert;
+          z-index: revert;
+          position: revert;
+          background-color: transparent;
+          flex-direction: row;
+          width: 457px;
 
           display: flex;
-          flex-direction: column;
-          flex-shrink: 0;
-          flex-grow: 1;
-          .tile__head {
-            .tile__category {
-              margin-bottom: 4px;
+          .tile__media {
+            width: 132px;
+            height: 132px;
+            min-height: auto;
+            flex-basis: auto;
+            flex-shrink: 1;
 
-              font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons",
-                "PingFang SC", "Helvetica Neue", "Helvetica", "Arial",
-                sans-serif;
+            border-radius: 16px;
+            overflow: hidden;
+            z-index: 0;
+            position: relative;
 
-              font-size: 12px;
-              line-height: 1.33337;
-              font-weight: 700;
+            direction: ltr;
 
-              color: @font-color-assist;
+            flex-grow: 0;
+            img {
+              width: 100%;
+              height: auto;
+              transition: @img-tra;
             }
-            .tile__headline {
+          }
+          .tile__description {
+            padding: 0 0 0 24px;
+            justify-content: center;
+            flex-basis: 0;
+
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            flex-grow: 1;
+            .tile__head {
+              .tile__category {
+                margin-bottom: 4px;
+
+                font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons",
+                  "PingFang SC", "Helvetica Neue", "Helvetica", "Arial",
+                  sans-serif;
+
+                font-size: 12px;
+                line-height: 1.33337;
+                font-weight: 700;
+
+                color: @font-color-assist;
+              }
+              .tile__headline {
+                font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons",
+                  "PingFang SC", "Helvetica Neue", "Helvetica", "Arial",
+                  sans-serif;
+
+                letter-spacing: 0em;
+
+                font-size: 17px;
+                line-height: 1.23536;
+                font-weight: 700;
+
+                -webkit-line-clamp: 6;
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                overflow: hidden;
+
+                color: @font-color-main;
+              }
+            }
+            .tile__timestamp {
+              margin-top: 8px;
+
               font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons",
                 "PingFang SC", "Helvetica Neue", "Helvetica", "Arial",
                 sans-serif;
 
               letter-spacing: 0em;
 
-              font-size: 17px;
-              line-height: 1.23536;
-              font-weight: 700;
+              font-size: 14px;
+              line-height: 1.28577;
+              font-weight: 600;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
 
-              -webkit-line-clamp: 6;
-              -webkit-box-orient: vertical;
-              display: -webkit-box;
-              overflow: hidden;
-
-              color: @font-color-main;
+              color: @font-color-assist;
             }
-          }
-          .tile__timestamp {
-            margin-top: 8px;
-
-            font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons",
-              "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-
-            letter-spacing: 0em;
-
-            font-size: 14px;
-            line-height: 1.28577;
-            font-weight: 600;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-
-            color: @font-color-assist;
           }
         }
       }
+    }
+  }
+  .view-archive-wrapper {
+    margin-top: 40px;
+    font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
+      "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    letter-spacing: 0em;
+    font-size: 17px;
+    line-height: 1.23536;
+    font-weight: 500;
+    text-align: center;
+    .nr-cta-primary-light {
+      border-radius: 30px;
+      
+      transition: background-color 300ms cubic-bezier(0.4, 0, 0.25, 1) 0ms,
+        border-color 300ms cubic-bezier(0.4, 0, 0.25, 1) 0ms,
+        color 300ms cubic-bezier(0.4, 0, 0.25, 1) 0ms;
+      font-size: 17px;
+      line-height: 1.23536;
+      font-weight: 600;
+      letter-spacing: -0.022em;
+      font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+        "Arial", sans-serif;
+      border: 2px solid;
+      padding: 20px 24px 20px;
+      border-color: #1d1d1f;
+      color: #161617;
     }
   }
 }

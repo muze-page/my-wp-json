@@ -71,8 +71,32 @@ app.mount('#app')
 - [Axios 中文文档 | Axios 中文网 | Axios 是一个基于 promise 的网络请求库，可以用于浏览器和 node.js (axios-http.cn)](https://www.axios-http.cn/)
 
 ```shell
-npm install axios
+npm install axios vue-axios
 ```
+
+配置
+
+```js
+//导入Vue框架中的createApp方法
+import { createApp } from "vue";
+//导入样式文件
+import "./style.css";
+//导入自定义根组件
+import App from "./App.vue";
+
+//导入vue-axios模块
+import axios from "axios";
+import VueAxios from "vue-axios";
+
+//挂载根组件
+const app = createApp(App);
+//注册axios
+app.use(VueAxios, axios);
+//进行应用挂载
+app.mount("#app");
+```
+
+
 
 ### 安装less
 

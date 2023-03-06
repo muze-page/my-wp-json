@@ -1,28 +1,37 @@
 <script setup>
 //第一个
+import { reactive } from "vue";
+const data = reactive({
+  list: [
+    {
+      link: "#",
+      img: "http://magick.plugin/wp-content/uploads/2023/03/9ec7908a5d9f8d94d26956c81a48f3d6.jpg",
+      tag: "更新",
+      title: " Apple 女性健康研究促进月经相关科学发展",
+      time: "2023 年 3 月 2 日",
+    },
+  ],
+});
 </script>
 
 <template>
-   <el-row :gutter="20">
-  <el-col :span="24">
-    <a href="#" class="tile-hero">
-      <div class="tile__media">
-        <img
-          src="http://magick.plugin/wp-content/uploads/2023/03/9ec7908a5d9f8d94d26956c81a48f3d6.jpg"
-        />
-      </div>
-      <div class="tile__description">
-        <div class="title__heard">
-          <div class="tile__category">更新</div>
-          <div class="tile__headline">
-            Apple 女性健康研究促进月经相关科学发展
-          </div>
+  <el-row :gutter="20">
+    <el-col :span="24" v-for="item in data.list">
+      <a :href="item.link" class="tile-hero">
+        <div class="tile__media">
+          <img :src="item.img" />
         </div>
-        <div class="tile__timestamp">2023 年 3 月 2 日</div>
-      </div>
-    </a>
-  </el-col>
-</el-row>
+
+        <div class="tile__description">
+          <div class="tile__head">
+            <div class="tile__category">{{ item.tag }}</div>
+            <div class="tile__headline">{{ item.title }}</div>
+          </div>
+          <div class="tile__timestamp">{{ item.time }}</div>
+        </div>
+      </a>
+    </el-col>
+  </el-row>
 </template>
 
 <style lang="less" scoped>
