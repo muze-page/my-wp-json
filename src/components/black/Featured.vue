@@ -193,10 +193,7 @@ import "../../assets/css/home.css";
         .tile__media {
           width: 980px;
           height: 551px;
-          img {
-            width: 100%;
-            height: auto;
-          }
+          
         }
         .tile__gradient {
           position: absolute;
@@ -366,4 +363,5 @@ import "../../assets/css/home.css";
 .paddlenav-arrow {
   padding: 20px;
 }
+
 </style>

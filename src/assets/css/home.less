@@ -7,6 +7,20 @@
   color: @font-color-assist;
 }
 
+//动画
+//图片动画
+.tile__media {
+  img {
+    width: 100%;
+    height: auto;
+    transition: @img-tra;
+  }
+}
+.tile:hover .tile__media img {
+  transform: scale(1.03);
+  transition: @img-tra;
+}
+
 //模块
 .section-content {
   margin-left: auto;
