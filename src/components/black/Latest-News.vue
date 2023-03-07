@@ -1,4 +1,5 @@
 <script setup>
+import "../../assets/css/home.css";
 import LatestNewsOne from "./Latest-News-One.vue";
 import LatestNewsTwo from "./Latest-News-Two.vue";
 import LatestNewsThree from "./Latest-News-Three.vue";
