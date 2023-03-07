@@ -1,13 +1,13 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
-import Home from "./components/Home.vue";
+import Index from "./components/Index.vue";
 </script>
 
 <template>
   <!--
   <HelloWorld msg="Vite + Vue" />
   -->
-  <Home></Home>
+  <Index></Index>
 </template>
 
 <style scoped>
