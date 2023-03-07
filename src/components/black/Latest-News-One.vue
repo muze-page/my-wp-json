@@ -1,33 +1,84 @@
 <script setup>
 //第一个
-import { reactive } from "vue";
+import { ref, reactive, onMounted } from "vue";
+
+import axios from "axios";
+
+//基础数据
 const data = reactive({
   list: [
-    {
-      link: "#",
-      img: "http://magick.plugin/wp-content/uploads/2023/03/9ec7908a5d9f8d94d26956c81a48f3d6.jpg",
-      tag: "更新",
-      title: " Apple 女性健康研究促进月经相关科学发展",
-      time: "2023 年 3 月 2 日",
-    },
+    //{
+    //  link: "#",
+    //  img: "http://magick.plugin/wp-content/uploads/2023/03/9ec7908a5d9f8d94d26956c81a48f3d6.jpg",
+    //  tag: "更新",
+    //  title: " Apple 女性健康研究促进月经相关科学发展",
+    //  time: "2023 年 3 月 2 日",
+    //},
   ],
 });
+
+//获取媒体图片链接
+let api_media = ref("");
+let media_url = ref("");
+
+onMounted(() => {
+  //数据初始化
+  requestData();
+  //获取图片链接
+  requestMedia();
+});
+
+//let apis = "https://dongbd.com/wp-json/wp/v2/media/" + api_media;
+//axios
+//  .get(apis)
+//  .then((response) => {
+//    console.log(response);
+//  });
+
+//获取基础数据
+const requestData = () => {
+  const site = "https://dongbd.com";
+  const api = `${site}/wp-json/wp/v2/posts/297144`;
+  console.log("待检查的API是：" + api);
+  axios.get(api).then((response) => {
+    console.log(response.data);
+    data.list.push(response.data);
+    api_media.value = data.list[0].featured_media;
+  });
+};
+
+//获取图片链接
+const requestMedia = () => {
+  const api = "https://dongbd.com/wp-json/wp/v2/media/297146";
+  axios.get(api).then((response) => {
+    console.log(response.data);
+    media_url.value = response.data.source_url;
+  });
+};
 </script>
 
 <template>
+  <!--
+  <h1>111{{ media_url ?? "没有值" }}</h1>
+-->
   <el-row :gutter="20">
     <el-col :span="24" v-for="item in data.list">
-      <a :href="item.link" class="tile-hero">
+      <a :href="item.link" target="_blank" class="tile-hero">
         <div class="tile__media">
-          <img :src="item.img" />
+          <img
+            :src="
+              media_url ??
+              'http://magick.plugin/wp-content/uploads/2023/03/9ec7908a5d9f8d94d26956c81a48f3d6.jpg'
+            "
+          />
         </div>
 
         <div class="tile__description">
           <div class="tile__head">
-            <div class="tile__category">{{ item.tag }}</div>
-            <div class="tile__headline">{{ item.title }}</div>
+            <div class="tile__category">{{ item.tag ?? "默认" }}</div>
+            <div class="tile__headline">{{ item.title.rendered }}</div>
           </div>
-          <div class="tile__timestamp">{{ item.time }}</div>
+          <div class="tile__timestamp">{{ item.date }}</div>
         </div>
       </a>
     </el-col>
@@ -62,7 +113,7 @@ const data = reactive({
     flex-direction: column;
     flex-shrink: 0;
     flex-grow: 1;
-    .title__heard {
+    .tile__head {
       .tile__category {
         color: @font-color-assist;
         letter-spacing: 0em;
