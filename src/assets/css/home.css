@@ -1,3 +1,12 @@
+#ac-localnav {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 52px;
+  min-width: 1024px;
+  z-index: 9997;
+}
 .tile__category,
 .tile__timestamp {
   color: #6e6e73;
