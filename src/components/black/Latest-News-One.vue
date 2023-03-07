@@ -29,13 +29,6 @@ onMounted(() => {
   requestMedia();
 });
 
-//let apis = "https://dongbd.com/wp-json/wp/v2/media/" + api_media;
-//axios
-//  .get(apis)
-//  .then((response) => {
-//    console.log(response);
-//  });
-
 //获取基础数据
 const requestData = () => {
   const site = "https://dongbd.com";
@@ -54,6 +47,7 @@ const requestMedia = () => {
   axios.get(api).then((response) => {
     console.log(response.data);
     media_url.value = response.data.source_url;
+    media_url.value = "url(" + media_url.value + ")";
   });
 };
 </script>
@@ -103,8 +97,8 @@ const requestMedia = () => {
       transition: @img-tra;
     }
     .image-hero {
-      background: url(https://www.apple.com.cn/newsroom/images/values/health/Apple-Womens-Health-Study-hero.jpg.landing-big.jpg)
-        no-repeat top;
+      background: v-bind("media_url") no-repeat top;
+
       background-size: cover;
       height: 100%;
     }
@@ -139,7 +133,7 @@ const requestMedia = () => {
     }
   }
 }
-.tile-hero:hover .tile__media img {
+.tile-hero:hover .tile__media .image {
   transform: scale(1.03);
   transition: @img-tra;
 }

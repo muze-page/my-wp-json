@@ -1,3 +1,7 @@
+.tile__category,
+.tile__timestamp {
+  color: #6e6e73;
+}
 .section-content {
   margin-left: auto;
   margin-right: auto;
