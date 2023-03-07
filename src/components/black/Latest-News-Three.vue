@@ -31,15 +31,15 @@ const data = reactive({
       tag: "新闻稿",
       title: "Apple 公布第一季度业绩",
       time: "2023 年 2 月 8 日",
-        },
-        {
+    },
+    {
       link: "#",
       img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
       tag: "新闻稿",
       title: "Apple 公布第一季度业绩",
       time: "2023 年 2 月 8 日",
-        },
-        {
+    },
+    {
       link: "#",
       img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
       tag: "新闻稿",
@@ -51,10 +51,9 @@ const data = reactive({
 </script>
 
 <template>
-   <el-row :gutter="20">
-  <el-col :span="8" v-for="item in data.list" style="margin-top: 36px">
-    <a :href="item.link" class="tile-3up">
-      
+  <el-row :gutter="20">
+    <el-col :span="8" v-for="item in data.list" style="margin-top: 36px">
+      <a :href="item.link" class="tile tile-3up">
         <div class="tile__media">
           <img :src="item.img" />
         </div>
@@ -66,10 +65,9 @@ const data = reactive({
           </div>
           <div class="tile__timestamp">{{ item.time }}</div>
         </div>
-      
-    </a>
-  </el-col>
-</el-row>
+      </a>
+    </el-col>
+  </el-row>
 </template>
 
 <style lang="less" scoped>
@@ -77,26 +75,12 @@ const data = reactive({
   flex-direction: column;
   width: 303px;
   height: 100%;
-
-  background-color: #fff;
-  display: flex;
-  border-radius: 16px;
-  overflow: hidden;
-  z-index: 0;
-  position: relative;
   .tile__media {
     width: 100%;
     height: 170px;
     min-height: auto;
     flex-basis: auto;
     flex-shrink: 1;
-
-    direction: ltr;
-
-    position: relative;
-    z-index: 0;
-    flex-grow: 0;
-    overflow: hidden;
     img {
       width: 100%;
       height: auto;
@@ -107,49 +91,32 @@ const data = reactive({
     padding: 24px;
     justify-content: space-between;
     flex-basis: auto;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    flex-grow: 1;
     .tile__head {
       .tile__category {
-        color: @font-color-assist;
-        margin-bottom: 8px;
+        margin-bottom: 4px;
         letter-spacing: 0em;
-        font-size: 12px;
-        line-height: 1.33337;
-        font-weight: 700;
         font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
           "Helvetica Neue", "Helvetica", "Arial", sans-serif;
       }
       .tile__headline {
-        font-size: 24px;
-        line-height: 1.16667;
+        font-size: 19px;
+        line-height: 1.21053;
         font-weight: 700;
-        letter-spacing: 0.009em;
+        letter-spacing: 0.012em;
         font-family: "SF Pro SC", "SF Pro Display", "SF Pro Icons",
           "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
         -webkit-line-clamp: 6;
         -webkit-box-orient: vertical;
         display: -webkit-box;
         overflow: hidden;
-
-        color: #1d1d1f;
       }
     }
   }
   .tile__timestamp {
-    margin-top: 12px;
+    margin-top: 8px;
     font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
       "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     letter-spacing: 0em;
-    font-size: 14px;
-    line-height: 1.28577;
-    font-weight: 600;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    color: @font-color-assist;
   }
 }
 .tile-3up:hover .tile__media img {
