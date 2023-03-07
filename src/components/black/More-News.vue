@@ -72,10 +72,9 @@ const data = reactive({
         </el-col>
       </el-row>
     </div>
-    <div class="view-archive-wrapper">
-      <el-button class="nr-cta-primary-light" round>
-        <a href="#"> 阅读历史文章 </a>
-      </el-button>
+
+    <div class="view-archive-wrapper" round>
+      <a href="#" class="nr-cta-primary-light"> 阅读历史文章 </a>
     </div>
   </section>
 </template>
@@ -106,8 +105,6 @@ const data = reactive({
   margin-bottom: 32px;
   margin-right: 0px;
   flex-grow: 1;
-
-  
 
   .tile-list {
     border-radius: revert;
@@ -205,7 +202,7 @@ const data = reactive({
     font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
       "Arial", sans-serif;
     border: 2px solid;
-    padding: 20px 24px 20px;
+    padding: 10px 24px 10px;
     border-color: #1d1d1f;
     color: #161617;
   }

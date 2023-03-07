@@ -153,3 +153,13 @@ export default defineConfig({
 </style>
 ```
 
+更多
+
+- [(21条消息) vue中运用scss方法复用样式_vue样式复用_Z1LR的博客-CSDN博客](https://blog.csdn.net/zr1l1997/article/details/116161912)
+- [优雅的使用 Less - 掘金 (juejin.cn)](https://juejin.cn/post/7035590363418984455)
+
+# VUE使用
+
+## 技巧
+
+- [(21条消息) Vue3新属性 — css中使用v-bind（v-bind in css）_vue3 css v-bind_ciarlatani的博客-CSDN博客](https://blog.csdn.net/weixin_52235488/article/details/126290046)
