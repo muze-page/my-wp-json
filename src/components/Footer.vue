@@ -1,7 +1,9 @@
 <script setup>
-//文章页
+//文底部
 </script>
 
-<template>文章页</template>
+<template>
+    底部
+</template>
 
 <style lang="less" scoped></style>

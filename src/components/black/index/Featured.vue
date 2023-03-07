@@ -1,5 +1,4 @@
 <script setup>
-import "../../assets/css/home.css";
 import FeaturedSlide from "./Featured-Slide.vue";
 </script>
 

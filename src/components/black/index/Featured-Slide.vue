@@ -1,5 +1,5 @@
 <script setup>
-import "../../assets/css/home.css";
+
 </script>
 <template>
   <div class="gallery">

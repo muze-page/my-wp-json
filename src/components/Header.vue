@@ -1,7 +1,9 @@
 <script setup>
-//文章页
+//头部
 </script>
 
-<template>文章页</template>
+<template>
+    头部
+</template>
 
 <style lang="less" scoped></style>
