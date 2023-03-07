@@ -1,7 +1,7 @@
 <script setup>
 //第一个
 import { ref, reactive, onMounted } from "vue";
-import "../../assets/css/home.css";
+
 
 import axios from "axios";
 

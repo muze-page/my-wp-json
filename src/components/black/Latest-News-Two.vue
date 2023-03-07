@@ -37,10 +37,9 @@ const data = reactive({
 </script>
 
 <template>
-   <el-row :gutter="20">
-  <el-col :span="12" v-for="item in data.list" style="margin-top: 36px">
-    <a :href="item.link" class="tile-2up">
-      
+  <el-row :gutter="20">
+    <el-col :span="12" v-for="item in data.list" style="margin-top: 36px">
+      <a :href="item.link" class="tile tile-2up">
         <div class="tile__media">
           <img :src="item.img" />
         </div>
@@ -52,10 +51,9 @@ const data = reactive({
           </div>
           <div class="tile__timestamp">{{ item.time }}</div>
         </div>
-     
-    </a>
-  </el-col>
-</el-row>
+      </a>
+    </el-col>
+  </el-row>
 </template>
 
 <style lang="less" scoped>
@@ -64,12 +62,6 @@ const data = reactive({
   width: 472px;
   height: 100%;
 
-  background-color: #fff;
-  display: flex;
-  border-radius: 16px;
-  overflow: hidden;
-  z-index: 0;
-  position: relative;
   .tile__media {
     width: 100%;
     height: 266px;
@@ -79,10 +71,6 @@ const data = reactive({
 
     direction: ltr;
 
-    position: relative;
-    z-index: 0;
-    flex-grow: 0;
-    overflow: hidden;
     img {
       width: 100%;
       height: auto;
@@ -93,18 +81,11 @@ const data = reactive({
     padding: 32px;
     justify-content: space-between;
     flex-basis: auto;
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    flex-grow: 1;
+
     .tile__head {
       .tile__category {
-        color: @font-color-assist;
         margin-bottom: 8px;
         letter-spacing: 0em;
-        font-size: 12px;
-        line-height: 1.33337;
-        font-weight: 700;
         font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
           "Helvetica Neue", "Helvetica", "Arial", sans-serif;
       }
@@ -119,8 +100,6 @@ const data = reactive({
         -webkit-box-orient: vertical;
         display: -webkit-box;
         overflow: hidden;
-
-        color: #1d1d1f;
       }
     }
   }
@@ -129,13 +108,6 @@ const data = reactive({
     font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
       "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     letter-spacing: 0em;
-    font-size: 14px;
-    line-height: 1.28577;
-    font-weight: 600;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    color: @font-color-assist;
   }
 }
 .tile-2up:hover .tile__media img {
