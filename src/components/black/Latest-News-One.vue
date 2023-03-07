@@ -1,6 +1,7 @@
 <script setup>
 //第一个
 import { ref, reactive, onMounted } from "vue";
+import "../../assets/css/home.css";
 
 import axios from "axios";
 
@@ -63,14 +64,17 @@ const requestMedia = () => {
 -->
   <el-row :gutter="20">
     <el-col :span="24" v-for="item in data.list">
-      <a :href="item.link" target="_blank" class="tile-hero">
+      <a :href="item.link" target="_blank" class="tile tile-hero">
         <div class="tile__media">
+          <div class="image image-hero"></div>
+          <!--
           <img
             :src="
               media_url ??
               'http://magick.plugin/wp-content/uploads/2023/03/9ec7908a5d9f8d94d26956c81a48f3d6.jpg'
             "
           />
+          -->
         </div>
 
         <div class="tile__description">
@@ -87,40 +91,32 @@ const requestMedia = () => {
 
 <style lang="less" scoped>
 .tile-hero {
-  height: 365px;
-  background-color: #fff;
-  display: flex;
-  border-radius: @redius;
-  overflow: hidden;
-  z-index: 0;
-  position: relative;
+  flex-direction: row;
+  width: 100%;
   .tile__media {
+    width: 100%;
+    height: auto;
     min-height: 362px;
     flex-basis: 643px;
     flex-shrink: 1;
-    img {
-      width: 100%;
-      height: auto;
+    .image {
       transition: @img-tra;
+    }
+    .image-hero {
+      background: url(https://www.apple.com.cn/newsroom/images/values/health/Apple-Womens-Health-Study-hero.jpg.landing-big.jpg)
+        no-repeat top;
+      background-size: cover;
+      height: 100%;
     }
   }
   .tile__description {
     padding: 32px;
     justify-content: space-between;
     flex-basis: 0;
-
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    flex-grow: 1;
     .tile__head {
       .tile__category {
-        color: @font-color-assist;
         letter-spacing: 0em;
         margin-bottom: 8px;
-        font-size: 12px;
-        line-height: 1.33337;
-        font-weight: 700;
       }
       .tile__headline {
         font-size: 32px;
@@ -131,22 +127,15 @@ const requestMedia = () => {
         -webkit-box-orient: vertical;
         display: -webkit-box;
         overflow: hidden;
-        color: #1d1d1f;
         font-family: "SF Pro SC", "SF Pro Display", "SF Pro Icons",
           "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
       }
     }
     .tile__timestamp {
+      margin-top: 12px;
       font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
         "Helvetica Neue", "Helvetica", "Arial", sans-serif;
       letter-spacing: 0em;
-      font-size: 14px;
-      line-height: 1.28577;
-      font-weight: 600;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      color: @font-color-assist;
     }
   }
 }
