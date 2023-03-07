@@ -128,11 +128,7 @@ const data = reactive({
       z-index: 0;
       position: relative;
 
-      img {
-        width: 100%;
-        height: auto;
-        transition: @img-tra;
-      }
+      
     }
     .tile__description {
       padding: 0 0 0 24px;
@@ -221,8 +217,5 @@ const data = reactive({
   margin-top: 32px;
 }
 
-.tile-list:hover .tile__media img {
-  transform: scale(1.03);
-  transition: @img-tra;
-}
+
 </style>
