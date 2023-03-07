@@ -1,11 +1,28 @@
-#ac-localnav {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 52px;
-  min-width: 1024px;
-  z-index: 9997;
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hgroup,
+p,
+blockquote,
+figure,
+form,
+fieldset,
+input,
+legend,
+pre,
+abbr,
+button {
+  margin: 0;
+  padding: 0;
 }
 .tile__category,
 .tile__timestamp {

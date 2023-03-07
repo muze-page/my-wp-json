@@ -21,12 +21,25 @@ import HeaderRight from "./black/Header/Header-Right.vue";
       <div class="topics--wide"></div>
     </div>
   </nav>
+ 
 </template>
 
 <style lang="less" scoped>
+//顶部
+#ac-localnav {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 52px;
+  min-width: 1024px;
+  z-index: 9997;
+}
+
 //公用
 #ac-localnav {
-  height: 3.05882rem;
+  height: 4.05882rem;
+
   .ac-ln-wrapper {
     position: absolute;
     top: 0;
@@ -37,6 +50,8 @@ import HeaderRight from "./black/Header/Header-Right.vue";
     z-index: 1;
     //背景
     .ac-ln-background {
+      background-color: rgba(255, 255, 255, 0.7);
+
       transition-property: backdrop-filter, -webkit-backdrop-filter,
         background-color;
       transition-timing-function: cubic-bezier(0.4, 0, 0.25, 1);
@@ -56,8 +71,8 @@ import HeaderRight from "./black/Header/Header-Right.vue";
       padding: 0 22px;
       position: relative;
       z-index: 2;
-      padding-left: calc(22px + constant(safe-area-inset-left));
-      padding-right: calc(22px + constant(safe-area-inset-right));
+      padding-left: calc(max(22px, env(safe-area-inset-left)));
+      padding-right: calc(max(22px, env(safe-area-inset-right)));
     }
     //详情菜单
     .topics--wide {
@@ -78,7 +93,4 @@ import HeaderRight from "./black/Header/Header-Right.vue";
     }
   }
 }
-
-
-
 </style>

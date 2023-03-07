@@ -6,6 +6,7 @@ import LatestNewsThree from "./Latest-News-Three.vue";
 
 <template>
   <section class="everdayfeed">
+    <h1 style="text-align: center;">---</h1>
     <div class="section-content">
       <h2 class="section-head">最新消息</h2>
 
