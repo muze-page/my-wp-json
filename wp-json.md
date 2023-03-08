@@ -158,6 +158,20 @@ export default defineConfig({
 - [(21条消息) vue中运用scss方法复用样式_vue样式复用_Z1LR的博客-CSDN博客](https://blog.csdn.net/zr1l1997/article/details/116161912)
 - [优雅的使用 Less - 掘金 (juejin.cn)](https://juejin.cn/post/7035590363418984455)
 
+## 安装路由
+
+- [Vue Router | Vue.js 的官方路由 (vuejs.org)](https://router.vuejs.org/zh/)
+
+```shell
+npm install vue-router
+```
+
+### 使用
+
+- [(21条消息) vite中引入vue-router路由，以及文件简称-CSDN博客](https://blog.csdn.net/yunchong_zhao/article/details/122586201)
+
+
+
 # VUE使用
 
 ## 技巧

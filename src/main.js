@@ -10,6 +10,9 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import axios from "axios";
 import VueAxios from "vue-axios";
 
+//路由
+import router from "./router"
+
 
 
 import App from './App.vue'
@@ -25,5 +28,8 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 //注册axios
 app.use(VueAxios, axios);
+
+//路由
+app.use(router)
 app.mount('#app')
 
