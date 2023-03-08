@@ -1,88 +1,69 @@
-<script setup>
+<script lang="ts" setup>
 //第一个
 import { ref, reactive, onMounted } from "vue";
 
+const props = defineProps<{
+  item?: {
+    title: {
+      rendered: string;
+    };
+    link: string;
+    author: string;
+    date: string;
+    image: string;
+  };
+}>();
 
-import axios from "axios";
+onMounted(() => {});
 
 //基础数据
 const data = reactive({
-  list: [
-    //{
-    //  link: "#",
-    //  img: "http://magick.plugin/wp-content/uploads/2023/03/9ec7908a5d9f8d94d26956c81a48f3d6.jpg",
-    //  tag: "更新",
-    //  title: " Apple 女性健康研究促进月经相关科学发展",
-    //  time: "2023 年 3 月 2 日",
-    //},
-  ],
+  list: {
+    link: "#",
+    image:
+      "http://magick.plugin/wp-content/uploads/2023/03/2023030806161731.jpg",
+    tag: "更新",
+    title: " Apple 女性健康研究促进月经相关科学发展",
+    date: "2023 年 3 月 2 日",
+  },
 });
-
-//获取媒体图片链接
-let api_media = ref("");
-let media_url = ref("");
-
-onMounted(() => {
-  //数据初始化
-  requestData();
-  //获取图片链接
-  requestMedia();
-});
-
-//获取基础数据
-const requestData = () => {
-  const site = "http://magick.plugin";
-  const api = `${site}/wp-json/wp/v2/posts/2311`;
-  console.log("待检查的API是：" + api);
-  axios.get(api).then((response) => {
-    console.log(response.data);
-    data.list.push(response.data);
-    api_media.value = data.list[0].featured_media;
-  });
-};
-
-//获取图片链接
-const requestMedia = () => {
-  const api = "http://magick.plugin/wp-json/wp/v2/media/2312";
-  axios.get(api).then((response) => {
-    console.log(response.data);
-    media_url.value = response.data.source_url;
-    media_url.value = "url(" + media_url.value + ")";
-  });
-};
-
-//返回11个帖子，需要其中的link\tag\title\date\featured_media
 </script>
 
 <template>
   <!--
   <h1>111{{ media_url ?? "没有值" }}</h1>
 -->
-  <el-row :gutter="20">
-    <el-col :span="24" v-for="item in data.list">
-      <a :href="item.link" target="_blank" class="tile tile-hero">
+
+ 
+  <el-row :gutter="20" v-if="item">
+    <el-col :span="24">
+      <a
+        :href="item.link ?? data.list.link"
+        target="_blank"
+        class="tile tile-hero"
+      >
         <div class="tile__media">
-          <div class="image image-hero"></div>
-          <!--
-          <img
-            :src="
-              media_url ??
-              'http://magick.plugin/wp-content/uploads/2023/03/9ec7908a5d9f8d94d26956c81a48f3d6.jpg'
-            "
-          />
-          -->
+          <el-image
+            :src="item.image ?? data.list.image"
+            fit="cover"
+            :lazy="true"
+          ></el-image>
         </div>
 
         <div class="tile__description">
           <div class="tile__head">
-            <div class="tile__category">{{ item.tag ?? "默认" }}</div>
-            <div class="tile__headline">{{ item.title.rendered }}</div>
+            <div class="tile__category">{{ item.author ?? data.list.tag }}</div>
+
+            <div class="tile__headline">
+              {{ item.title.rendered ?? data.list.title }}
+            </div>
           </div>
-          <div class="tile__timestamp">{{ item.date }}</div>
+          <div class="tile__timestamp">{{ item.date ?? data.list.date }}</div>
         </div>
       </a>
     </el-col>
   </el-row>
+
 </template>
 
 <style lang="less" scoped>
@@ -92,17 +73,11 @@ const requestMedia = () => {
   .tile__media {
     width: 100%;
     height: auto;
-    min-height: 362px;
-    flex-basis: 643px;
+    min-height: 590px;
+    flex-basis: 472px;
     flex-shrink: 1;
-    .image {
-      transition: @img-tra;
-    }
-    .image-hero {
-      background: v-bind("media_url") no-repeat top;
-
-      background-size: cover;
-      height: 100%;
+    > div {
+      display: inline;
     }
   }
   .tile__description {
@@ -110,21 +85,27 @@ const requestMedia = () => {
     justify-content: space-between;
     flex-basis: 0;
     .tile__head {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
       .tile__category {
         letter-spacing: 0em;
-        margin-bottom: 8px;
+        margin-bottom: auto;
       }
       .tile__headline {
-        font-size: 32px;
-        line-height: 1.125;
+        font-size: 40px;
+        line-height: 1.1;
         font-weight: 700;
-        letter-spacing: 0.004em;
+        letter-spacing: 0em;
         -webkit-line-clamp: 6;
         -webkit-box-orient: vertical;
         display: -webkit-box;
         overflow: hidden;
         font-family: "SF Pro SC", "SF Pro Display", "SF Pro Icons",
           "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+        margin-bottom: auto;
+        margin-top: 8px;
       }
     }
     .tile__timestamp {

@@ -7,36 +7,59 @@ import LatestNewsThree from "./Latest-News-Three.vue";
 import { ref, reactive, onMounted } from "vue";
 import axios from "axios";
 
-onMounted(() => {
-  //数据初始化
-  requestData();
-});
-
 //设定网址
 const site = "http://magick.plugin";
 
 //存储数据
-const api_data = ref(['']);
+const api_data = ref([""]);
+
+//列表1用数据
+const one_data = ref();
+//列表2用数据
+const two_data = ref([]);
+//列表3用数据
+const three_data = ref([]);
+
 //获取基础数据
 const requestData = () => {
-  const api = `${site}/wp-json/wp/v2/posts/?_fields=author,id,excerpt,title,link&per_page=2`;
+  const api = `${site}/wp-json/wp/v2/posts/?_fields=author,id,title,link,date,featured_media&per_page=2`;
   console.log("待检查的API是：" + api);
   axios.get(api).then((response) => {
     console.log(response.data);
-    api_data.value.push(response.data);
+    api_data.value = response.data;
+    one_data.value = response.data[0];
   });
 };
+
+//传入图片ID，获取图片链接
+const requestMedia = (media = 1) => {
+  const api = `${site}/wp-json/wp/v2/media/` + media;
+  axios.get(api).then((response) => {
+    console.log(response.data);
+    //media_url.value = "url(" + media_url.value + ")";
+  });
+  requestMedia(2312);
+};
+
+onMounted(() => {
+  //数据初始化
+  requestData();
+
+  //将数组中第一个的值传出
+});
+
+//返回11个帖子，需要其中的link\tag\title\date\featured_media
 </script>
 
 <template>
-  {{ api_data }}
+  {{ one_data }}
   <section class="everdayfeed">
     <!--提示-->
     <HeaderAside></HeaderAside>
     <div class="section-content">
       <h2 class="section-head">最新消息</h2>
 
-      <LatestNewsOne></LatestNewsOne>
+      <LatestNewsOne :item="one_data"></LatestNewsOne>
 
       <LatestNewsTwo></LatestNewsTwo>
 

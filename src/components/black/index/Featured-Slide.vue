@@ -96,7 +96,7 @@
         <li>
           <el-button
             class="paddlenav-arrow paddlenav-arrow-previous"
-            plain="true"
+            
             circle
           >
             <el-icon>

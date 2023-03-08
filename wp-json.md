@@ -1,5 +1,15 @@
 # 准备
 
+## 参考
+
+- [Vue3+TS+Vite 入门指南 - 掘金 (juejin.cn)](https://juejin.cn/post/7059977654866280456)
+
+## 编程环境
+
+### VS Code
+
+- Element UI Snippets（Element Pro 提示）
+
 ## 环境配置
 
 ### 安装Element Pro
