@@ -1,6 +1,7 @@
 <script setup>
 import HeaderLeft from "./black/Header/Header-Left.vue";
 import HeaderRight from "./black/Header/Header-Right.vue";
+
 //头部
 </script>
 
@@ -21,7 +22,6 @@ import HeaderRight from "./black/Header/Header-Right.vue";
       <div class="topics--wide"></div>
     </div>
   </nav>
- 
 </template>
 
 <style lang="less" scoped>

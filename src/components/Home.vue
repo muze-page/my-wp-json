@@ -6,6 +6,7 @@ import MoreNews from "./black/index/More-News.vue";
 </script>
 
 <template>
+  
   <LatestNews></LatestNews>
   <Featured></Featured>
   <MoreNews></MoreNews>

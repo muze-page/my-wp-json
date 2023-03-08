@@ -214,6 +214,13 @@ import router from "./router"
 app.use(router)
 ```
 
+## 安装Typescript
+
+```shell
+# 仅仅为了使用 tsc 命令，所以作为开发依赖安装
+npm install -D typescript
+```
+
 
 
 # VUE使用

@@ -31,8 +31,8 @@ onMounted(() => {
 
 //获取基础数据
 const requestData = () => {
-  const site = "https://dongbd.com";
-  const api = `${site}/wp-json/wp/v2/posts/297144`;
+  const site = "http://magick.plugin";
+  const api = `${site}/wp-json/wp/v2/posts/2311`;
   console.log("待检查的API是：" + api);
   axios.get(api).then((response) => {
     console.log(response.data);
@@ -43,13 +43,15 @@ const requestData = () => {
 
 //获取图片链接
 const requestMedia = () => {
-  const api = "https://dongbd.com/wp-json/wp/v2/media/297146";
+  const api = "http://magick.plugin/wp-json/wp/v2/media/2312";
   axios.get(api).then((response) => {
     console.log(response.data);
     media_url.value = response.data.source_url;
     media_url.value = "url(" + media_url.value + ")";
   });
 };
+
+//返回11个帖子，需要其中的link\tag\title\date\featured_media
 </script>
 
 <template>

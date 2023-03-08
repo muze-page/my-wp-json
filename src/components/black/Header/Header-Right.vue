@@ -1,5 +1,6 @@
 <script setup>
 //文底部
+import { Search, ArrowDown } from "@element-plus/icons-vue";
 </script>
 
 <template>
@@ -26,8 +27,7 @@
         <li class="ac-ln-menu-item">
           <div class="ac-ln-menu-link nr-sf-content">
             <form></form>
-            <el-button class="nr-sf-link bt-search">
-              <el-icon><Search /></el-icon>
+            <el-button class="nr-sf-link bt-search" :icon="Search">
               Newsroom 搜索
             </el-button>
           </div>
