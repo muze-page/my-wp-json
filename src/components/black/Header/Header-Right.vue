@@ -6,6 +6,22 @@
   <div class="ac-ln-menu">
     <div class="ac-ln-menu-tray">
       <ul class="ac-ln-menu-items">
+        <!--测试菜单-->
+        <li class="ac-ln-menu-item">
+          <el-button class="nr-sf-link bt-menu">
+            <router-link to="/">首页</router-link>
+          </el-button>
+        </li>
+        <li class="ac-ln-menu-item">
+          <el-button class="nr-sf-link bt-menu">
+            <router-link to="/single">文章页</router-link>
+          </el-button>
+        </li>
+        <li class="ac-ln-menu-item">
+          <el-button class="nr-sf-link bt-menu">
+            <router-link to="/404">404页</router-link>
+          </el-button>
+        </li>
         <!--左边-->
         <li class="ac-ln-menu-item">
           <div class="ac-ln-menu-link nr-sf-content">
@@ -70,6 +86,10 @@
     opacity: 1;
     transition: opacity 500ms ease-in 200ms;
     color: #1d1d1f;
+    background-color: white;
+  }
+  .nr-sf-link:hover {
+    color: #06c;
   }
 
   button.nr-sf-link {
@@ -85,6 +105,18 @@
     i {
       margin-left: 6px;
     }
+  }
+}
+
+//细节微调
+.nr-sf-link {
+  a {
+    color: #1d1d1f;
+  }
+}
+.nr-sf-link:hover {
+  a {
+    color: #06c;
   }
 }
 </style>

@@ -138,7 +138,7 @@ export default defineConfig({
 
 ```
 
-
+> 要在这里载入公共样式，避免覆盖组件内样式
 
 使用
 
@@ -152,6 +152,15 @@ export default defineConfig({
 }
 </style>
 ```
+
+css中引入
+
+```css
+//载入公共变量
+@import "global.less";
+```
+
+
 
 更多
 
@@ -169,6 +178,41 @@ npm install vue-router
 ### 使用
 
 - [(21条消息) vite中引入vue-router路由，以及文件简称-CSDN博客](https://blog.csdn.net/yunchong_zhao/article/details/122586201)
+
+在src文件下新建router文件夹，其中新建index.js文件，写入以下内容
+
+```js
+//导入Vue Router模块中的两个方法
+import { createRouter, createWebHashHistory } from "vue-router";
+//导入路由需要用到的自定义组件
+import Home from "../components/Home.vue";
+import Single from "../components/Single.vue";
+
+
+//定义路由
+const routes = [
+    { path: "/home", component: Home },
+    { path: "/single", component: Single },
+];
+
+//创建路由对象
+const router = createRouter({
+    history: createWebHashHistory(),
+    routes: routes,
+});
+export default router
+
+```
+
+在main.js文件中添加以下内容
+
+```js
+//路由
+import router from "./router"
+
+//路由
+app.use(router)
+```
 
 
 
