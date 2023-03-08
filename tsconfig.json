@@ -1,4 +1,5 @@
 {
+    //TypeScript配置文件
     "compilerOptions": {
       // TypeScript 默认会把代码编译为 ECMAScript 3
       // esnext 表示仅仅校验转换 TypeScript 类型，不进行语法编译

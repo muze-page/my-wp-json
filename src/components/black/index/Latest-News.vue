@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import HeaderAside from "../Aside.vue";
 import LatestNewsOne from "./Latest-News-One.vue";
 import LatestNewsTwo from "./Latest-News-Two.vue";
@@ -16,7 +16,7 @@ onMounted(() => {
 const site = "http://magick.plugin";
 
 //存储数据
-const api_data = ref([]);
+const api_data = ref(['']);
 //获取基础数据
 const requestData = () => {
   const api = `${site}/wp-json/wp/v2/posts/?_fields=author,id,excerpt,title,link&per_page=2`;

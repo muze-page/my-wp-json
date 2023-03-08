@@ -216,12 +216,96 @@ app.use(router)
 
 ## 安装Typescript
 
+- [(21条消息) Vite 学习 - TS 在 Vite 中的使用_vite ts_皮蛋很白的博客-CSDN博客](https://blog.csdn.net/u012961419/article/details/110520129)
+
+### 步骤一
+
 ```shell
 # 仅仅为了使用 tsc 命令，所以作为开发依赖安装
 npm install -D typescript
 ```
 
+### 步骤二
 
+编写配置文件，在项目目录下新建tsconfig.json文件，写入以下内容
+
+```json
+{
+  "compilerOptions": {
+    // TypeScript 默认会把代码编译为 ECMAScript 3
+    // esnext 表示仅仅校验转换 TypeScript 类型，不进行语法编译
+    "target": "esnext",
+    "module": "esnext",
+    // 开启严格模式，这使得对“this”的数据属性进行更严格的推断成为可能
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node"
+  },
+
+  // 配置需要校验的文件
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue"
+  ],
+
+  // 排除不需要 TypeScript 校验的文件
+  "exclude": [
+    "node_modules"
+  ]
+}
+
+```
+
+### 步骤三
+
+将 `main.js` 改为 `main.ts`，并将 `index.html` 中引入的 `main.js` 改为 `main.ts`。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + Vue</title>
+</head>
+
+<body class="page-article">
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
+```
+
+
+
+### 步骤四
+
+在 `/src` 目录下创建一个 `.ts` 文件，添加 `.vue` 文件的类型声明
+
+```js
+// /src/shims-vue.d.ts
+declare module '*.vue' {
+  // Vue 3
+  import { defineComponent } from 'vue'
+  const Component: ReturnType<typeof defineComponent>
+  export default Component
+}
+
+```
+
+
+
+现在，可以在vue文件中，通过
+
+```vue
+<script lang="ts" setup>
+</script>
+```
+
+的方式。来使用Typescript了。
 
 # VUE使用
 
