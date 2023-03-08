@@ -36,16 +36,15 @@ const requestMedia = (media = 1) => {
   const api = `${site}/wp-json/wp/v2/media/` + media;
   axios.get(api).then((response) => {
     console.log(response.data);
-    //media_url.value = "url(" + media_url.value + ")";
   });
-  requestMedia(2312);
 };
 
 onMounted(() => {
   //数据初始化
   requestData();
-
-  //将数组中第一个的值传出
+  console.log("图片链接是：");
+  const a = requestMedia(2312);
+  console.log("拿到的值是：" + a);
 });
 
 //返回11个帖子，需要其中的link\tag\title\date\featured_media
