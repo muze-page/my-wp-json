@@ -6,10 +6,15 @@ import Footer from "./Footer.vue";
 
 <template>
   <Header></Header>
-  <!-- router-view是路由页面的出口，路由匹配到的组件会渲染在此-->
-  <router-view></router-view>
-
+  <main id="main" class="main">
+    <!-- router-view是路由页面的出口，路由匹配到的组件会渲染在此-->
+    <router-view></router-view>
+  </main>
   <Footer></Footer>
 </template>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+main {
+  display: block;
+}
+</style>

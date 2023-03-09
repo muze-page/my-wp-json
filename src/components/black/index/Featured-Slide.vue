@@ -1,5 +1,51 @@
 <script setup>
-
+import { reactive } from "vue";
+const data = reactive({
+  list: [
+    {
+      link: "#",
+      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030609415480.jpg",
+      tag: "更新",
+      title: " 依托 Apple Watch，研究人员探索更多心脏健康功能0",
+      time: "2023 年 2 月 21 日",
+    },
+    {
+      link: "#",
+      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030609571941.jpg",
+      tag: "特写",
+      title: "McIntosh S.E.E.D. 在美国南部与非裔土地所有者共同保护土地和传统",
+      time: "2023 年 2 月 15 日",
+    },
+    {
+      link: "#",
+      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030609582753.jpg",
+      tag: "特写",
+      title: "iPad 助力中国餐饮零售行业焕发新生",
+      time: "2023 年 2 月 8 日",
+    },
+    {
+      link: "#",
+      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
+      tag: "新闻稿",
+      title: "Apple 公布第一季度业绩",
+      time: "2023 年 2 月 8 日",
+    },
+    {
+      link: "#",
+      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
+      tag: "新闻稿",
+      title: "Apple 公布第一季度业绩",
+      time: "2023 年 2 月 8 日",
+    },
+    {
+      link: "#",
+      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
+      tag: "新闻稿",
+      title: "Apple 公布第一季度业绩",
+      time: "2023 年 2 月 8 日",
+    },
+  ],
+});
 </script>
 <template>
   <div class="gallery">
@@ -51,54 +97,32 @@
           </div>
         </a>
       </li>
-      <li class="gallery-item">
-        <a href="#" class="tile">
+
+      <li class="gallery-item" v-for="item in data.list">
+        <a :href="item.link" class="tile">
           <div class="tile__media">
-            <img
-              src="http://magick.plugin/wp-content/uploads/2023/03/2023030710204520.jpg"
-            />
+            <el-image :src="item.img" fit="fill" :lazy="true"></el-image>
           </div>
           <div class="tile__gradient">
             <div class="tile__description">
               <div class="tile__head">
                 <div class="tile__headline">
-                  Oceanic+ app 与 Apple Watch Ultra 伴你探索海底世界
+                  {{ item.title }}
                 </div>
               </div>
-              <div class="tile__timestamp">2022 年 11 月 28 日</div>
+              <div class="tile__timestamp">{{ item.time }}</div>
             </div>
           </div>
         </a>
       </li>
-      <li class="gallery-item">
-        <a href="#" class="tile">
-          <div class="tile__media">
-            <img
-              src="http://magick.plugin/wp-content/uploads/2023/03/2023030709575782.jpg"
-            />
-          </div>
-          <div class="tile__gradient">
-            <div class="tile__description">
-              <div class="tile__head">
-                <div class="tile__headline">
-                  Oceanic+ app 与 Apple Watch Ultra 伴你探索海底世界
-                </div>
-              </div>
-              <div class="tile__timestamp">2022 年 11 月 28 日</div>
-            </div>
-          </div>
-        </a>
-      </li>
+
+
     </ul>
     <!--切换按钮-->
     <div class="paddlenav">
       <ul class="paddlenav-items">
         <li>
-          <el-button
-            class="paddlenav-arrow paddlenav-arrow-previous"
-            
-            circle
-          >
+          <el-button class="paddlenav-arrow paddlenav-arrow-previous" circle>
             <el-icon>
               <ArrowLeftBold />
             </el-icon>

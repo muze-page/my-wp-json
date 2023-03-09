@@ -57,7 +57,7 @@ const data = reactive({
         <el-col :span="12" class="tile-item" v-for="item in data.list">
           <a :href="item.link" class="tile tile-list">
             <div class="tile__media">
-              <img :src="item.img" />
+              <el-image :src="item.img" fit="fill" :lazy="true"></el-image>
             </div>
             <div class="tile__description">
               <div class="tile__head">
@@ -88,8 +88,7 @@ const data = reactive({
 
   .section-head {
     margin-bottom: 40px;
-    font-family: "SF Pro SC", "SF Pro Display", "SF Pro Icons", "PingFang SC",
-      "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+   
   }
   .section-tiles {
     margin-right: -64px;
@@ -127,8 +126,6 @@ const data = reactive({
       overflow: hidden;
       z-index: 0;
       position: relative;
-
-      
     }
     .tile__description {
       padding: 0 0 0 24px;
@@ -143,14 +140,9 @@ const data = reactive({
         .tile__category {
           margin-bottom: 4px;
 
-          font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
-            "Helvetica Neue", "Helvetica", "Arial", sans-serif;
           letter-spacing: 0em;
         }
         .tile__headline {
-          font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
-            "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-
           letter-spacing: 0em;
 
           font-size: 17px;
@@ -165,9 +157,6 @@ const data = reactive({
       }
       .tile__timestamp {
         margin-top: 8px;
-
-        font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
-          "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
         letter-spacing: 0em;
       }
@@ -216,6 +205,4 @@ const data = reactive({
   background-color: #d0d0d0;
   margin-top: 32px;
 }
-
-
 </style>

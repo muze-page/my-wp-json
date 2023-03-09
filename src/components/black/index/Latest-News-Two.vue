@@ -41,7 +41,10 @@ const data = reactive({
     <el-col :span="12" v-for="item in data.list" style="margin-top: 36px">
       <a :href="item.link" class="tile tile-2up">
         <div class="tile__media">
+          <!--
           <img :src="item.img" />
+          -->
+          <el-image :src="item.img" fit="fill" :lazy="true"></el-image>
         </div>
 
         <div class="tile__description">
@@ -70,8 +73,6 @@ const data = reactive({
     flex-shrink: 1;
 
     direction: ltr;
-
-   
   }
   .tile__description {
     padding: 32px;
@@ -106,5 +107,4 @@ const data = reactive({
     letter-spacing: 0em;
   }
 }
-
 </style>

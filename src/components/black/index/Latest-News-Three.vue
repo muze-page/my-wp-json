@@ -55,7 +55,9 @@ const data = reactive({
     <el-col :span="8" v-for="item in data.list" style="margin-top: 36px">
       <a :href="item.link" class="tile tile-3up">
         <div class="tile__media">
-          <img :src="item.img" />
+          
+          <el-image :src="item.img" fit="fill" :lazy="true"></el-image>
+          
         </div>
 
         <div class="tile__description">
