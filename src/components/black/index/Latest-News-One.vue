@@ -3,7 +3,7 @@
 import { ref, reactive, onMounted } from "vue";
 
 interface Data {
-  item?: {
+ 
     title: {
       rendered: string;
     };
@@ -11,7 +11,7 @@ interface Data {
     author: string;
     date: string;
     image: string;
-  };
+  
 }
 const props = withDefaults(
   defineProps<{
@@ -19,9 +19,7 @@ const props = withDefaults(
   }>(),
   {
     item: {
-      title: {
-        rendered: "我是标题",
-      },
+      title:{ rendered: "我是标题" },
       link: "我是链接",
       author: "新闻稿",
       date: "2023 年 3 月 2 日",
