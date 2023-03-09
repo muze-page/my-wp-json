@@ -1,29 +1,22 @@
 <script lang="ts" setup>
 //第一个
-import { ref, reactive, onMounted } from "vue";
+import { defineProps, withDefaults } from "vue";
 
-interface Data {
-  title: string;
+export interface Data {
+  titles: string;
   link: string;
   categories: string;
   date: string;
   featured_media: string;
 }
-const props = withDefaults(
-  defineProps<{
-    item: Data;
-  }>(),
-  {
-    item: {
-      title: "我是标题",
-      link: "我是链接",
-      categories: "新闻稿",
-      date: "2023 年 3 月 2 日",
-      featured_media:
-        "http://magick.plugin/wp-content/uploads/2023/03/2023030806161731.jpg",
-    },
-  }
-);
+const props = withDefaults(defineProps<Data>(), {
+  titles: "我是标题",
+  link: "我是链接",
+  categories: "新闻稿",
+  date: "2023 年 3 月 2 日",
+  featured_media:
+    "http://magick.plugin/wp-content/uploads/2023/03/2023030806161731.jpg",
+});
 </script>
 
 <template>
@@ -31,26 +24,22 @@ const props = withDefaults(
   <h1>111{{ media_url ?? "没有值" }}</h1>
 -->
 
-  <el-row :gutter="20" v-if="item">
+  <el-row :gutter="20" v-if="titles">
     <el-col :span="24">
-      <a :href="item.link" target="_blank" class="tile tile-hero">
+      <a :href="link" target="_blank" class="tile tile-hero">
         <div class="tile__media">
-          <el-image
-            :src="item.featured_media"
-            fit="cover"
-            :lazy="true"
-          ></el-image>
+          <el-image :src="featured_media" fit="cover" :lazy="true"></el-image>
         </div>
 
         <div class="tile__description">
           <div class="tile__head">
-            <div class="tile__category">{{ item.categories }}</div>
+            <div class="tile__category">{{ categories }}</div>
 
             <div class="tile__headline">
-              {{ item.title }}
+              {{ titles }}
             </div>
           </div>
-          <div class="tile__timestamp">{{ item.date }}</div>
+          <div class="tile__timestamp">{{ date }}</div>
         </div>
       </a>
     </el-col>
