@@ -68,6 +68,7 @@ async function getCategory(id = 1) {
 
 onMounted(() => {});
 //处理对象
+
 async function handleObj(
   obj = {
     date: "",
@@ -79,7 +80,7 @@ async function handleObj(
   //拿到时间，处理后插入
   obj["date"] = moment(obj.date).format("YYYY 年  M 月 D 日");
   //拿到标题，处理后插入
-  obj["title"] = obj.title.rendered;
+  obj["title"] = <string>obj.title.rendered;
   //拿到特色图ID，处理成链接后插入
   obj["featured_media"] = await requestMedia(obj.featured_media);
   //拿到分类，处理后插入
