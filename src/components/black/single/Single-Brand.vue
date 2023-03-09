@@ -1,15 +1,14 @@
 <script lang="ts" setup>
 //品牌
-//import imgUrl from "./src/assets/images/nnewsroom_lockup.svg";
-//import imgUrl from "./src/assets/images/nnewsroom_lockup.svg";
-
 </script>
 
 <template>
+
   
   <aside class="footertile">
     <a href="#" class="block">
       <div class="footertile-copy">
+        <img src="/images/logo.svg" alt="" />
         <figure class="footertile-copy-image">
           <span class="visuallyhidden">Apple Newsroom</span>
         </figure>
@@ -71,7 +70,7 @@ a.block {
 .footertile-copy-image {
   width: 158px;
   height: 23px;
-  background: url("@/assets/logo.svg") no-repeat;
+  background: url("/images/logo.svg") no-repeat;
   background-size: cover;
 }
 

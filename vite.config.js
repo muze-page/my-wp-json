@@ -14,5 +14,12 @@ export default defineConfig({
     },
   },
 
+  base: './',
+  resolve: {
+    alias: {
+      '/images': 'src/assets/images',
+    },
+  },
+
 
 })

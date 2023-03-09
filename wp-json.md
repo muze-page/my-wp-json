@@ -346,7 +346,9 @@ declare module '*.vue' {
 
 # VITE
 
+## 图片
 
+- [解决vite使用alias引入图片不显示的问题 - 掘金 (juejin.cn)](https://juejin.cn/post/7009441745301667853)
 
 ## 配置
 
