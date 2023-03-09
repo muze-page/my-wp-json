@@ -54,12 +54,13 @@ async function getCategory(id = 1) {
   //查询网址
   const api = `${site}/wp-json/wp/v2/categories/` + id + `?_fields=name,link`;
   try {
-    const cat = { name: "", link: "" };
+    //const cat = { name: "", link: "" };
     //输出值
     const response = await axios.get(api);
-    cat.name = response.data.name;
-    cat.link = response.data.link;
-    return cat;
+    //cat.name = response.data.name;
+    //cat.link = response.data.link;
+    //return cat;
+    return response.data.name;
   } catch (error) {
     console.log(error);
   }
@@ -67,14 +68,28 @@ async function getCategory(id = 1) {
 
 onMounted(() => {});
 //处理对象
-const handleObj = (obj = { date: "", time: "" }) => {
+async function handleObj(
+  obj = {
+    date: "",
+    title: { rendered: "" },
+    featured_media: 0,
+    categories: 0,
+  }
+) {
   //拿到时间，处理后插入
-  obj["time"] = moment(obj.date).format("YYYY 年  M 月 D日");
-};
+  obj["date"] = moment(obj.date).format("YYYY 年  M 月 D 日");
+  //拿到标题，处理后插入
+  obj["title"] = obj.title.rendered;
+  //拿到特色图ID，处理成链接后插入
+  obj["featured_media"] = await requestMedia(obj.featured_media);
+  //拿到分类，处理后插入
+  console.log("二度确认下：" + obj.categories);
+  obj["categories"] = await getCategory(obj.categories);
+}
 
-const test = { date: "2023-03-04T17:20:41", time: "" };
-handleObj(test);
-console.table(test);
+const test = { date: "2023-03-04T17:20:41", categories: [1] };
+//handleObj(test);
+//console.table(test);
 
 //返回11个帖子，需要其中的link\categories\title\date\featured_media
 
@@ -83,28 +98,35 @@ console.table(test);
 //3、分配数据
 
 async function f() {
+  //原始内容
   api_data.value = await requestData();
-  //拿到需处理的数组
+  //处理后的内容
   const data = await requestData();
   for (const key in data) {
     //拿到对象内容
+    //处理data[key]
+    await handleObj(data[key]);
+    console.log("打印的内容：" + data[key].categories);
 
-    console.log(JSON.stringify(data[key]));
+    console.log("对象的内容" + JSON.stringify(data[key]));
   }
   //api_data.value =
   //api_data.value = await requestMedia();
   const a = await getCategory();
 
-  console.table(data);
-  console.log("6 - 拿到的值是：" + JSON.stringify(a));
+  console.table("处理后的对象" + JSON.stringify(data));
+  //console.log("6 - 拿到的值是：" + JSON.stringify(a));
+
+  imgUrl.value = data;
+  one_data.value = data[0];
 }
 f();
 </script>
 
 <template>
-  {{ api_data }}
+  处理前{{ api_data }}
   <hr />
-  {{ imgUrl }}
+  处理后{{ imgUrl }}
   <hr />
   <hr />
 

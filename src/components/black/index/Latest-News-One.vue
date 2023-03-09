@@ -3,15 +3,11 @@
 import { ref, reactive, onMounted } from "vue";
 
 interface Data {
- 
-    title: {
-      rendered: string;
-    };
-    link: string;
-    author: string;
-    date: string;
-    image: string;
-  
+  title: string;
+  link: string;
+  categories: string;
+  date: string;
+  featured_media: string;
 }
 const props = withDefaults(
   defineProps<{
@@ -19,11 +15,11 @@ const props = withDefaults(
   }>(),
   {
     item: {
-      title:{ rendered: "我是标题" },
+      title: "我是标题",
       link: "我是链接",
-      author: "新闻稿",
+      categories: "新闻稿",
       date: "2023 年 3 月 2 日",
-      image:
+      featured_media:
         "http://magick.plugin/wp-content/uploads/2023/03/2023030806161731.jpg",
     },
   }
@@ -39,15 +35,19 @@ const props = withDefaults(
     <el-col :span="24">
       <a :href="item.link" target="_blank" class="tile tile-hero">
         <div class="tile__media">
-          <el-image :src="item.image" fit="cover" :lazy="true"></el-image>
+          <el-image
+            :src="item.featured_media"
+            fit="cover"
+            :lazy="true"
+          ></el-image>
         </div>
 
         <div class="tile__description">
           <div class="tile__head">
-            <div class="tile__category">{{ item.author }}</div>
+            <div class="tile__category">{{ item.categories }}</div>
 
             <div class="tile__headline">
-              {{ item.title.rendered }}
+              {{ item.title }}
             </div>
           </div>
           <div class="tile__timestamp">{{ item.date }}</div>
