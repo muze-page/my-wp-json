@@ -48,16 +48,8 @@
   position: relative;
   z-index: 1;
 }
-.component {
-  margin-left: auto;
-  margin-right: auto;
-  width: 980px;
-}
-.component-content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 653px;
-}
+
+
 .presscontacts-headline {
   font-size: 24px;
   line-height: 1.16667;
