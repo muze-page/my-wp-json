@@ -39,14 +39,18 @@ const requestMedia = (media = 1) => {
   });
 };
 
-onMounted(() => {
-  //数据初始化
-  requestData();
-  console.log("图片链接是：");
-  const a = requestMedia(2312);
-  console.log("拿到的值是：" + a);
-});
+//onMounted(() => {
+//  //数据初始化
+//  requestData();
+//  console.log("图片链接是：");
+//  const a = requestMedia(2312);
+//  console.log("拿到的值是：" + a);
+//});
 
+//数据初始化
+requestData();
+const a = requestMedia(2312);
+  console.log("拿到的值是：" + a);
 //返回11个帖子，需要其中的link\tag\title\date\featured_media
 </script>
 
@@ -58,7 +62,7 @@ onMounted(() => {
     <div class="section-content">
       <h2 class="section-head">最新消息</h2>
 
-      <LatestNewsOne :item="one_data"></LatestNewsOne>
+      <LatestNewsOne :item="one_datas"></LatestNewsOne>
 
       <LatestNewsTwo></LatestNewsTwo>
 

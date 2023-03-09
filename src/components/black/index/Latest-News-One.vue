@@ -2,7 +2,7 @@
 //第一个
 import { ref, reactive, onMounted } from "vue";
 
-const props = defineProps<{
+interface Data {
   item?: {
     title: {
       rendered: string;
@@ -12,21 +12,24 @@ const props = defineProps<{
     date: string;
     image: string;
   };
-}>();
-
-onMounted(() => {});
-
-//基础数据
-const data = reactive({
-  list: {
-    link: "#",
-    image:
-      "http://magick.plugin/wp-content/uploads/2023/03/2023030806161731.jpg",
-    tag: "更新",
-    title: " Apple 女性健康研究促进月经相关科学发展",
-    date: "2023 年 3 月 2 日",
-  },
-});
+}
+const props = withDefaults(
+  defineProps<{
+    item: Data;
+  }>(),
+  {
+    item: {
+      title: {
+        rendered: "我是标题",
+      },
+      link: "我是链接",
+      author: "新闻稿",
+      date: "2023 年 3 月 2 日",
+      image:
+        "http://magick.plugin/wp-content/uploads/2023/03/2023030806161731.jpg",
+    },
+  }
+);
 </script>
 
 <template>
@@ -34,36 +37,26 @@ const data = reactive({
   <h1>111{{ media_url ?? "没有值" }}</h1>
 -->
 
- 
   <el-row :gutter="20" v-if="item">
     <el-col :span="24">
-      <a
-        :href="item.link ?? data.list.link"
-        target="_blank"
-        class="tile tile-hero"
-      >
+      <a :href="item.link" target="_blank" class="tile tile-hero">
         <div class="tile__media">
-          <el-image
-            :src="item.image ?? data.list.image"
-            fit="cover"
-            :lazy="true"
-          ></el-image>
+          <el-image :src="item.image" fit="cover" :lazy="true"></el-image>
         </div>
 
         <div class="tile__description">
           <div class="tile__head">
-            <div class="tile__category">{{ item.author ?? data.list.tag }}</div>
+            <div class="tile__category">{{ item.author }}</div>
 
             <div class="tile__headline">
-              {{ item.title.rendered ?? data.list.title }}
+              {{ item.title.rendered }}
             </div>
           </div>
-          <div class="tile__timestamp">{{ item.date ?? data.list.date }}</div>
+          <div class="tile__timestamp">{{ item.date }}</div>
         </div>
       </a>
     </el-col>
   </el-row>
-
 </template>
 
 <style lang="less" scoped>
