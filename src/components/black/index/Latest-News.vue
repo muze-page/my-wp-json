@@ -21,6 +21,8 @@ const imgUrl = ref("");
 
 //列表1用数据
 const one_data = ref();
+//列表2用数据
+const two_data = ref();
 
 //获取基础数据
 async function requestData() {
@@ -66,14 +68,16 @@ async function getCategory(id = 1) {
   }
 }
 
-onMounted(() => {});
+onMounted(() => {
+  f();
+});
 //处理对象
 
 async function handleObj(
   obj = {
     date: "",
     title: { rendered: "" },
-    titles:"",
+    titles: "",
     featured_media: 0,
     categories: 0,
   }
@@ -121,8 +125,9 @@ async function f() {
 
   imgUrl.value = data;
   one_data.value = data[0];
+  two_data.value = data[1];
 }
-f();
+
 </script>
 
 <template>
@@ -130,15 +135,16 @@ f();
   <hr />
   处理后{{ imgUrl }}
   <hr />
+  {{ one_data }}
   <hr />
 
   <section class="everdayfeed">
     <div class="section-content">
       <h2 class="section-head">最新消息</h2>
 
-      <LatestNewsOne :item="one_data"></LatestNewsOne>
+      <LatestNewsOne :data="one_data"></LatestNewsOne>
 
-      <LatestNewsTwo></LatestNewsTwo>
+      <LatestNewsTwo ></LatestNewsTwo>
 
       <LatestNewsThree></LatestNewsThree>
     </div>

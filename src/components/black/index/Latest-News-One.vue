@@ -1,45 +1,49 @@
 <script lang="ts" setup>
 //第一个
-import { defineProps, withDefaults } from "vue";
+import { defineProps, withDefaults, onMounted, watchEffect } from "vue";
 
-export interface Data {
-  titles: string;
-  link: string;
-  categories: string;
-  date: string;
-  featured_media: string;
+export interface Props {
+  data: {
+    titles: string;
+    link: string;
+    categories: string;
+    date: string;
+    featured_media: string;
+  };
 }
-const props = withDefaults(defineProps<Data>(), {
-  titles: "我是标题",
-  link: "我是链接",
-  categories: "新闻稿",
-  date: "2023 年 3 月 2 日",
-  featured_media:
-    "http://magick.plugin/wp-content/uploads/2023/03/2023030806161731.jpg",
+const props = withDefaults(defineProps<Props>(), {
+  data: {
+    titles: "我是标题",
+    link: "我是链接",
+    categories: "新闻稿",
+    date: "2023 年 3 月 2 日",
+    featured_media:
+      "http://magick.plugin/wp-content/uploads/2023/03/2023030806161731.jpg",
+  },
 });
 </script>
 
 <template>
-  <!--
-  <h1>111{{ media_url ?? "没有值" }}</h1>
--->
-
-  <el-row :gutter="20" v-if="titles">
+  <el-row :gutter="20" v-if="data.titles">
     <el-col :span="24">
-      <a :href="link" target="_blank" class="tile tile-hero">
+      <a :href="data.link" target="_blank" class="tile tile-hero">
         <div class="tile__media">
-          <el-image :src="featured_media" fit="cover" :lazy="true"></el-image>
+          <el-image
+            :src="data.featured_media"
+            fit="cover"
+            :lazy="true"
+          ></el-image>
         </div>
 
         <div class="tile__description">
           <div class="tile__head">
-            <div class="tile__category">{{ categories }}</div>
+            <div class="tile__category">{{ data.categories }}</div>
 
             <div class="tile__headline">
-              {{ titles }}
+              {{ data.titles }}
             </div>
           </div>
-          <div class="tile__timestamp">{{ date }}</div>
+          <div class="tile__timestamp">{{ data.date }}</div>
         </div>
       </a>
     </el-col>
