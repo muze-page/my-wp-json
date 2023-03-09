@@ -12,8 +12,8 @@ import axios from "axios";
 //根据特色图片ID获取图片链接：http://magick.plugin/wp-json/wp/v2/media/2312    source_url
 //根据分类ID获取分类名：http://magick.plugin/wp-json/wp/v2/categories/1
 //设定网址
-//const site = "http://magick.plugin";
-const site = "https://7b2.com";
+const site = "http://magick.plugin";
+//const site = "https://7b2.com";
 
 
 //存储基础数据

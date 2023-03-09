@@ -180,6 +180,7 @@ css中引入
 ### 安装Moment处理时间
 
 - [Moment.js 中文网 (momentjs.cn)](http://momentjs.cn/)
+- [moment常用方法总结 - 掘金 (juejin.cn)](https://juejin.cn/post/7041014604713394206)
 
 安装
 
@@ -342,6 +343,44 @@ declare module '*.vue' {
 ```
 
 的方式。来使用Typescript了。
+
+# VITE
+
+
+
+## 配置
+
+### vite.config.js 配置全局src别名“@“
+
+- [(21条消息) vite.config.js 配置全局src别名“@“_vite src 别名_Leon4055的博客-CSDN博客](https://blog.csdn.net/weixin_41258075/article/details/122326095)
+
+```js
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import path from 'path' // 关键代码
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+    // 关键代码
+      '@': path.resolve(__dirname, './src')
+    }
+  }
+})
+
+
+```
+
+使用
+
+```js
+import Layout from "@/layout/index.vue";
+//此时的根目录为src
+```
+
+
 
 # VUE使用
 
