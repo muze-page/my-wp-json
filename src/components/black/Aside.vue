@@ -26,14 +26,19 @@ import { Close } from "@element-plus/icons-vue";
 .page-article {
   .desktop-notification {
     padding-top: 16px;
-    padding-bottom: 48px;
+    padding-bottom: 24px;
 
+    //////
     //visibility: visible;
+    .sdn-content {
+      background-color: #fff;
+    }
   }
   .sdn-content {
     background-color: #f5f5f7;
-
+    /////////
     //display: block;
+
     opacity: 1;
     .banner-copy {
       flex-grow: 1;

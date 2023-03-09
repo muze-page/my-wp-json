@@ -1,58 +1,72 @@
-<script setup>
+<script lang="ts" setup>
 //第二个
-import { reactive } from "vue";
+import { defineProps } from "vue";
 
-const data = reactive({
-  list: [
+export interface Props {
+  data: [
     {
-      link: "#",
-      img: "http://magick.plugin/wp-content/uploads/2023/03/5af76af474e023b42408a4fcf02f148a.jpg",
-      tag: "更新",
-      title: " 依托 Apple Watch，研究人员探索更多心脏健康功能0",
-      time: "2023 年 2 月 21 日",
-    },
-    {
-      link: "#",
-      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522233.jpg",
-      tag: "特写",
-      title: "McIntosh S.E.E.D. 在美国南部与非裔土地所有者共同保护土地和传统",
-      time: "2023 年 2 月 15 日",
-    },
-    {
-      link: "#",
-      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522269.jpg",
-      tag: "特写",
-      title: "iPad 助力中国餐饮零售行业焕发新生",
-      time: "2023 年 2 月 8 日",
-    },
-    {
-      link: "#",
-      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
-      tag: "新闻稿",
-      title: "Apple 公布第一季度业绩",
-      time: "2023 年 2 月 8 日",
-    },
-  ],
-});
+      link: string;
+      featured_media: string;
+      categories: string;
+      titles: string;
+      date: string;
+    }
+  ];
+}
+const props = defineProps<Props>();
+
+//const data = reactive({
+//  list: [
+//    {
+//      link: "#",
+//      img: "http://magick.plugin/wp-content/uploads/2023/03/5af76af474e023b42408a4fcf02f148a.jpg",
+//      tag: "更新",
+//      title: " 依托 Apple Watch，研究人员探索更多心脏健康功能0",
+//      time: "2023 年 2 月 21 日",
+//    },
+//    {
+//      link: "#",
+//      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522233.jpg",
+//      tag: "特写",
+//      title: "McIntosh S.E.E.D. 在美国南部与非裔土地所有者共同保护土地和传统",
+//      time: "2023 年 2 月 15 日",
+//    },
+//    {
+//      link: "#",
+//      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522269.jpg",
+//      tag: "特写",
+//      title: "iPad 助力中国餐饮零售行业焕发新生",
+//      time: "2023 年 2 月 8 日",
+//    },
+//    {
+//      link: "#",
+//      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
+//      tag: "新闻稿",
+//      title: "Apple 公布第一季度业绩",
+//      time: "2023 年 2 月 8 日",
+//    },
+//  ],
+//});
 </script>
 
 <template>
   <el-row :gutter="20">
-    <el-col :span="12" v-for="item in data.list" style="margin-top: 36px">
+    <el-col :span="12" v-for="item in data" style="margin-top: 36px">
       <a :href="item.link" class="tile tile-2up">
         <div class="tile__media">
-          <!--
-          <img :src="item.img" />
-          -->
-          <el-image :src="item.img" fit="fill" :lazy="true"></el-image>
+          <el-image
+            :src="item.featured_media"
+            fit="fill"
+            :lazy="true"
+          ></el-image>
         </div>
 
         <div class="tile__description">
           <div class="tile__head">
-            <div class="tile__category">{{ item.tag }}</div>
-            <div class="tile__headline">{{ item.title }}</div>
+            <div class="tile__category">{{ item.categories }}</div>
+            <div class="tile__headline">{{ item.titles }}</div>
           </div>
-          <div class="tile__timestamp">{{ item.time }}</div>
+          <div class="tile__timestamp">{{ item.date }}</div>
         </div>
       </a>
     </el-col>

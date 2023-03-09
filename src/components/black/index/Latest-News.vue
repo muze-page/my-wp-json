@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import Aside from "../Aside.vue";
 import LatestNewsOne from "./Latest-News-One.vue";
 import LatestNewsTwo from "./Latest-News-Two.vue";
 import LatestNewsThree from "./Latest-News-Three.vue";
@@ -23,10 +24,12 @@ const imgUrl = ref("");
 const one_data = ref();
 //列表2用数据
 const two_data = ref();
+//列表3用数据
+const three_data = ref();
 
 //获取基础数据
 async function requestData() {
-  const api = `${site}/wp-json/wp/v2/posts/?_fields=categories,title,link,date,featured_media&per_page=2`;
+  const api = `${site}/wp-json/wp/v2/posts/?_fields=categories,title,link,date,featured_media&per_page=11`;
   console.log("待检查的API是：" + api);
   try {
     const response = await axios.get(api);
@@ -124,29 +127,32 @@ async function f() {
   //console.log("6 - 拿到的值是：" + JSON.stringify(a));
 
   imgUrl.value = data;
-  one_data.value = data[0];
-  two_data.value = data[1];
+  one_data.value = [data[0]];
+  two_data.value = data.slice(1, 5);
+  three_data.value = data.slice(5, 12);
 }
-
 </script>
 
 <template>
+  <!--
   处理前{{ api_data }}
-  <hr />
-  处理后{{ imgUrl }}
   <hr />
   {{ one_data }}
   <hr />
+  {{ two_data }}
+  <hr />
+  -->
 
   <section class="everdayfeed">
+    <Aside></Aside>
     <div class="section-content">
       <h2 class="section-head">最新消息</h2>
 
       <LatestNewsOne :data="one_data"></LatestNewsOne>
 
-      <LatestNewsTwo ></LatestNewsTwo>
+      <LatestNewsTwo :data="two_data"></LatestNewsTwo>
 
-      <LatestNewsThree></LatestNewsThree>
+      <LatestNewsThree :data="three_data"></LatestNewsThree>
     </div>
   </section>
 </template>

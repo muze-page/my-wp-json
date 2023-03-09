@@ -3,33 +3,26 @@
 import { defineProps, withDefaults } from "vue";
 
 export interface Props {
-  data: {
-    titles: string;
-    link: string;
-    categories: string;
-    date: string;
-    featured_media: string;
-  };
+  data: [
+    {
+      titles: string;
+      link: string;
+      categories: string;
+      date: string;
+      featured_media: string;
+    }
+  ];
 }
-const props = withDefaults(defineProps<Props>(), {
-  data: {
-    titles: "我是标题",
-    link: "我是链接",
-    categories: "新闻稿",
-    date: "2023 年 3 月 2 日",
-    featured_media:
-      "http://magick.plugin/wp-content/uploads/2023/03/2023030806161731.jpg",
-  },
-});
+const props = defineProps<Props>();
 </script>
 
 <template>
   <el-row :gutter="20">
-    <el-col :span="24">
-      <a :href="data.link" target="_blank" class="tile tile-hero">
+    <el-col :span="24" v-for="item in data">
+      <a :href="item.link" target="_blank" class="tile tile-hero">
         <div class="tile__media">
           <el-image
-            :src="data.featured_media"
+            :src="item.featured_media"
             fit="cover"
             :lazy="true"
           ></el-image>
@@ -37,13 +30,13 @@ const props = withDefaults(defineProps<Props>(), {
 
         <div class="tile__description">
           <div class="tile__head">
-            <div class="tile__category">{{ data.categories }}</div>
+            <div class="tile__category">{{ item.categories }}</div>
 
             <div class="tile__headline">
-              {{ data.titles }}
+              {{ item.titles }}
             </div>
           </div>
-          <div class="tile__timestamp">{{ data.date }}</div>
+          <div class="tile__timestamp">{{ item.date }}</div>
         </div>
       </a>
     </el-col>
