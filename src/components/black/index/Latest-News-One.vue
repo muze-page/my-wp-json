@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 //第一个
-import { defineProps, withDefaults, onMounted, watchEffect } from "vue";
+import { defineProps, withDefaults } from "vue";
 
 export interface Props {
   data: {
@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <el-row :gutter="20" v-if="data.titles">
+  <el-row :gutter="20">
     <el-col :span="24">
       <a :href="data.link" target="_blank" class="tile tile-hero">
         <div class="tile__media">
