@@ -2,6 +2,7 @@
 import LatestNewsOne from "./Latest-News-One.vue";
 import LatestNewsTwo from "./Latest-News-Two.vue";
 import LatestNewsThree from "./Latest-News-Three.vue";
+import moment from "moment";
 
 import { ref, reactive, onMounted } from "vue";
 import axios from "axios";
@@ -13,7 +14,7 @@ import axios from "axios";
 const site = "http://magick.plugin";
 
 //存储基础数据
-const api_data = ref([""]);
+const api_data = ref([]);
 
 //获取图片数据
 const imgUrl = ref("");
@@ -22,54 +23,82 @@ const imgUrl = ref("");
 const one_data = ref();
 
 //获取基础数据
-const requestData = () => {
+async function requestData() {
   const api = `${site}/wp-json/wp/v2/posts/?_fields=categories,title,link,date,featured_media&per_page=2`;
   console.log("待检查的API是：" + api);
-  axios.get(api).then((response) => {
-    console.log(response.data);
-    api_data.value = response.data;
-  });
-};
+  try {
+    const response = await axios.get(api);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 //传入图片ID，获取图片链接
-const requestMedia = (media = 2312) => {
+async function requestMedia(media = 2312) {
   //查询网址
-  const api = `${site}/wp-json/wp/v2/media/` + media;
-  //输出值
-  axios.get(api).then((response) => {
-    console.log(response.data.source_url);
-    imgUrl.value = response.data.source_url;
-    console.log("图像URL是：" + imgUrl.value);
-  });
-};
+  const api = `${site}/wp-json/wp/v2/media/` + media + `?_fields=source_url`;
+  console.log("待检查的API是：" + api);
+  try {
+    //输出值
+    const response = await axios.get(api);
+    return response.data.source_url;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 //传入分类ID，获取分类名和链接
-const category = reactive({ name: "", link: "" });
-const getCategory = (id = 1) => {
+
+async function getCategory(id = 1) {
   //查询网址
-  const api = `${site}/wp-json/wp/v2/categories/` + id;
-  //输出值
-  axios.get(api).then((response) => {
-    console.log(response.data.source_url);
-    category.name = response.data.name;
-    category.link = response.data.link;
-    console.log("图像URL是：" + imgUrl.value);
-  });
+  const api = `${site}/wp-json/wp/v2/categories/` + id + `?_fields=name,link`;
+  try {
+    const cat = { name: "", link: "" };
+    //输出值
+    const response = await axios.get(api);
+    cat.name = response.data.name;
+    cat.link = response.data.link;
+    return cat;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+onMounted(() => {});
+//处理对象
+const handleObj = (obj = { date: "", time: "" }) => {
+  //拿到时间，处理后插入
+  obj["time"] = moment(obj.date).format("YYYY 年  M 月 D日");
 };
 
-onMounted(() => {
-  //  //数据初始化
-  requestData();
-  //获取图片链接
-  requestMedia();
-  getCategory();
-});
+const test = { date: "2023-03-04T17:20:41", time: "" };
+handleObj(test);
+console.table(test);
 
 //返回11个帖子，需要其中的link\categories\title\date\featured_media
 
 //1、获取基础数据
 //2、整理基础数据
 //3、分配数据
+
+async function f() {
+  api_data.value = await requestData();
+  //拿到需处理的数组
+  const data = await requestData();
+  for (const key in data) {
+    //拿到对象内容
+
+    console.log(JSON.stringify(data[key]));
+  }
+  //api_data.value =
+  //api_data.value = await requestMedia();
+  const a = await getCategory();
+
+  console.table(data);
+  console.log("6 - 拿到的值是：" + JSON.stringify(a));
+}
+f();
 </script>
 
 <template>
@@ -77,12 +106,9 @@ onMounted(() => {
   <hr />
   {{ imgUrl }}
   <hr />
-  {{ category }}
   <hr />
 
   <section class="everdayfeed">
-    
-    
     <div class="section-content">
       <h2 class="section-head">最新消息</h2>
 

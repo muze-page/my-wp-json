@@ -8,7 +8,8 @@
       // 开启严格模式，这使得对“this”的数据属性进行更严格的推断成为可能
       "strict": true,
       "jsx": "preserve",
-      "moduleResolution": "node"
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true
     },
   
     // 配置需要校验的文件

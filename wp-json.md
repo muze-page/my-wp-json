@@ -177,6 +177,32 @@ css中引入
 - [(21条消息) vue中运用scss方法复用样式_vue样式复用_Z1LR的博客-CSDN博客](https://blog.csdn.net/zr1l1997/article/details/116161912)
 - [优雅的使用 Less - 掘金 (juejin.cn)](https://juejin.cn/post/7035590363418984455)
 
+### 安装Moment处理时间
+
+- [Moment.js 中文网 (momentjs.cn)](http://momentjs.cn/)
+
+安装
+
+```shell
+npm install moment
+```
+
+实例
+
+```js
+import moment from "moment";
+const handleObj = (obj = { date: "", time: "" }) => {
+  //拿到时间，处理后插入
+  obj["time"] = moment(obj.date).format("YYYY 年  M 月 D日");
+};
+
+const test = { date: "2023-03-04T17:20:41", time: "" };
+handleObj(test);
+console.table(test);
+```
+
+
+
 ## 安装路由
 
 - [Vue Router | Vue.js 的官方路由 (vuejs.org)](https://router.vuejs.org/zh/)
@@ -322,3 +348,21 @@ declare module '*.vue' {
 ## 技巧
 
 - [(21条消息) Vue3新属性 — css中使用v-bind（v-bind in css）_vue3 css v-bind_ciarlatani的博客-CSDN博客](https://blog.csdn.net/weixin_52235488/article/details/126290046)
+
+# Rest APi
+
+## 获取数据
+
+### 根据特色图片ID获取图片链接
+
+```shell
+http://magick.plugin/wp-json/wp/v2/media/2312?_fields=source_url
+```
+
+# 问题
+
+## Typescript问题
+
+### 此模块是使用 “export =” 声明的，只能在使用“allowSyntheticDefaultImports”标志时用于默认导入
+
+tsconfig.json文件中 `compilerOptions` 对象下 增加 `"allowSyntheticDefaultImports": true` 即可。
