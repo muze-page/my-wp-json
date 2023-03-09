@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import HeaderAside from "../Aside.vue";
 import LatestNewsOne from "./Latest-News-One.vue";
 import LatestNewsTwo from "./Latest-News-Two.vue";
 import LatestNewsThree from "./Latest-News-Three.vue";
@@ -82,8 +81,8 @@ onMounted(() => {
   <hr />
 
   <section class="everdayfeed">
-    <!--提示-->
-    <HeaderAside></HeaderAside>
+    
+    
     <div class="section-content">
       <h2 class="section-head">最新消息</h2>
 

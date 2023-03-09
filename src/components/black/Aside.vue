@@ -53,10 +53,7 @@ import { Close } from "@element-plus/icons-vue";
     }
   }
 }
-//细节调整
-.desktop-notification .sdn-content {
-  background-color: #fff;
-}
+
 //公共
 .desktop-notification {
   display: flex;
