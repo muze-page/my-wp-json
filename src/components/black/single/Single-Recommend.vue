@@ -80,6 +80,10 @@ const data = reactive({
   padding-bottom: 32px;
   padding-top: 32px;
 }
+.article-list__item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
 
 .article-list__item__link {
   color: #1d1d1f;

@@ -39,6 +39,8 @@ import HeaderRight from "./black/Header/Header-Right.vue";
 //公用
 #ac-localnav {
   height: 4.05882rem;
+  //固定顶部
+  position: sticky;
 
   .ac-ln-wrapper {
     position: absolute;
@@ -63,6 +65,8 @@ import HeaderRight from "./black/Header/Header-Right.vue";
       width: 100%;
       height: 100%;
       z-index: 1;
+
+      backdrop-filter: saturate(180%) blur(20px);
     }
     //菜单布局
     .ac-ln-content {

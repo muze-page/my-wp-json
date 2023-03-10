@@ -348,7 +348,53 @@ declare module '*.vue' {
 
 ## 图片
 
+### 图片应该放哪里？
+
+- [Vue项目中图片资源应该存放public还是assets文件夹下？_51CTO博客_vue assets文件夹](https://blog.51cto.com/u_15718546/5614167)
+
+- 项目中必须用的图片，放assets下，这会是项目的一部分
+- 项目中供客户替换的图片，放public下
+
+### 使用方法
+
+#### assets
+
 - [解决vite使用alias引入图片不显示的问题 - 掘金 (juejin.cn)](https://juejin.cn/post/7009441745301667853)
+
+封装函数使用
+
+```js
+//utils.js
+
+const getSrc = (name) => {
+    if (typeof name === 'undefined') return 'error.png'
+    const path = `/src/assets/images/${name}.png`
+    const modules = import.meta.globEager('/src/assets/images/*')
+    return modules[path]?.default
+}
+```
+
+使用
+
+```vue
+//app.vue
+
+<img :src="getSrc('about')" alt="" />
+```
+
+import.meta.globEager('/src/assets/images/*')会动态获取到/src/assets/images下的所有图片（不包括子文件夹），并且把图片的路径作为key值变成一个modules。这时传入图片的文件名modules[path].default，就把图片的路径动态映射出来。
+
+***注意传入的是字符串，我因为忘了是字符串，查错找了一阵子。***
+
+#### public
+
+将图片icon_large.svg放置于public目录下，可在组件中通过以下方式访问
+
+```css
+background-image: url(/icon_large.svg);
+```
+
+
 
 ## 配置
 
@@ -386,9 +432,12 @@ import Layout from "@/layout/index.vue";
 
 # VUE使用
 
+- [(21条消息) vue项目的样式加载顺序_vue组件样式加载_我有脾气v的博客-CSDN博客](https://blog.csdn.net/qq_36344795/article/details/107014223)
+
 ## 技巧
 
 - [(21条消息) Vue3新属性 — css中使用v-bind（v-bind in css）_vue3 css v-bind_ciarlatani的博客-CSDN博客](https://blog.csdn.net/weixin_52235488/article/details/126290046)
+- Axios异步请求：https://www.bilibili.com/video/BV1WP4y187Tu/
 
 # Rest APi
 

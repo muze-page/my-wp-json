@@ -57,6 +57,8 @@ import { Search, ArrowDown } from "@element-plus/icons-vue";
     "Arial", sans-serif;
   float: right;
   margin-top: 0;
+
+
   .ac-ln-menu-tray {
     transition-property: height, visibility;
     transition-timing-function: cubic-bezier(0.4, 0, 0.25, 1);
@@ -86,7 +88,7 @@ import { Search, ArrowDown } from "@element-plus/icons-vue";
     opacity: 1;
     transition: opacity 500ms ease-in 200ms;
     color: #1d1d1f;
-    background-color: white;
+    background-color: #ffffff00;
   }
   .nr-sf-link:hover {
     color: #06c;

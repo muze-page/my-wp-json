@@ -3,12 +3,9 @@
 </script>
 
 <template>
-
-  
   <aside class="footertile">
     <a href="#" class="block">
       <div class="footertile-copy">
-        <img src="/images/logo.svg" alt="" />
         <figure class="footertile-copy-image">
           <span class="visuallyhidden">Apple Newsroom</span>
         </figure>
@@ -58,6 +55,11 @@ a.block {
     cursor: pointer;
   }
 }
+a.block::before,
+a.block::after {
+  content: " ";
+  display: table;
+}
 
 .footertile-copy {
   margin: 52px auto;
@@ -70,7 +72,7 @@ a.block {
 .footertile-copy-image {
   width: 158px;
   height: 23px;
-  background: url("/images/logo.svg") no-repeat;
+  background: url("/logo.svg") no-repeat;
   background-size: cover;
 }
 
