@@ -18,6 +18,7 @@ const clickMenus = () => {
 </script>
 
 <template>
+
   <hr />
   <el-button type="primary" size="default" @click="clickMenu"
     >打开菜单</el-button
@@ -25,6 +26,8 @@ const clickMenus = () => {
   <el-button type="primary" size="default" @click="clickMenus"
     >收回菜单</el-button
   >
+
+
 
   <el-menu
     ref="test"
@@ -61,6 +64,9 @@ const clickMenus = () => {
       <el-menu-item index="3-3">item three</el-menu-item>
     </el-sub-menu>
   </el-menu>
+
+
+
 </template>
 
 <style lang="less" scoped>

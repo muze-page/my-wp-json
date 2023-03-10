@@ -4,29 +4,28 @@ import { ref, reactive } from "vue";
 const menuSwitch = ref(false);
 const maxHeight = reactive({
   maxHeight: 0 + "px",
-  visibility: "hidden",
+  //visibility: "visible",
 });
 
 const oop = reactive({
   opacity: 0,
-  transform: 'translate3d(0, -20px, 0)',
-  transitionDuration:'0.4s,0.2s',
+  transform: "translate3d(0, -20px, 0)",
 });
 
 const toggleMenu = () => {
   menuSwitch.value = !menuSwitch.value;
   if (menuSwitch.value) {
     //展开菜单
-    maxHeight.visibility = "visible";
-    maxHeight.maxHeight = 220+"px";
-    
+    //maxHeight.visibility = "visible";
+    maxHeight.maxHeight = 220 + "px";
+
     oop.opacity = 1;
     console.log("展开菜单" + maxHeight.maxHeight);
   } else {
+    //maxHeight.visibility = "hidden";
     maxHeight.maxHeight = "0px";
     oop.opacity = 0;
-    oop.transform = 'translate3d(0, 0, 0)';
-    oop.transitionDuration = '0.4s';
+    oop.transform = "translate3d(0, 0, 0)";
     console.log("关闭菜单");
   }
 };
@@ -43,7 +42,7 @@ const toggleMenu = () => {
       </div>
     </div>
   </div>
-  
+
   <el-button
     type="primary"
     size="default"
@@ -66,6 +65,8 @@ const toggleMenu = () => {
     "Arial", sans-serif;
   max-height: 0;
   color: #1d1d1f;
+
+  overflow: hidden;
 }
 .topics--wide {
   transition-property: max-height, visibility;
@@ -114,8 +115,8 @@ const toggleMenu = () => {
 
 @media only screen and (min-width: 768px) {
   .topics--wide {
-    visibility: visible;
     transition-delay: 0s;
+    visibility: visible;
   }
   .topics-content {
     padding-left: calc(max(22px, env(safe-area-inset-left)));
