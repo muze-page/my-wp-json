@@ -1,23 +1,59 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ref, reactive } from "vue";
+//制作一个按钮，点击后切换图标，切换高度
+const menuSwitch = ref(false);
+const maxHeight = reactive({
+  maxHeight: 0 + "px",
+  visibility: "hidden",
+});
+
+const oop = reactive({
+  opacity: 0,
+  transform: 'translate3d(0, -20px, 0)',
+  transitionDuration:'0.4s,0.2s',
+});
+
+const toggleMenu = () => {
+  menuSwitch.value = !menuSwitch.value;
+  if (menuSwitch.value) {
+    //展开菜单
+    maxHeight.visibility = "visible";
+    maxHeight.maxHeight = 220+"px";
+    
+    oop.opacity = 1;
+    console.log("展开菜单" + maxHeight.maxHeight);
+  } else {
+    maxHeight.maxHeight = "0px";
+    oop.opacity = 0;
+    oop.transform = 'translate3d(0, 0, 0)';
+    oop.transitionDuration = '0.4s';
+    console.log("关闭菜单");
+  }
+};
+</script>
 
 <template>
-  <div class="topics--wide">
+  <div class="topics--wide" :style="maxHeight">
     <div class="topics-content">
       <!--开始循环-->
       <div class="topic-group" v-for="indexs of 4">
-        <div class="topic-item" v-for="index of 4">
+        <div class="topic-item" :style="oop" v-for="index of 4">
           <a href="#">AirPods {{ indexs + "-" + index }}</a>
         </div>
       </div>
     </div>
   </div>
+  
+  <el-button
+    type="primary"
+    size="default"
+    @click="toggleMenu"
+    style="z-index: 99999999; position: absolute"
+    >点击展开菜单</el-button
+  >
 </template>
 
 <style lang="less" scoped>
-.topics--wide {
-  //展开菜单
-  max-height: 220px !important;
-}
 .topics--wide {
   visibility: hidden;
   position: relative;
@@ -57,6 +93,9 @@
   flex-basis: 25%;
 }
 .topic-item {
+  opacity: 0;
+  transform: translate3d(0, -20px, 0);
+
   transition-property: transform, opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.25, 1);
   transition-duration: 0.4s, 0.2s;
@@ -68,6 +107,9 @@
   a:hover {
     color: #06c;
   }
+}
+.topic-item:not(:first-of-type) {
+  margin-top: 12px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -86,6 +128,15 @@
   }
   .topic-item:nth-child(1) {
     transition-delay: 0.2s;
+  }
+  .topic-item:nth-child(2) {
+    transition-delay: 0.25s;
+  }
+  .topic-item:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  .topic-item:nth-child(4) {
+    transition-delay: 0.35s;
   }
 }
 </style>

@@ -1,5 +1,6 @@
-<script setup>
+<script lang="ts" setup>
 //文底部
+
 import { Search, ArrowDown } from "@element-plus/icons-vue";
 </script>
 
@@ -62,7 +63,6 @@ import { Search, ArrowDown } from "@element-plus/icons-vue";
     "Arial", sans-serif;
   float: right;
   margin-top: 0;
-
 
   .ac-ln-menu-tray {
     transition-property: height, visibility;

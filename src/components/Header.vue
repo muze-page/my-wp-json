@@ -3,6 +3,17 @@ import HeaderLeft from "./black/Header/Header-Left.vue";
 import HeaderRight from "./black/Header/Header-Right.vue";
 import HeaderMenu from "./black/Header/Header-Menu.vue";
 
+import { ref } from "vue";
+//制作一个按钮，点击后切换图标，切换高度
+const menuSwitch = ref(false);
+const toggleMenu = () => {
+  menuSwitch.value = !menuSwitch.value;
+  if (menuSwitch.value) {
+    //展开菜单
+  } else {
+  }
+};
+
 //头部
 </script>
 
@@ -81,7 +92,7 @@ import HeaderMenu from "./black/Header/Header-Menu.vue";
       padding-right: calc(max(22px, env(safe-area-inset-right)));
     }
     .ac-ln-content::after {
-      clear: both;//在左右两侧均不允许浮动元素。
+      clear: both; //在左右两侧均不允许浮动元素。
     }
 
     //详情菜单
