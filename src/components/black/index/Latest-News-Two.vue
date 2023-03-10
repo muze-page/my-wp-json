@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 //第二个
-import { defineProps } from "vue";
+
 
 export interface Props {
   data: [

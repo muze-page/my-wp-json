@@ -5,6 +5,7 @@ import Home from "../components/Home.vue";
 import Single from "../components/Single.vue";
 import Category from "../components/Category.vue";
 import NotFoundComponent from "../components/404.vue";
+import Test from "../components/Test.vue";
 
 
 //定义路由
@@ -13,6 +14,7 @@ const routes = [
     { path: "/single", component: Single },
     { path: "/category", component: Category },
     { path: '/:pathMatch(.*)', component: NotFoundComponent },
+    { path: '/test', component: Test },
 ];
 
 //创建路由对象

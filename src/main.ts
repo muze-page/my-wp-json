@@ -13,6 +13,8 @@ import VueAxios from "vue-axios";
 
 //路由
 import router from "./router"
+//状态
+import pinia from './store'
 
 
 
@@ -32,5 +34,7 @@ app.use(VueAxios, axios);
 
 //路由
 app.use(router)
+//状态
+app.use(pinia)
 app.mount('#app')
 

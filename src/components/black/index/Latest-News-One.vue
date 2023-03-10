@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 //第一个
-import { defineProps, withDefaults } from "vue";
+import {  withDefaults } from "vue";
 
 export interface Props {
   data: [

@@ -10,6 +10,129 @@
 
 - Element UI Snippets（Element Pro 提示）
 
+### Npm
+
+- [(21条消息) npm常用指令&&开发环境生产环境详解_npm 开发环境安装_大前端工程师的博客-CSDN博客](https://blog.csdn.net/chengqige/article/details/119256012)
+
+#### npm指令参数
+
+| 参数名 | 含义                                                         |
+| ------ | ------------------------------------------------------------ |
+| i      | 安装模块，install的缩写                                      |
+| uni    | 卸载模块，uninstall的缩写                                    |
+| -g     | 全局安装/卸载模块，默认安装到node安装目录；或者从安装目录卸载 |
+| -S     | 生产环境（dependencies）                                     |
+| -D     | 开发环境 (devDependencies)                                   |
+| --save | 本地安装
+-S是 --save的缩写；-D是 --save --dev的缩写。本文的结尾我会谈对开发环境和生产环境的理解 |
+
+#### npm常用指令
+
+1.修改本次下载地址为淘宝镜像
+
+`npm install [package] -g --registry http://registry.npm.taobao.org`
+
+只是对本次下载这个包有效
+
+2.修改默认下载地址为淘宝镜像
+
+`npm config set registry http://registry.npm.taobao.org`
+
+永久配置下载地址为淘宝镜像，以后默认都从淘宝地址下载
+
+如果你想恢复成官方下载地址，也是可以的
+
+`npm config set registry http://registry.npmjs.org/`
+
+3.下载cnpm
+
+`npm install cnpm -g --registry http://registry.npm.taobao.org`
+
+虽然我们可以通过配置npm默认下载地址为淘宝镜像，但是我们还是要跟随下大众的喜好。cnpm现在已经是淘宝镜像的代名词了，工作中用的比较多
+
+#### 4.查看npm安装路径
+
+1.查看全局安装node包的路径
+
+`npm root -g`
+
+2.查看开发环境安装的node包路径
+
+`npm root -D`
+
+3.查看生产环境安装node包的路径
+
+`npm root -S`
+
+4.查看全局安装的包
+
+`npm list -g --depth 0`
+
+5.查看本地安装的包
+
+`npm list --depth 0`
+
+#### 初始化命令
+
+1.初始化npm
+
+`npm init --yes`
+
+执行完成后会出现package.json
+
+2.安装项目依赖（会根据package.json进行安装）
+
+`npm install`
+
+一般来说，从git下载别人的项目都需要执行这个命令（因为没人会传node_modules）
+
+3.查看包的历史版本
+
+`npm view [package] versions`
+
+4.添加新的包
+
+```shell
+# 全局安装
+npm install [package] -g
+# 开发环境安装
+npm install [package] -D
+# 生产环境安装
+npm install [package] -S
+
+```
+
+如果需要安装指定版本的包，在package后面添加@1.x、@2.x、@3.x
+比如我想安装3.0版本的vue：npm i vue@3.x
+
+5.移除相关包
+
+```shell
+npm uninstall [package] -g
+npm uninstall [package] -D
+npm uninstall [package] -S
+```
+
+卸载命令要对应安装命令，比如如果安装在开发环境就要用-D的方法来卸载
+
+
+
+
+#### 开发环境与生产环境
+
+至于什么是开发环境，什么是生产环境，我个人的理解是：
+
+开发环境：
+指的是在项目打包前，进行开发编写代码的环境。这个代码量比较庞大，没有进行压缩处理。直接上线的话会占据服务器大量的带宽，使得网站访问速度很慢。所以开发环境的代码不可直接交付，需要进行打包压缩才可交付
+
+生产环境：
+是指我们使用打包工具（gulp、webpack等）对项目进行打包后的环境。项目进行打包后会大大减少项目本身的体积（举例：500MB->50KB），这样压缩后的项目部署在服务器上也可以节省很大一部分带宽，网站的响应速度有质一般的飞跃。所以生产环境一般指打包上线后部署在服务器上投入正式生产的环境
+
+#### 总结：
+
+相比开发环境，生产环境的代码进行了压缩，体积很小。但是生产环境只关心生产（响应速度，用户体验），它并不关心代码的可读性，所以其代码可读性很差，压缩后的代码往往是看不懂的【有的甚至被打包成了二进制】
+那怎么办？你可以切换会开发环境编写代码呀，因为开发环境更关心代码的可读性和可迭代性，等到编写结束要打包上线的时候，你再进行压缩，转变为生产环境就好啦
+
 ## 环境配置
 
 ### 安装Element Pro
@@ -204,7 +327,7 @@ console.table(test);
 
 
 
-## 安装路由
+### 安装路由
 
 - [Vue Router | Vue.js 的官方路由 (vuejs.org)](https://router.vuejs.org/zh/)
 
@@ -212,7 +335,7 @@ console.table(test);
 npm install vue-router
 ```
 
-### 使用
+#### 使用
 
 - [(21条消息) vite中引入vue-router路由，以及文件简称-CSDN博客](https://blog.csdn.net/yunchong_zhao/article/details/122586201)
 
@@ -251,18 +374,18 @@ import router from "./router"
 app.use(router)
 ```
 
-## 安装Typescript
+### 安装Typescript
 
 - [(21条消息) Vite 学习 - TS 在 Vite 中的使用_vite ts_皮蛋很白的博客-CSDN博客](https://blog.csdn.net/u012961419/article/details/110520129)
 
-### 步骤一
+#### 步骤一
 
 ```shell
 # 仅仅为了使用 tsc 命令，所以作为开发依赖安装
 npm install -D typescript
 ```
 
-### 步骤二
+#### 步骤二
 
 编写配置文件，在项目目录下新建tsconfig.json文件，写入以下内容
 
@@ -293,7 +416,7 @@ npm install -D typescript
 
 ```
 
-### 步骤三
+#### 步骤三
 
 将 `main.js` 改为 `main.ts`，并将 `index.html` 中引入的 `main.js` 改为 `main.ts`。
 
@@ -318,7 +441,7 @@ npm install -D typescript
 
 
 
-### 步骤四
+#### 步骤四
 
 在 `/src` 目录下创建一个 `.ts` 文件，添加 `.vue` 文件的类型声明
 
@@ -343,6 +466,133 @@ declare module '*.vue' {
 ```
 
 的方式。来使用Typescript了。
+
+### 安装Pinia
+
+> Vue状态管理，在各个组件间共享状态
+
+- [Pinia | The intuitive store for Vue.js (vuejs.org)](https://pinia.vuejs.org/zh/)
+- [一个登录案例包学会 Pinia - 掘金 (juejin.cn)](https://juejin.cn/post/7154579554034515982)
+
+#### 安装
+
+```shell
+npm install pinia
+```
+
+#### 新建
+
+在src目录下新建store文件夹，其中新建index.js，写入以下文件
+
+```js
+// store/index.js
+
+import { createPinia } from 'pinia'
+
+const pinia = createPinia()
+
+export default pinia
+```
+
+
+
+#### 注册
+
+在main.js中注册
+
+重点
+
+```js
+//状态
+import pinia from './store'
+//状态
+app.use(pinia)
+```
+
+实例
+
+```js
+import { createApp } from 'vue'
+import './style.css'
+
+
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+//图标
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
+//导入vue-axios模块
+import axios from "axios";
+import VueAxios from "vue-axios";
+
+//路由
+import router from "./router"
+//状态
+import pinia from './store'
+
+
+
+import App from './App.vue'
+
+const app = createApp(App)
+
+//注册Element Plus
+app.use(ElementPlus)
+
+//注册图标
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+}
+//注册axios
+app.use(VueAxios, axios);
+
+//路由
+app.use(router)
+//状态
+app.use(pinia)
+app.mount('#app')
+
+
+```
+
+### 安装mock
+
+> 用于开发环境，虚拟接口用
+
+#### 安装
+
+```shell
+npm i vite-plugin-mock mockjs -D 
+```
+
+我们在开发环境用，
+
+#### 配置
+
+在 `vite.config.js` 配置文件启用插件。
+
+**Mock 服务通常只用于开发阶段**，因此我们需要在配置文件中判断当前所处环境。
+
+```js
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { viteMockServe } from 'vite-plugin-mock'
+​
+export default defineConfig((config) => {
+  const { command } = config
+  return {
+    plugins: [
+      vue(),
+      viteMockServe({
+        // 只在开发阶段开启 mock 服务
+        localEnabled: command === 'serve'
+      })
+    ]
+  }
+})
+```
+
+
 
 # VITE
 
