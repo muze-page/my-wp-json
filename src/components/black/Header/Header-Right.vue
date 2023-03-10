@@ -20,6 +20,11 @@ import { Search, ArrowDown } from "@element-plus/icons-vue";
         </li>
         <li class="ac-ln-menu-item">
           <el-button class="nr-sf-link bt-menu">
+            <router-link to="/category">分类页</router-link>
+          </el-button>
+        </li>
+        <li class="ac-ln-menu-item">
+          <el-button class="nr-sf-link bt-menu">
             <router-link to="/404">404页</router-link>
           </el-button>
         </li>
