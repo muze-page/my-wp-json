@@ -7,6 +7,7 @@ export default defineConfig({
 
   css: {
     preprocessorOptions: {
+      //公共样式
       less: {
         charset: false,
         additionalData: '@import "./src/assets/css/home.less";',

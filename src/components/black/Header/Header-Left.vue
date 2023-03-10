@@ -4,7 +4,7 @@
 
 <template>
   <div class="ac-ln-title">
-    <a href="#">Newsroom</a>
+    <a href="/">Newsroom</a>
   </div>
 </template>
 

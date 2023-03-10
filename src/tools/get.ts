@@ -7,10 +7,20 @@ import moment from "moment";
 //根据指定要求获取指定分类的文章：http://magick.plugin/wp-json/wp/v2/posts?filter[cat]=1&per_page=2&_fields=categories,title,link,date,featured_media
 
 const get = {
-//设定网址
-//const site = "http://magick.plugin";
-//const site = "https://7b2.com";
-
+    //设定网址
+    //const site = "http://magick.plugin";
+    //const site = "https://7b2.com";
+    //传入构造的网址，获取基础数据
+    get_data: (site: string) => {
+        try {
+            const response =  axios.get(api);
+            return response.data;
+          } catch (error) {
+            console.log(error);
+          }
+        
+    }
+};
 //获取基础数据
   requestData:(site:string)  =>{
     const api = site+'/wp-json/wp/v2/posts/?_fields=categories,title,link,date,featured_media&per_page=11';
@@ -78,5 +88,5 @@ async  handleObj:(
     obj["categories"] = await getCategory(obj.categories);
 },
   
-};
+
 export default get;
