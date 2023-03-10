@@ -11,7 +11,7 @@ export default defineConfig({
     viteMockServe({// 更多配置见最下方
       //supportTs: true,
       //logger: false,
-      //mockPath: "./mock/" // 文件位置
+      mockPath: "./src/mock/" // 文件位置
     })
 
   ],
