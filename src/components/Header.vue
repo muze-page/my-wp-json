@@ -1,6 +1,7 @@
 <script setup>
 import HeaderLeft from "./black/Header/Header-Left.vue";
 import HeaderRight from "./black/Header/Header-Right.vue";
+import HeaderMenu from "./black/Header/Header-Menu.vue";
 
 //头部
 </script>
@@ -19,7 +20,8 @@ import HeaderRight from "./black/Header/Header-Right.vue";
         <HeaderRight></HeaderRight>
       </div>
       <!--详情菜单-->
-      <div class="topics--wide"></div>
+
+      <HeaderMenu></HeaderMenu>
     </div>
   </nav>
 </template>
@@ -78,23 +80,16 @@ import HeaderRight from "./black/Header/Header-Right.vue";
       padding-left: calc(max(22px, env(safe-area-inset-left)));
       padding-right: calc(max(22px, env(safe-area-inset-right)));
     }
-    //详情菜单
-    .topics--wide {
-      letter-spacing: 0em;
-
-      visibility: hidden;
-      position: relative;
-      z-index: 2;
-      font-size: 14px;
-      line-height: 1.42859;
-      font-weight: 400;
-
-      font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
-        "Arial", sans-serif;
-      max-height: 0;
-      color: #1d1d1f;
-      overflow: hidden;
+    .ac-ln-content::after {
+      clear: both;//在左右两侧均不允许浮动元素。
     }
+
+    //详情菜单
+  }
+  .ac-ln-content::before,
+  .ac-ln-content::after {
+    content: " ";
+    display: table;
   }
 }
 </style>

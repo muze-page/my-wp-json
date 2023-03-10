@@ -439,6 +439,22 @@ import Layout from "@/layout/index.vue";
 - [(21条消息) Vue3新属性 — css中使用v-bind（v-bind in css）_vue3 css v-bind_ciarlatani的博客-CSDN博客](https://blog.csdn.net/weixin_52235488/article/details/126290046)
 - Axios异步请求：https://www.bilibili.com/video/BV1WP4y187Tu/
 
+# Element Pro
+
+## 基础
+
+### 什么是组件、事件、方法？
+
+- [(21条消息) element组件的属性、事件和方法怎么使用_element事件_前端小王hs的博客-CSDN博客](https://blog.csdn.net/weixin_44001222/article/details/128058102)
+
+**属性和事件是写在标签内的，属性要加：，事件要加@，**
+
+**方法是用在函数内的**
+
+### 如何使用组件
+
+- [(21条消息) vue3 ＜script setup＞ 执行子组件里的方法函数_vue3子组件一引入就会执行吗_iZaiZaiA的博客-CSDN博客](https://blog.csdn.net/qq_31763107/article/details/118702039)
+
 # Rest APi
 
 ## 获取数据
