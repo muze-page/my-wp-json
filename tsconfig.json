@@ -9,7 +9,9 @@
       "strict": true,
       "jsx": "preserve",
       "moduleResolution": "node",
-      "allowSyntheticDefaultImports": true
+      "allowSyntheticDefaultImports": true,
+      //全局变量
+      "types": ["vite/client"],
     },
   
     // 配置需要校验的文件

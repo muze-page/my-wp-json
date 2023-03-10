@@ -428,7 +428,73 @@ import Layout from "@/layout/index.vue";
 //此时的根目录为src
 ```
 
+### 全局变量
 
+- https://blog.csdn.net/ZHANGYANG_1109/article/details/125074629
+- [vite中环境变量的使用与配置（非常详细） - 掘金 (juejin.cn)](https://juejin.cn/post/7172012247852515335)
+
+#### 介绍
+
+项目根目录下
+
+```shell
+.env.development：开发环境下的配置文件,执行npm run dev命令，会自动加载.env.development文件.
+
+.env.production：生产环境下的配置文件,执行npm run build命令，会自动加载.env.production文件
+
+```
+
+#### 配置
+
+配置的变量需以VITE_开头。方可全局使用
+
+.env.development文件：
+
+```shell
+ENV = 'development'
+
+VITE_BASE_URL='/api'
+VITE_VERSION='0.0.1'
+```
+
+
+
+
+.env.production
+
+```shell
+ENV = 'production'
+
+VITE_BASE_URL = 'http://xxxxxx/api/'
+```
+
+
+
+#### 使用全局变量
+
+
+
+```js
+const ver = import.meta.env.VITE_VERSION;
+```
+
+#### Typescript
+
+- [Vite 配置环境变量 import.meta.env 时出现 ts 错误 - Wise.Wrong - 博客园 (cnblogs.com)](https://www.cnblogs.com/wisewrong/p/15971158.html)
+
+**解决方案：**
+
+在 tsconfig.json 中添加以下配置：
+
+```
+{
+  "compilerOptions": {
+    "types": ["vite/client"]
+  }
+}
+```
+
+然后就能推断出自定义环境变量的类型为: string | boolean | undefined
 
 # VUE使用
 
