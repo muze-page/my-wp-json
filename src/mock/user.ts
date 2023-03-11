@@ -14,7 +14,7 @@ export default [
                 message: 'success',
                 data: {
                     token: "Token",
-                    username: "昆吾kw"
+                    username: "昆吾kw666"
                 }
             }
         }

@@ -555,9 +555,38 @@ app.mount('#app')
 
 ```
 
+### 实例
+
+#### 请求
+
+```js
+    // 异步 action，一般用来处理异步逻辑
+    async login(userData:{}) {
+      const result = await axios.post("/api/user/login", userData);
+      const { data, code } = result.data;
+      if (code === 0) {
+        // action 中修改状态
+        this.username = data.username;
+        this.token = data.token;
+      }
+    },
+```
+
+这段代码定义了一个异步函数 login，接受一个userData对象作为参数。在函数体内，它使用 axios.post 发出一个 POST 请求到指定 API 地址'/api/user/login'，并等待返回结果。
+
+
+
+使用 await 关键字等待异步请求结果返回后，将响应结果解构赋值到 data 和 code 变量中，以便在该函数中进行后续处理。此处假设 API 返回的响应数据结构包含一个data字段和一个code字段。
+
+
+
+该函数的意义是将用户数据作为参数，与后端服务器进行交互，进行用户登录验证。函数的返回结果是经过处理的响应数据，可以根据需要对其进行处理或显示。
+
 ### 安装mock
 
 > 用于开发环境，虚拟接口用
+
+- [(21条消息) 在vite(vue)中使用mock，vite-plugin-mock生产（线上）环境和开发环境配置_createprodmockserver_苦夏木禾的博客-CSDN博客](https://blog.csdn.net/lhkuxia/article/details/125271405)
 
 #### 安装
 
