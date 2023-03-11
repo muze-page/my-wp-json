@@ -5,9 +5,15 @@ import axios from "axios";
 import { defineStore } from "pinia";
 
 // 创建 store
-const useGetData = defineStore("user", {
+const useGetData = defineStore("userss", {
     // 定义状态：一个函数，返回一个对象
     state: () => ({
+        //首页拿数据
+        data: {
+            latest: {}, //资讯
+            featured: {},//幻灯片
+            more:{},//更多
+      },
       username: "",
       token: "",
       name:"雷猴",
@@ -43,6 +49,22 @@ const useGetData = defineStore("user", {
   
       updateName(name:string) {
         this.name = name
+      },
+
+      //_______________//
+      //拿到基础数据
+        async getLatest() {
+            const api = `http://magick.plugin/wp-json/wp/v2/posts/?_fields=categories,title,link,date,featured_media&per_page=2`;
+            try {
+                const response = await axios.get(api);
+
+                this.data.latest = response.data;
+                return response.data;
+                
+            } catch (error) {
+                console.log(error)
+            }
+
       }
     },
   });

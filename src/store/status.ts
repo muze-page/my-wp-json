@@ -5,7 +5,7 @@
 import { defineStore } from "pinia";
 
 // 创建 store
-const useStatus = defineStore("user", {
+const useStatus = defineStore("users", {
     // 定义状态：一个函数，返回一个对象
     state: () => ({
         menuSwitch: false,//菜单状态

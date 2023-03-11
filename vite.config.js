@@ -17,7 +17,8 @@ export default defineConfig({
   ],
 
   server: {
-    port: 8080 // 配置Vite服务器端口号
+    port: 8080, // 配置Vite服务器端口号
+    hmr: true,//开启热更新
   },
 
 

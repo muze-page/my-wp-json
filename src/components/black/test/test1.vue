@@ -1,40 +1,29 @@
 <script lang="ts" setup>
-import { reactive } from "vue";
-import useUserStore from "./store/user";
-const userData = reactive({
-  username: "",
-  password: "",
-});
+import { ref, reactive, watchEffect } from "vue";
 
+import { storeToRefs } from "pinia";
+import useGetData from "../../../store/get";
 // 实例化 store
-const userStore = useUserStore();
-const onLogin = async () => {
-  // 使用 actions，当作函数一样直接调用
-  // login action 定义为了 async 函数，所以它返回一个 Promise
-  await userStore.login(userData);
-  userData.username = "";
-  userData.password = "";
-};
-const onLogout = () => {
-  userStore.logout();
-};
+const get = useGetData();
+const test = ref();
+
+//解构
+//const { name, fullName } = storeToRefs(get);
+//const click = async () => {
+//  test.value = await get.getLatest();
+//};
+//watchEffect(() => {
+//  click();
+//});
+
+get.getLatest();
+test.value = get.data.latest;
 </script>
-​
+
 <template>
-   
-  <div>
-       <!-- state：通过 store 直接访问 -->
-       
-    <div v-if="userStore.token">
-            {{ userStore.username }}       <br />
-            <button @click="onLogout">退 出</button>    
-    </div>
-    ​    
-    <div v-else>
-          用户名：<input v-model="userData.username" />      <br />
-          密码：<input v-model="userData.password" type="password" />      <br />
-           <button @click="onLogin">登 录</button>    
-    </div>
-     
-  </div>
+  <h2 style="text-align: center">测试123</h2>
+  {{ test }}
+  <el-button type="primary" size="default" 
+    >点我获取数据</el-button
+  >
 </template>

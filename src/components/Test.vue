@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import test1 from "../components/black/test/test1.vue";
+import test2 from "../components/black/test/test2.vue";
 import { reactive } from "vue";
 
 import { storeToRefs } from "pinia";
@@ -14,10 +16,6 @@ const userStore = useUserStore();
 //解构
 const { name, fullName } = storeToRefs(userStore);
 function handleClick() {
-  // 不建议这样改
-  // name.value = '蝎子莱莱'
-
-  // 推荐的写法！！！
   userStore.updateName("李四");
 }
 
@@ -62,4 +60,7 @@ const onLogout = () => {
     <div>全名：{{ fullName }}</div>
     <button @click="handleClick">修改</button>
   </div>
+  <hr />
+
+  <test1></test1>
 </template>

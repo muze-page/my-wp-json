@@ -777,6 +777,14 @@ const ver = import.meta.env.VITE_VERSION;
 
 - [(21条消息) vue项目的样式加载顺序_vue组件样式加载_我有脾气v的博客-CSDN博客](https://blog.csdn.net/qq_36344795/article/details/107014223)
 
+## 基础
+
+### computed、methods的区别
+
+- [Vue中 computed、methods和watch的区别 - 简书 (jianshu.com)](https://www.jianshu.com/p/631bcfd1b8b5)
+
+总之：数据量大，需要缓存的时候用 `computed` ；每次确实需要重新加载，不需要缓存时用 `methods` 。
+
 ## 技巧
 
 - [(21条消息) Vue3新属性 — css中使用v-bind（v-bind in css）_vue3 css v-bind_ciarlatani的博客-CSDN博客](https://blog.csdn.net/weixin_52235488/article/details/126290046)

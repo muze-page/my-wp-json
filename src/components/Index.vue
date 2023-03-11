@@ -5,6 +5,7 @@ import Footer from "./Footer.vue";
 </script>
 
 <template>
+ 
   <Header></Header>
   
   <main id="main" class="main">
