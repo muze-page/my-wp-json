@@ -782,6 +782,14 @@ const ver = import.meta.env.VITE_VERSION;
 - [(21条消息) Vue3新属性 — css中使用v-bind（v-bind in css）_vue3 css v-bind_ciarlatani的博客-CSDN博客](https://blog.csdn.net/weixin_52235488/article/details/126290046)
 - Axios异步请求：https://www.bilibili.com/video/BV1WP4y187Tu/
 
+#### 动态绑定样式
+
+```vue
+:class="{ 'active-nav': menuSwitch }"
+```
+
+
+
 # Element Pro
 
 ## 基础

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { ref, reactive, watchEffect } from "vue";
 import { storeToRefs } from "pinia";
 import useStatus from "../../../store/status";
 // 实例化 store
@@ -8,42 +7,17 @@ const Status = useStatus();
 const { menuSwitch } = storeToRefs(Status);
 
 //通过menuSwitch控制菜单状态，默认为false
-//制作一个按钮，点击后切换图标，切换高度
-const maxHeight = reactive({
-  maxHeight: 0 + "px",
-});
 
-const oop = reactive({
-  opacity: 0,
-  transform: "translate3d(0, -20px, 0)",
-});
 
-const toggleMenu = () => {
-  if (menuSwitch.value) {
-    //展开菜单
 
-    maxHeight.maxHeight = 220 + "px";
-    oop.opacity = 1;
-    oop.transform = "translate3d(0, -20px, 0)";
-  } else {
-    maxHeight.maxHeight = "0px";
-    oop.opacity = 0;
-    oop.transform = "translate3d(0, 0, 0)";
-    console.log("关闭菜单");
-  }
-};
-//监听，当菜单状态变化时执行一次
-watchEffect(() => {
-  toggleMenu();
-});
 </script>
 
 <template>
-  <div class="topics--wide" :style="maxHeight">
+  <div class="topics--wide"  :class="{ active: menuSwitch }">
     <div class="topics-content">
       <!--开始循环-->
       <div class="topic-group" v-for="indexs of 4">
-        <div class="topic-item" :style="oop" v-for="index of 4">
+        <div class="topic-item"  v-for="index of 4">
           <a href="#">AirPods {{ indexs + "-" + index }}</a>
         </div>
       </div>
@@ -137,6 +111,23 @@ watchEffect(() => {
   }
   .topic-item:nth-child(4) {
     transition-delay: 0.35s;
+  }
+}
+
+//切换菜单
+//前
+.topics--wide {
+  max-height: 0px;
+  .topic-item {
+    opacity: 0;
+    transform: translate3d(0px, 0px, 0px);
+  }
+}
+.active {
+  max-height: 220px;
+  .topic-item {
+    opacity: 1;
+    transform: translate3d(0px, -20px, 0px);
   }
 }
 </style>

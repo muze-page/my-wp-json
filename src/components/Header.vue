@@ -1,24 +1,20 @@
-<script setup>
+<script lang="ts" setup>
+//头部
 import HeaderLeft from "./black/Header/Header-Left.vue";
 import HeaderRight from "./black/Header/Header-Right.vue";
 import HeaderMenu from "./black/Header/Header-Menu.vue";
 
-import { ref } from "vue";
-//制作一个按钮，点击后切换图标，切换高度
-const menuSwitch = ref(false);
-const toggleMenu = () => {
-  menuSwitch.value = !menuSwitch.value;
-  if (menuSwitch.value) {
-    //展开菜单
-  } else {
-  }
-};
+import { storeToRefs } from "pinia";
+import useStatus from "../store/status";
 
-//头部
+// 实例化 store
+const Status = useStatus();
+//解构
+const { menuSwitch, shade } = storeToRefs(Status);
 </script>
 
 <template>
-  <nav id="ac-localnav">
+  <nav id="ac-localnav" :class="{ 'active-nav': menuSwitch }">
     <div class="ac-ln-wrapper">
       <!--背景-->
       <div class="ac-ln-background"></div>
@@ -35,6 +31,12 @@ const toggleMenu = () => {
       <HeaderMenu></HeaderMenu>
     </div>
   </nav>
+  <!--遮罩-->
+  <div
+    id="topics-curtain"
+    class="topics-curtain"
+    :class="{ 'active-shade': shade }"
+  ></div>
 </template>
 
 <style lang="less" scoped>
@@ -97,10 +99,43 @@ const toggleMenu = () => {
 
     //详情菜单
   }
+
   .ac-ln-content::before,
   .ac-ln-content::after {
     content: " ";
     display: table;
   }
+}
+
+//遮罩
+#topics-curtain {
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#topics-curtain {
+  transition-property: opacity, z-index;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.25, 1);
+  transition-duration: 0.4s;
+  transition-delay: 0s;
+}
+//菜单切换
+#ac-localnav.active-nav {
+  //切换背景色
+  .ac-ln-background {
+    backdrop-filter: saturate(180%) blur(20px);
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+}
+//遮罩切换
+.active-shade {
+  opacity: 1 !important;
+  z-index: 9996 !important;
 }
 </style>

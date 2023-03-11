@@ -120,7 +120,9 @@ function switchMenu() {
   .nr-sf-link:hover {
     color: #06c;
   }
-
+  .nr-sf-link:focus-visible {
+    outline: none;
+  }
   button.nr-sf-link {
     font-size: 1em;
     border: 0;

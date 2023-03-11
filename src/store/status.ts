@@ -8,7 +8,8 @@ import { defineStore } from "pinia";
 const useStatus = defineStore("user", {
     // 定义状态：一个函数，返回一个对象
     state: () => ({
-        menuSwitch:false,
+        menuSwitch: false,//菜单状态
+        shade:false,//页面遮罩
      
     }),
   
@@ -24,10 +25,16 @@ const useStatus = defineStore("user", {
 
   
       // 同步 action
+        //改变菜单状态
         changeMenu() {
             this.menuSwitch = !this.menuSwitch;
-          
-      }
+            //改变遮罩状态
+            this.changeShade();
+        },
+        //改变遮罩状态
+        changeShade() {
+            this.shade = !this.shade;
+        }
     },
   });
   
