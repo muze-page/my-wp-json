@@ -1,7 +1,24 @@
 <script lang="ts" setup>
-//文底部
+//菜单右边
+
 
 import { Search, ArrowDown } from "@element-plus/icons-vue";
+import { storeToRefs } from "pinia";
+import useStatus from "../../../store/status";
+
+// 实例化 store
+const Status = useStatus();
+
+
+
+function switchMenu() {
+  // 不建议这样改
+  // name.value = '蝎子莱莱'
+
+  // 推荐的写法！！！
+  Status.changeMenu();
+}
+
 </script>
 
 <template>
@@ -45,7 +62,7 @@ import { Search, ArrowDown } from "@element-plus/icons-vue";
         </li>
         <!--右边-->
         <li class="ac-ln-menu-item">
-          <el-button class="nr-sf-link bt-menu">
+          <el-button class="nr-sf-link bt-menu" @click="switchMenu">
             热门话题
             <el-icon><ArrowDown /></el-icon>
           </el-button>

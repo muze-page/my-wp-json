@@ -1,7 +1,14 @@
 <script lang="ts" setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, watchEffect } from "vue";
+import { storeToRefs } from "pinia";
+import useStatus from "../../../store/status";
+// 实例化 store
+const Status = useStatus();
+//解构
+const { menuSwitch } = storeToRefs(Status);
+
 //制作一个按钮，点击后切换图标，切换高度
-const menuSwitch = ref(false);
+//const menuSwitch = ref(false);
 const maxHeight = reactive({
   maxHeight: 0 + "px",
   //visibility: "visible",
@@ -13,7 +20,7 @@ const oop = reactive({
 });
 
 const toggleMenu = () => {
-  menuSwitch.value = !menuSwitch.value;
+  //menuSwitch.value = !menuSwitch.value;
   if (menuSwitch.value) {
     //展开菜单
     //maxHeight.visibility = "visible";
@@ -29,6 +36,10 @@ const toggleMenu = () => {
     console.log("关闭菜单");
   }
 };
+//监听，当菜单状态变化时执行一次
+watchEffect(() => {
+  toggleMenu();
+});
 </script>
 
 <template>
@@ -42,14 +53,6 @@ const toggleMenu = () => {
       </div>
     </div>
   </div>
-
-  <el-button
-    type="primary"
-    size="default"
-    @click="toggleMenu"
-    style="z-index: 99999999; position: absolute"
-    >点击展开菜单</el-button
-  >
 </template>
 
 <style lang="less" scoped>
