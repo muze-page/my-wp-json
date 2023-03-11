@@ -7,13 +7,16 @@ import useGetData from "../../../store/get";
 const get = useGetData();
 const test = ref();
 
-
+//顶部11个数据
 get.getLatest();
-//get.getLatestData();
+
+//顶部6个数据
+get.getCat();
+
 </script>
 
 <template>
   <h2 style="text-align: center">测试1</h2>
 
-  {{ get.data.latest }}
+  {{ get.data.cat }}
 </template>

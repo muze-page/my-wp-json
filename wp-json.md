@@ -804,6 +804,29 @@ const ver = import.meta.env.VITE_VERSION;
 
 - [正确使用vue3的ts类型声明 - 木灵鱼儿 - 有梦就能远航 (mulingyuer.com)](https://www.mulingyuer.com/archives/815/)
 
+## 实例
+
+vue中，使用ref通过接口定义数组对象a，在不提供默认值的情况下，怎么避免a可能未定义
+
+在Vue中，可以通过定义ref类型为非空数组类型来避免使用接口定义数组对象可能为未定义的情况。例如：
+
+```js
+interface MyInterface {
+  myArray: { name: string }[];
+}
+
+export default Vue.extend({
+  setup() {
+    const myArray = ref<MyInterface['myArray']>([]);
+    // ...
+  },
+  // ...
+});
+
+```
+
+这里我们定义了一个包含属性为数组类型的接口MyInterface，并将ref的类型定义为MyInterface['myArray']，即取出MyInterface中myArray属性的类型，这样就可以避免其可能为未定义的情况了。
+
 # Element Pro
 
 ## 基础

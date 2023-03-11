@@ -44,9 +44,7 @@ data.value = [get.data.latest[0]];
     </el-col>
   </el-row>
 
-  {{ get.data.latest }}
-  <hr />
-  {{ data }}
+
 </template>
 
 <style lang="less" scoped>

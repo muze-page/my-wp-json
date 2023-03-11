@@ -1,19 +1,39 @@
 <script lang="ts" setup>
 //第三个
+import { ref, reactive } from "vue";
+import useGetData from "../../../store/get";
 
 
-export interface Props {
-  data: [
-    {
-      link: string;
-      featured_media: string;
-      categories: string;
-      titles: string;
-      date: string;
-    }
-  ];
-}
-const props = defineProps<Props>();
+
+
+// 实例化 store
+const get = useGetData();
+//拿到需要的数据
+const list = get.data.latest;
+const data = ref([
+  {
+    id: "",
+    url: "",
+    date: "",
+    title: "",
+    image: "",
+    cat: "",
+  },
+]);
+data.value = list.slice(5, 12);
+
+//export interface Props {
+//  data: [
+//    {
+//      link: string;
+//      featured_media: string;
+//      categories: string;
+//      titles: string;
+//      date: string;
+//    }
+//  ];
+//}
+//const props = defineProps<Props>();
 
 //const data = reactive({
 //  list: [
@@ -66,10 +86,10 @@ const props = defineProps<Props>();
 <template>
   <el-row :gutter="20">
     <el-col :span="8" v-for="item in data" style="margin-top: 36px">
-      <a :href="item.link" class="tile tile-3up">
+      <a :href="item.url" class="tile tile-3up">
         <div class="tile__media">
           <el-image
-            :src="item.featured_media"
+            :src="item.image"
             fit="fill"
             :lazy="true"
           ></el-image>
@@ -77,8 +97,8 @@ const props = defineProps<Props>();
 
         <div class="tile__description">
           <div class="tile__head">
-            <div class="tile__category">{{ item.categories }}</div>
-            <div class="tile__headline">{{ item.titles }}</div>
+            <div class="tile__category">{{ item.cat }}</div>
+            <div class="tile__headline">{{ item.title }}</div>
           </div>
           <div class="tile__timestamp">{{ item.date }}</div>
         </div>

@@ -1,52 +1,71 @@
 <script setup>
 //更多
-import { reactive } from "vue";
-const data = reactive({
-  list: [
-    {
-      link: "#",
-      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030609415480.jpg",
-      tag: "更新",
-      title: " 依托 Apple Watch，研究人员探索更多心脏健康功能0",
-      time: "2023 年 2 月 21 日",
-    },
-    {
-      link: "#",
-      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030609571941.jpg",
-      tag: "特写",
-      title: "McIntosh S.E.E.D. 在美国南部与非裔土地所有者共同保护土地和传统",
-      time: "2023 年 2 月 15 日",
-    },
-    {
-      link: "#",
-      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030609582753.jpg",
-      tag: "特写",
-      title: "iPad 助力中国餐饮零售行业焕发新生",
-      time: "2023 年 2 月 8 日",
-    },
-    {
-      link: "#",
-      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
-      tag: "新闻稿",
-      title: "Apple 公布第一季度业绩",
-      time: "2023 年 2 月 8 日",
-    },
-    {
-      link: "#",
-      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
-      tag: "新闻稿",
-      title: "Apple 公布第一季度业绩",
-      time: "2023 年 2 月 8 日",
-    },
-    {
-      link: "#",
-      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
-      tag: "新闻稿",
-      title: "Apple 公布第一季度业绩",
-      time: "2023 年 2 月 8 日",
-    },
-  ],
-});
+import { ref, reactive } from "vue";
+import useGetData from "../../../store/get";
+
+// 实例化 store
+const get = useGetData();
+//拿到需要的数据
+const list = get.data.cat;
+const data = ref([
+  {
+    id: "",
+    url: "",
+    date: "",
+    title: "",
+    image: "",
+    cat: "",
+  },
+]);
+data.value = list;
+
+
+//const data = reactive({
+//  list: [
+//    {
+//      link: "#",
+//      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030609415480.jpg",
+//      tag: "更新",
+//      title: " 依托 Apple Watch，研究人员探索更多心脏健康功能0",
+//      time: "2023 年 2 月 21 日",
+//    },
+//    {
+//      link: "#",
+//      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030609571941.jpg",
+//      tag: "特写",
+//      title: "McIntosh S.E.E.D. 在美国南部与非裔土地所有者共同保护土地和传统",
+//      time: "2023 年 2 月 15 日",
+//    },
+//    {
+//      link: "#",
+//      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030609582753.jpg",
+//      tag: "特写",
+//      title: "iPad 助力中国餐饮零售行业焕发新生",
+//      time: "2023 年 2 月 8 日",
+//    },
+//    {
+//      link: "#",
+//      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
+//      tag: "新闻稿",
+//      title: "Apple 公布第一季度业绩",
+//      time: "2023 年 2 月 8 日",
+//    },
+//    {
+//      link: "#",
+//      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
+//      tag: "新闻稿",
+//      title: "Apple 公布第一季度业绩",
+//      time: "2023 年 2 月 8 日",
+//    },
+//    {
+//      link: "#",
+//      img: "http://magick.plugin/wp-content/uploads/2023/03/2023030608522248.jpg",
+//      tag: "新闻稿",
+//      title: "Apple 公布第一季度业绩",
+//      time: "2023 年 2 月 8 日",
+//    },
+//  ],
+//});
 </script>
 
 <template>
@@ -54,26 +73,26 @@ const data = reactive({
     <div class="section-content">
       <h2 class="section-head">更多新闻</h2>
       <el-row :gutter="0" class="section-tiles">
-        <el-col :span="12" class="tile-item" v-for="item in data.list">
-          <a :href="item.link" class="tile tile-list">
+        <el-col :span="12" class="tile-item" v-for="item in data">
+          <a :href="item.url" class="tile tile-list">
             <div class="tile__media">
-              <el-image :src="item.img" fit="fill" :lazy="true"></el-image>
+              <el-image :src="item.image" fit="fill" :lazy="true"></el-image>
             </div>
             <div class="tile__description">
               <div class="tile__head">
-                <div class="tile__category">{{ item.tag }}</div>
+                <div class="tile__category">{{ item.cat }}</div>
                 <div class="tile__headline">
                   {{ item.title }}
                 </div>
               </div>
-              <div class="tile__timestamp">{{ item.time }}</div>
+              <div class="tile__timestamp">{{ item.date }}</div>
             </div>
           </a>
         </el-col>
       </el-row>
     </div>
 
-    <div class="view-archive-wrapper" round>
+    <div class="view-archive-wrapper" >
       <a href="#" class="nr-cta-primary-light"> 阅读历史文章 </a>
     </div>
   </section>
