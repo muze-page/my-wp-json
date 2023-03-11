@@ -861,6 +861,12 @@ http://magick.plugin/wp-json/wp/v2/media/2312?_fields=source_url
 //根据分类ID获取分类名：http://magick.plugin/wp-json/wp/v2/categories/1
 ```
 
+获取指定分类
+
+```js
+http://magick.plugin/wp-json/wp/v2/categories/1
+```
+
 
 
 # 问题

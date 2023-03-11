@@ -8,7 +8,7 @@ import moment from "moment";
 //获取指定要求的数据：http://magick.plugin/wp-json/wp/v2/posts/?_fields=categories,title,link,date,featured_media&per_page=2
 //根据特色图片ID获取图片链接：http://magick.plugin/wp-json/wp/v2/media/2312    source_url
 //根据分类ID获取分类名：http://magick.plugin/wp-json/wp/v2/categories/1
-//根据指定要求获取指定分类的文章：http://magick.plugin/wp-json/wp/v2/posts?filter[cat]=1&per_page=2&_fields=categories,title,link,date,featured_media
+//根据指定要求获取指定分类的文章：http://magick.plugin/wp-json/wp/v2/posts?categories=1&per_page=6&_fields=categories,title,link,date,featured_media
 //获取指定ID的文章：http://magick.plugin/wp-json/wp/v2/posts/1?_fields=categories,title,link,date,featured_media
 
 //统一数据接口格式
@@ -36,8 +36,22 @@ const useGetData = defineStore("userss", {
             image: "",
             cat:"",
       }], //资讯
-      featured: {}, //幻灯片
-      cat: {}, //更多
+      featured: [{
+        id:"",
+        url:"",
+        date: "",
+        title: "",
+        image: "",
+        cat:"",
+  }], //幻灯片
+      cat: [{
+        id:"",
+        url:"",
+        date: "",
+        title: "",
+        image: "",
+        cat:"",
+  }], //更多
     },
     default: {
       site: "http://magick.plugin",
@@ -72,7 +86,7 @@ const useGetData = defineStore("userss", {
     
     //拿到指定分类数据
     async getCatData() {
-        const api = `http://magick.plugin/wp-json/wp/v2/posts?_fields=categories,title,link,date,featured_media?filter[cat]=1&per_page=6&`;
+        const api = `http://magick.plugin/wp-json/wp/v2/posts?categories=1&per_page=6&_fields=categories,title,link,date,featured_media`;
         try {
           const response = await axios.get(api);
   
