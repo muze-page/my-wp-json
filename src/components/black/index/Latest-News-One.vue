@@ -1,39 +1,40 @@
 <script lang="ts" setup>
 //第一个
-import {  withDefaults } from "vue";
+import useGetData from "../../../store/get";
 
-export interface Props {
-  data: [
-    {
-      titles: string;
-      link: string;
-      categories: string;
-      date: string;
-      featured_media: string;
-    }
-  ];
+//定义对象，循环渲染用
+interface DataItem {
+  titles: string;
+  url: string;
+  categories: string;
+  date: string;
+  featured_media: string;
 }
-const props = defineProps<Props>();
+
+// 实例化 store
+const get = useGetData();
+//拿到需要的数据
+const data = get.data.latest;
 </script>
 
 <template>
+  {{ get.data.latest }}
+  <hr />
+  {{ data }}
+
   <el-row :gutter="20">
-    <el-col :span="24" v-for="item in data">
-      <a :href="item.link" target="_blank" class="tile tile-hero">
+    <el-col :span="24" v-for="item in data" :key="item.id">
+      <a :href="item.url" target="_blank" class="tile tile-hero">
         <div class="tile__media">
-          <el-image
-            :src="item.featured_media"
-            fit="cover"
-            :lazy="true"
-          ></el-image>
+          <el-image :src="item.image" fit="cover" :lazy="true"></el-image>
         </div>
 
         <div class="tile__description">
           <div class="tile__head">
-            <div class="tile__category">{{ item.categories }}</div>
+            <div class="tile__category">{{ item.cat }}</div>
 
             <div class="tile__headline">
-              {{ item.titles }}
+              {{ item.title }}
             </div>
           </div>
           <div class="tile__timestamp">{{ item.date }}</div>

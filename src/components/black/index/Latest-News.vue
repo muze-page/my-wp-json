@@ -129,7 +129,7 @@ async function f() {
   //console.log("6 - 拿到的值是：" + JSON.stringify(a));
 
   imgUrl.value = data;
-  one_data.value = [data[0]];
+  one_data.value = data[0];
   two_data.value = data.slice(1, 5);
   three_data.value = data.slice(5, 12);
 }
@@ -144,6 +144,7 @@ async function f() {
   {{ two_data }}
   <hr />
   -->
+
 
   <section class="everdayfeed">
     <Aside></Aside>

@@ -30,13 +30,10 @@ const onLogout = () => {
 </script>
 
 <template>
+  <h1 style="text-align: center">测试2</h1>
+  <hr />
   <div>
     <!-- state：通过 store 直接访问 -->
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
     <div v-if="userStore.token">
       {{ userStore.username }} <br />
 

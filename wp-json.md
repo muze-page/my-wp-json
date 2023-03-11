@@ -798,6 +798,12 @@ const ver = import.meta.env.VITE_VERSION;
 
 
 
+# Typescript
+
+## 教程
+
+- [正确使用vue3的ts类型声明 - 木灵鱼儿 - 有梦就能远航 (mulingyuer.com)](https://www.mulingyuer.com/archives/815/)
+
 # Element Pro
 
 ## 基础
