@@ -3,6 +3,7 @@
  */
 import axios from "axios";
 import { defineStore } from "pinia";
+import moment from "moment";
 
 // 创建 store
 const useGetData = defineStore("userss", {
@@ -13,7 +14,10 @@ const useGetData = defineStore("userss", {
             latest: {}, //资讯
             featured: {},//幻灯片
             more:{},//更多
-      },
+        },
+        default: {
+            site:'http://magick.plugin',
+        },
       username: "",
       token: "",
       name:"雷猴",
@@ -53,19 +57,73 @@ const useGetData = defineStore("userss", {
 
       //_______________//
       //拿到基础数据
-        async getLatest() {
+        async getLatestData() {
             const api = `http://magick.plugin/wp-json/wp/v2/posts/?_fields=categories,title,link,date,featured_media&per_page=2`;
             try {
                 const response = await axios.get(api);
 
                 this.data.latest = response.data;
+                console.log("我运行了一下2")
                 return response.data;
                 
             } catch (error) {
                 console.log(error)
             }
 
-      }
+        },
+
+        //对输入的特色图片ID的值进行axios查询，拿到图片链接
+        async  requestMedia(media = 2312) {
+            //查询网址
+            const api = `http://magick.plugin/wp-json/wp/v2/media/` + media + `?_fields=source_url`;
+            console.log("待检查的API是：" + api);
+            try {
+              //输出值
+              const response = await axios.get(api);
+              return response.data.source_url;
+            } catch (error) {
+              console.log(error);
+            }
+        },
+
+        //传入分类ID，获取分类名和链接
+
+        async  getCategory(id = 1) {
+            //查询网址
+            const api = `http://magick.plugin/wp-json/wp/v2/categories/` + id + `?_fields=name,link`;
+            try {
+              const response = await axios.get(api);
+              return response.data.name;
+            } catch (error) {
+              console.log(error);
+            }
+        },
+
+        //对拿到的数据进行处理后输出
+        async  handleObj(
+            obj = {
+              date: "",
+              title: { rendered: "" },
+              titles: "",
+              featured_media: 0,
+              categories: 0,
+            }
+          ) {
+            //拿到时间，处理后插入
+            obj["date"] = moment(obj.date).format("YYYY 年  M 月 D 日");
+            //拿到标题，处理后插入
+            obj["titles"] = obj.title.rendered;
+            //拿到特色图ID，处理成链接后插入
+            obj["featured_media"] = await this.requestMedia(obj.featured_media);
+            //拿到分类，处理后插入
+            console.log("二度确认下：" + obj.categories);
+            obj["categories"] = await this.getCategory(obj.categories);
+        },
+        
+        //Latest列表数据
+
+    
+    
     },
   });
   
