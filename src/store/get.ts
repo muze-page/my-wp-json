@@ -5,16 +5,37 @@ import { ref } from "vue";
 import axios from "axios";
 import { defineStore } from "pinia";
 import moment from "moment";
+//获取指定要求的数据：http://magick.plugin/wp-json/wp/v2/posts/?_fields=categories,title,link,date,featured_media&per_page=2
+//根据特色图片ID获取图片链接：http://magick.plugin/wp-json/wp/v2/media/2312    source_url
+//根据分类ID获取分类名：http://magick.plugin/wp-json/wp/v2/categories/1
+//根据指定要求获取指定分类的文章：http://magick.plugin/wp-json/wp/v2/posts?filter[cat]=1&per_page=2&_fields=categories,title,link,date,featured_media
+//获取指定ID的文章：http://magick.plugin/wp-json/wp/v2/posts/1?_fields=categories,title,link,date,featured_media
 
+//统一数据接口格式
+interface DataItem {
+    id: string;
+    url: string;
+    date: string;
+    title: string;
+    image: string;
+    cat: string;
+  }
 // 创建 store
 const useGetData = defineStore("userss", {
   // 定义状态：一个函数，返回一个对象
   state: () => ({
     //首页拿数据
     data: {
-      latest: [""], //资讯
+          latest: [{
+            id:"",
+            url:"",
+            date: "",
+            title: "",
+            image: "",
+            cat:"",
+      }], //资讯
       featured: {}, //幻灯片
-      more: {}, //更多
+      cat: {}, //更多
     },
     default: {
       site: "http://magick.plugin",
@@ -70,7 +91,20 @@ const useGetData = defineStore("userss", {
       } catch (error) {
         console.log(error);
       }
-    },
+      },
+    
+    //拿到指定分类数据
+    async getCatData() {
+        const api = `http://magick.plugin/wp-json/wp/v2/posts?_fields=categories,title,link,date,featured_media?filter[cat]=1&per_page=2&`;
+        try {
+          const response = await axios.get(api);
+  
+          this.data.cat = response.data;
+            return response.data;
+        } catch (error) {
+          console.log(error);
+        }
+        },
 
     //对输入的特色图片ID的值进行axios查询，拿到图片链接
     async requestMedia(media = 2312) {
@@ -149,7 +183,14 @@ const useGetData = defineStore("userss", {
       async getLatest() {
        
           const data = await this.getLatestData();
-          const latest = ref<string[]>([]);
+          const latest = ref([{
+            id:"",
+            url:"",
+            date: "",
+            title: "",
+            image: "",
+            cat:"",
+          }]);
           for (const key in data) {
               console.log("处理前");
               console.log(JSON.stringify(data[key]));

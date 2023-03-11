@@ -1,27 +1,28 @@
 <script lang="ts" setup>
 //第一个
+import { ref, reactive } from "vue";
 import useGetData from "../../../store/get";
 
-//定义对象，循环渲染用
-interface DataItem {
-  titles: string;
-  url: string;
-  categories: string;
-  date: string;
-  featured_media: string;
-}
+
+
 
 // 实例化 store
 const get = useGetData();
 //拿到需要的数据
-const data = get.data.latest;
+const data = ref([
+  {
+    id: "",
+    url: "",
+    date: "",
+    title: "",
+    image: "",
+    cat: "",
+  },
+]);
+data.value = [get.data.latest[0]];
 </script>
 
 <template>
-  {{ get.data.latest }}
-  <hr />
-  {{ data }}
-
   <el-row :gutter="20">
     <el-col :span="24" v-for="item in data" :key="item.id">
       <a :href="item.url" target="_blank" class="tile tile-hero">
@@ -42,6 +43,10 @@ const data = get.data.latest;
       </a>
     </el-col>
   </el-row>
+
+  {{ get.data.latest }}
+  <hr />
+  {{ data }}
 </template>
 
 <style lang="less" scoped>
