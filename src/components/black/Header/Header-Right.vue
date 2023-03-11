@@ -1,24 +1,20 @@
 <script lang="ts" setup>
 //菜单右边
 
-
 import { Search, ArrowDown } from "@element-plus/icons-vue";
 import { storeToRefs } from "pinia";
 import useStatus from "../../../store/status";
 
 // 实例化 store
 const Status = useStatus();
-
-
-
+//解构
+const { menuSwitch } = storeToRefs(Status);
+//当menuSwitch为true时，展开菜单
+//通过菜单按钮控制状态
 function switchMenu() {
-  // 不建议这样改
-  // name.value = '蝎子莱莱'
-
-  // 推荐的写法！！！
+  //切换状态
   Status.changeMenu();
 }
-
 </script>
 
 <template>
@@ -62,7 +58,11 @@ function switchMenu() {
         </li>
         <!--右边-->
         <li class="ac-ln-menu-item">
-          <el-button class="nr-sf-link bt-menu" @click="switchMenu">
+          <el-button
+            class="nr-sf-link bt-menu"
+            :class="{ active: menuSwitch }"
+            @click="switchMenu"
+          >
             热门话题
             <el-icon><ArrowDown /></el-icon>
           </el-button>
@@ -133,6 +133,8 @@ function switchMenu() {
   .nr-sf-link.bt-menu {
     i {
       margin-left: 6px;
+      //切换动画
+      transition: transform 0.3s ease;
     }
   }
 }
@@ -146,6 +148,12 @@ function switchMenu() {
 .nr-sf-link:hover {
   a {
     color: #06c;
+  }
+}
+//动画
+.active {
+  i {
+    transform: scaleY(-1);
   }
 }
 </style>

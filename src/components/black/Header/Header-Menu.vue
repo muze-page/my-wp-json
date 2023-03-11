@@ -7,11 +7,10 @@ const Status = useStatus();
 //解构
 const { menuSwitch } = storeToRefs(Status);
 
+//通过menuSwitch控制菜单状态，默认为false
 //制作一个按钮，点击后切换图标，切换高度
-//const menuSwitch = ref(false);
 const maxHeight = reactive({
   maxHeight: 0 + "px",
-  //visibility: "visible",
 });
 
 const oop = reactive({
@@ -20,16 +19,13 @@ const oop = reactive({
 });
 
 const toggleMenu = () => {
-  //menuSwitch.value = !menuSwitch.value;
   if (menuSwitch.value) {
     //展开菜单
-    //maxHeight.visibility = "visible";
-    maxHeight.maxHeight = 220 + "px";
 
+    maxHeight.maxHeight = 220 + "px";
     oop.opacity = 1;
-    console.log("展开菜单" + maxHeight.maxHeight);
+    oop.transform = "translate3d(0, -20px, 0)";
   } else {
-    //maxHeight.visibility = "hidden";
     maxHeight.maxHeight = "0px";
     oop.opacity = 0;
     oop.transform = "translate3d(0, 0, 0)";
