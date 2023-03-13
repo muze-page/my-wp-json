@@ -28,19 +28,33 @@ if (typeof id === "string") {
   // handle other cases
 }
 
+//获取当前文章数据，并将数据存入pinia
 get.getPostData(postId.value);
 
-console.log(route.params.id);
+const postData = ref({
+  id: "",
+  url: "",
+  data: "",
+  title: "",
+  image: "",
+  cat: "",
+  content: "",
+  excerpt: "",
+  authort: "",
+});
+postData.value = get.data.post;
 </script>
 
 <template>
   <!--
-  拿到的ID：{{ route.params.id }} 拿到的值{{ get.data.post }}
+    拿到的ID：{{ route.params.id }}
+   拿到的值{{ get.data.post }}
   -->
+  
   <Aside></Aside>
   <section>
     <article class="article">
-      <SingleMain></SingleMain>
+      <SingleMain :data="postData"></SingleMain>
       <SingleContact></SingleContact>
       <SingleRecommend></SingleRecommend>
     </article>

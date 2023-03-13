@@ -2,22 +2,24 @@
 import SingleFunctionQr from "@/components/black/single/Single-Function-Qr.vue";
 import { Link, Share, Message } from "@element-plus/icons-vue";
 
-import { ref } from "vue";
-import { storeToRefs } from "pinia";
-import useGetData from "@/store/get";
-// 实例化 store
-const userGet = useGetData();
+import { ref, onMounted } from "vue";
 
-//解构
- //{ data } = storeToRefs(userGet);
-const data = ref();
-data.value = userGet.data.post;
+export interface Props {
+  data: {
+    cat: "";
+    data: "";
+    title: "";
+    excerpt: "";
+    url: "";
+    content: "";
+  };
+}
+const props = defineProps<Props>();
 
 //核心内容
 </script>
 
 <template>
-  {{ data }}
   <div class="article-header">
     <!--分类和时间-->
     <div class="category component">
@@ -25,7 +27,7 @@ data.value = userGet.data.post;
         <div class="category-eyebrow">
           <span class="category-eyebrow__category"> {{ data.cat }}</span>
 
-          <span class="category-eyebrow__date"> {{ data.date }}</span>
+          <span class="category-eyebrow__date"> {{ data.data }}</span>
         </div>
       </div>
     </div>
@@ -48,7 +50,7 @@ data.value = userGet.data.post;
       <div class="component-content">
         <ul class="sharesheet-options">
           <li class="social-option">
-            <SingleFunctionQr :link = data.link></SingleFunctionQr>
+            <SingleFunctionQr :link="data.url"></SingleFunctionQr>
           </li>
           <li class="social-option">
             <el-button text size="default" :icon="Share"></el-button>
@@ -62,6 +64,10 @@ data.value = userGet.data.post;
         </ul>
       </div>
     </div>
+  </div>
+  <!--文章内容-->
+  <div class="entry-content">
+    {{ data.content }}
   </div>
 </template>
 
@@ -152,17 +158,14 @@ data.value = userGet.data.post;
       button {
         border: none;
         i {
-          
           height: 36px;
           width: 36px;
           svg {
-            
             height: 36px;
             width: 36px;
           }
         }
       }
-      
     }
   }
 }

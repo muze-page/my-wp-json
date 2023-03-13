@@ -374,6 +374,10 @@ import router from "./router"
 app.use(router)
 ```
 
+### 实战 - 路由传参
+
+
+
 ### 安装Typescript
 
 - [(21条消息) Vite 学习 - TS 在 Vite 中的使用_vite ts_皮蛋很白的博客-CSDN博客](https://blog.csdn.net/u012961419/article/details/110520129)

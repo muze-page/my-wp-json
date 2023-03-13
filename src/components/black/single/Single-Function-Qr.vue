@@ -1,8 +1,13 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import { Promotion,CircleCloseFilled } from "@element-plus/icons-vue";
+import { Promotion, CircleCloseFilled } from "@element-plus/icons-vue";
 import vueQr from "vue-qr/src/packages/vue-qr.vue";
 import logoImgs from "@/assets/vue.svg";
+
+export interface Props {
+  link: string;
+}
+const props = defineProps<Props>();
 
 const visible = ref(false);
 
@@ -19,12 +24,14 @@ logoImg.value = logoImgs;
     @click="visible = true"
   ></el-button>
 
-  <el-dialog v-model="visible" :show-close="false" class="modal-content-container">
+  <el-dialog
+    v-model="visible"
+    :show-close="false"
+    class="modal-content-container"
+  >
     <template #header="{ close }">
       <div class="header">
-        <el-button text  @click="close" :icon="CircleCloseFilled">
-         
-        </el-button>
+        <el-button text @click="close" :icon="CircleCloseFilled"> </el-button>
       </div>
     </template>
 
@@ -34,7 +41,7 @@ logoImg.value = logoImgs;
         <div class="wechat-qrcode">
           <vue-qr
             ref="qrCode"
-            :text="22222"
+            :text="props.link"
             :logoSrc="logoImg"
             :logoScale="40"
             :size="190"

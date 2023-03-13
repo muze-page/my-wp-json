@@ -84,7 +84,7 @@ const useGetData = defineStore("userss", {
 
         this.data.latest = response.data;
         //this.data.latest = "9527";
-        console.log("我运行了一下");
+        //console.log("我运行了一下");
         return response.data;
       } catch (error) {
         console.log(error);
@@ -111,7 +111,7 @@ const useGetData = defineStore("userss", {
         `http://magick.plugin/wp-json/wp/v2/media/` +
         media +
         `?_fields=source_url`;
-      console.log("待检查的API是：" + api);
+      //console.log("待检查的API是：" + api);
       try {
         //输出值
         const response = await axios.get(api);
@@ -199,11 +199,11 @@ const useGetData = defineStore("userss", {
       const data = await this.getCatData();
       const latest = ref<Jog["DataItem"]>([]);
       for (const key in data) {
-        console.log("处理前");
-        console.log(JSON.stringify(data[key]));
+        //console.log("处理前");
+        //console.log(JSON.stringify(data[key]));
         data[key] = await this.handleObj(data[key]);
-        console.log("处理后");
-        console.log(JSON.stringify(data[key]));
+        //console.log("处理后");
+        //console.log(JSON.stringify(data[key]));
         //将处理好的内容加入数组
         latest.value.push(data[key]);
         //为了类型判断，我们给了数组初始值，为了避免影响，删掉第一个数组
@@ -220,7 +220,7 @@ const useGetData = defineStore("userss", {
         `http://magick.plugin/wp-json/wp/v2/posts/` +
         id +
         `?_fields=categories,title,link,date,featured_media,content,excerpt,author,id`;
-      console.log("待检查的API是：" + api);
+      //console.log("待检查的API是：" + api);
       const obj = ref({
         id: "",
         url: "",

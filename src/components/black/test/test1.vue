@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref, reactive, watchEffect } from "vue";
 
-import { storeToRefs } from "pinia";
+
 import useGetData from "../../../store/get";
 // 实例化 store
 const get = useGetData();
