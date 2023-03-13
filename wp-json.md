@@ -619,6 +619,42 @@ export default defineConfig({
 
 ```
 
+### vue-qr
+
+> 用于生成二维码
+
+- [vue-qr - npm (npmjs.com)](https://www.npmjs.com/package/vue-qr)
+- [vue-qr生成二维码并下载，及注意事项 - 掘金 (juejin.cn)](https://juejin.cn/post/7041136857287131150)
+
+#### 安装
+
+```bash
+npm install vue-qr --save
+```
+
+#### 导入
+
+```vue
+// vue2.x 
+import VueQr from 'vue-qr'
+// vue3.x 
+import vueQr from 'vue-qr/src/packages/vue-qr.vue'
+```
+
+#### 使用
+
+## 主要配置项
+
+|           |                                                              |
+| --------- | ------------------------------------------------------------ |
+| text      | 二维码要展示的内容                                           |
+| logoSrc   | 二维码中间的小logo                                           |
+| logoScale | 小logo的大小（别搞太大，超过容错率识别不出来的）             |
+| size      | 整个二维码所占空间的大小，（宽高相等，包含margin） 可能需要你自己用css设置一下图片宽高100% |
+| margin    | 二维码的外边距（默认 20px）                                  |
+
+全部配置项自行去官网查
+
 
 
 # VITE

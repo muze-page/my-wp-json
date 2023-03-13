@@ -1,5 +1,16 @@
 //载入公共变量
 @import "global.less";
+//覆盖按钮默认样式
+button:hover {
+  background-color: rgba(255, 255, 255, 0)!important;
+}
+button:active {
+  background-color: rgba(255, 255, 255, 0)!important;
+}
+button:focus-visible {
+  outline: none!important;
+  
+}
 
 //分类、时间
 .tile__category,
@@ -154,4 +165,16 @@
   vertical-align: middle;
   margin: 0;
   overflow: hidden;
+}
+.social-option {
+  > button {
+    font-size: 24px;
+    line-height: 24px;
+    height: 24px;
+    padding: 6px;
+    margin-top: -6px;
+    margin-bottom: -6px;
+    //
+    //  border: none;
+  }
 }

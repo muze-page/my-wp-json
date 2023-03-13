@@ -1,17 +1,31 @@
 <script lang="ts" setup>
-import { Promotion, Link, Share, Message } from "@element-plus/icons-vue";
+import SingleFunctionQr from "@/components/black/single/Single-Function-Qr.vue";
+import { Link, Share, Message } from "@element-plus/icons-vue";
+
+import { ref } from "vue";
+import { storeToRefs } from "pinia";
+import useGetData from "@/store/get";
+// 实例化 store
+const userGet = useGetData();
+
+//解构
+ //{ data } = storeToRefs(userGet);
+const data = ref();
+data.value = userGet.data.post;
+
 //核心内容
 </script>
 
 <template>
+  {{ data }}
   <div class="article-header">
     <!--分类和时间-->
     <div class="category component">
       <div class="component-content">
         <div class="category-eyebrow">
-          <span class="category-eyebrow__category">新闻稿</span>
+          <span class="category-eyebrow__category"> {{ data.cat }}</span>
 
-          <span class="category-eyebrow__date">2023 年 3 月 7 日</span>
+          <span class="category-eyebrow__date"> {{ data.date }}</span>
         </div>
       </div>
     </div>
@@ -19,15 +33,14 @@ import { Promotion, Link, Share, Message } from "@element-plus/icons-vue";
     <div class="pagetitle component">
       <div class="component-content">
         <h1 class="hero-headline">
-          你好，黄色！Apple 推出新款 iPhone&nbsp;14 和 iPhone&nbsp;14&nbsp;Plus
+          {{ data.title }}
         </h1>
       </div>
     </div>
     <!--副标题-->
     <div class="article-subhead component">
       <div class="component-content">
-        iPhone 14
-        系列产品新增美观的黄色配色，具备出类拔萃的电池续航能力、可拍摄专业级照片及视频的强大双摄系统及车祸检测等开创性安全功能
+        {{ data.excerpt }}
       </div>
     </div>
     <!--社交分享-->
@@ -35,16 +48,16 @@ import { Promotion, Link, Share, Message } from "@element-plus/icons-vue";
       <div class="component-content">
         <ul class="sharesheet-options">
           <li class="social-option">
-            <el-button size="default" :icon="Promotion"></el-button>
+            <SingleFunctionQr :link = data.link></SingleFunctionQr>
           </li>
           <li class="social-option">
-            <el-button size="default" :icon="Share"></el-button>
+            <el-button text size="default" :icon="Share"></el-button>
           </li>
           <li class="social-option">
-            <el-button size="default" :icon="Message"></el-button>
+            <el-button text size="default" :icon="Message"></el-button>
           </li>
           <li class="social-option">
-            <el-button size="default" :icon="Link"></el-button>
+            <el-button text size="default" :icon="Link"></el-button>
           </li>
         </ul>
       </div>
@@ -125,25 +138,32 @@ import { Promotion, Link, Share, Message } from "@element-plus/icons-vue";
 }
 .social-option {
   position: relative;
-  z-index: 2;
+  //z-index: 2;
   list-style: none;
   color: currentColor;
   opacity: 1;
   display: block;
 
   margin-top: 12px;
-  .el-button {
-    font-size: 24px;
-    line-height: 24px;
-    height: 24px;
-    padding: 6px;
-    margin-top: -6px;
-    margin-bottom: -6px;
-
-    border: none;
-  }
-  .el-button:hover {
-    background-color: #ecf5ff00;
+  //模态框
+  :deep(.modal-content-container) {
+    border-radius: @redius;
+    header {
+      button {
+        border: none;
+        i {
+          
+          height: 36px;
+          width: 36px;
+          svg {
+            
+            height: 36px;
+            width: 36px;
+          }
+        }
+      }
+      
+    }
   }
 }
 </style>
