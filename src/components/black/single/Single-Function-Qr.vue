@@ -1,13 +1,19 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import useGetData from "@/store/get";
+import { ref, watchEffect } from "vue";
 import { Promotion, CircleCloseFilled } from "@element-plus/icons-vue";
 import vueQr from "vue-qr/src/packages/vue-qr.vue";
 import logoImgs from "@/assets/vue.svg";
 
-export interface Props {
-  link: string;
-}
-const props = defineProps<Props>();
+// 实例化 store
+const store = useGetData();
+
+
+//当前页二维码
+const data = ref();
+watchEffect(() => {
+  data.value = store.data.post;
+});
 
 const visible = ref(false);
 
@@ -17,6 +23,8 @@ logoImg.value = logoImgs;
 </script>
 
 <template>
+
+  
   <el-button
     text
     size="default"
@@ -41,13 +49,14 @@ logoImg.value = logoImgs;
         <div class="wechat-qrcode">
           <vue-qr
             ref="qrCode"
-            :text="props.link"
-            :logoSrc="logoImg"
-            :logoScale="40"
+            :text="data.url"
+            :logoScale="80"
             :size="190"
             :margin="10"
           />
-           
+          <!--
+            :logoSrc="logoImg"
+          -->
         </div>
       </figure>
     </p>

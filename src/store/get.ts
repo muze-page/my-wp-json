@@ -58,7 +58,9 @@ const useGetData = defineStore("userss", {
           cat: "",
         },
       ], //更多
-      post: {}, //文章信息
+      post: {
+        id: "",
+      }, //文章信息
     },
     //默认值
     default: {
@@ -70,6 +72,7 @@ const useGetData = defineStore("userss", {
   // 定义 getters，等同于组件的计算属性
   getters: {
     // getter 函数接收 state 作为参数，推荐使用箭头函数
+    getUrl: (state) => "single/" + state.data.post.id,
   },
 
   // 定义 actions，有同步和异步两种类型
@@ -193,7 +196,6 @@ const useGetData = defineStore("userss", {
         //latest.value.shift();
       }
       this.data.latest = latest.value;
-       console.log("8893执行了");
     },
 
     //将Latest列表中的原始数据处理后传出

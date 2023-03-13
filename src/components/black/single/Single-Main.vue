@@ -1,20 +1,19 @@
 <script lang="ts" setup>
+import useGetData from "@/store/get";
 import SingleFunctionQr from "@/components/black/single/Single-Function-Qr.vue";
 import { Link, Share, Message } from "@element-plus/icons-vue";
 
-import { ref, onMounted } from "vue";
-
-export interface Props {
-  data: {
-    cat: "";
-    data: "";
-    title: "";
-    excerpt: "";
-    url: "";
-    content: "";
-  };
-}
-const props = defineProps<Props>();
+import { ref, onMounted, watchEffect } from "vue";
+// 实例化 store
+const store = useGetData();
+//从pinia中取出值
+const data = ref();
+watchEffect(() => {
+  data.value = store.data.post;
+});
+onMounted(() => {
+  data.value = store.data.post;
+});
 
 //核心内容
 </script>
@@ -50,7 +49,7 @@ const props = defineProps<Props>();
       <div class="component-content">
         <ul class="sharesheet-options">
           <li class="social-option">
-            <SingleFunctionQr :link="data.url"></SingleFunctionQr>
+            <SingleFunctionQr></SingleFunctionQr>
           </li>
           <li class="social-option">
             <el-button text size="default" :icon="Share"></el-button>

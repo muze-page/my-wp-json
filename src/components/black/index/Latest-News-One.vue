@@ -1,48 +1,31 @@
 <script lang="ts" setup>
 //第一个
-import { ref, reactive, watchEffect } from "vue";
+import { ref, reactive, watchEffect, computed } from "vue";
+import { storeToRefs } from "pinia";
 import useGetData from "@/store/get";
 // 实例化 store
 const store = useGetData();
-
-
-//原始数据
-const meat = ref([
-  {
-    id: "",
-    url: "",
-    date: "",
-    title: "",
-    image: "",
-    cat: "",
-  },
-]);
+//解构
+const { getUrl } = storeToRefs(store);
 
 //需要的数据
 const data = ref();
 
 watchEffect(() => {
-  meat.value = store.data.latest;
-  data.value = meat.value.slice(0, 1);
+  data.value = store.data.latest.slice(0, 1);
 });
 </script>
 
 <template>
-  拿到的值：{{ data }}
-
   <el-row :gutter="20">
     <el-col :span="24" v-for="item in data" :key="item.id">
-      <a :href="item.url" target="_blank" class="tile tile-hero">
+      <a :href="`single/${item.id}`"  class="tile tile-hero">
         <div class="tile__media">
           <el-image :src="item.image" fit="cover" :lazy="true"></el-image>
         </div>
 
         <div class="tile__description">
           <div class="tile__head">
-            <!--
-<router-link :to="{ name: 'single', params: { id: item.id } }">传一下：{{ item.id }}</router-link>
-            -->
-
             <div class="tile__category">{{ item.cat }}</div>
 
             <div class="tile__headline">
