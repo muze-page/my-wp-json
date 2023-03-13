@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { reactive } from "vue";
 const data = reactive({
   list: [
@@ -115,8 +115,6 @@ const data = reactive({
           </div>
         </a>
       </li>
-
-
     </ul>
     <!--切换按钮-->
     <div class="paddlenav">
