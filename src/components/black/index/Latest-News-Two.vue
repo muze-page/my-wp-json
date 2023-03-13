@@ -1,13 +1,12 @@
 <script lang="ts" setup>
 //第二个
-import { ref, reactive,watchEffect } from "vue";
+import { ref, reactive, watchEffect } from "vue";
 import useGetData from "@/store/get";
 // 实例化 store
 const store = useGetData();
 
-
-//原始数据
-const meat = ref([
+//需要的数据
+const data = ref([
   {
     id: "",
     url: "",
@@ -18,14 +17,9 @@ const meat = ref([
   },
 ]);
 
-//需要的数据
-const data = ref();
-
 watchEffect(() => {
-  meat.value = store.data.latest;
-  data.value = meat.value.slice(1, 5);
+  data.value = store.data.latest.slice(1, 5);
 });
-
 
 //const data = reactive({
 //  list: [
@@ -64,7 +58,7 @@ watchEffect(() => {
 <template>
   <el-row :gutter="20">
     <el-col :span="12" v-for="item in data" style="margin-top: 36px">
-      <a :href="item.url" class="tile tile-2up">
+      <a :href="`single/${item.id}`" class="tile tile-2up">
         <div class="tile__media">
           <el-image :src="item.image" fit="fill" :lazy="true"></el-image>
         </div>

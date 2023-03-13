@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 //分类
 import { ref, watchEffect } from "vue";
 import useGetData from "@/store/get";
@@ -75,7 +75,7 @@ watchEffect(() => {
       <h2 class="section-head">更多新闻</h2>
       <el-row :gutter="0" class="section-tiles">
         <el-col :span="12" class="tile-item" v-for="item in data">
-          <a :href="item.url" class="tile tile-list">
+          <a :href="`single/${item.id}`" class="tile tile-list">
             <div class="tile__media">
               <el-image :src="item.image" fit="fill" :lazy="true"></el-image>
             </div>

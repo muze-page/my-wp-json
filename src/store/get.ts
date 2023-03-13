@@ -72,7 +72,6 @@ const useGetData = defineStore("userss", {
   // 定义 getters，等同于组件的计算属性
   getters: {
     // getter 函数接收 state 作为参数，推荐使用箭头函数
-    getUrl: (state) => "single/" + state.data.post.id,
   },
 
   // 定义 actions，有同步和异步两种类型

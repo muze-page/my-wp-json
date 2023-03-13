@@ -1,15 +1,21 @@
 <script lang="ts" setup>
 //第一个
-import { ref, reactive, watchEffect, computed } from "vue";
-import { storeToRefs } from "pinia";
+import { ref, watchEffect } from "vue";
 import useGetData from "@/store/get";
 // 实例化 store
 const store = useGetData();
-//解构
-const { getUrl } = storeToRefs(store);
 
 //需要的数据
-const data = ref();
+const data = ref([
+  {
+    id: "",
+    url: "",
+    date: "",
+    title: "",
+    image: "",
+    cat: "",
+  },
+]);
 
 watchEffect(() => {
   data.value = store.data.latest.slice(0, 1);
@@ -19,7 +25,7 @@ watchEffect(() => {
 <template>
   <el-row :gutter="20">
     <el-col :span="24" v-for="item in data" :key="item.id">
-      <a :href="`single/${item.id}`"  class="tile tile-hero">
+      <a :href="`single/${item.id}`" class="tile tile-hero">
         <div class="tile__media">
           <el-image :src="item.image" fit="cover" :lazy="true"></el-image>
         </div>
