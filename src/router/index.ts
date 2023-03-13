@@ -10,11 +10,11 @@ import Test from "../components/Test.vue";
 
 //定义路由
 const routes = [
-    { path: "/", component: Home },
-    { path: "/single", component: Single },
-    { path: "/category", component: Category },
-    { path: '/:pathMatch(.*)', component: NotFoundComponent },
-    { path: '/test', component: Test },
+    { path: "/",name:'index', component: Home },
+    { path: "/single/:id",name:'single', component: Single },
+    { path: "/category",name:'category', component: Category },
+    { path: '/:pathMatch(.*)',name:'notfound', component: NotFoundComponent },
+    { path: '/test',name:'test', component: Test },
 ];
 
 //创建路由对象

@@ -677,26 +677,124 @@ background-image: url(/icon_large.svg);
 
 ### vite.config.js 配置全局src别名“@“
 
-- [(21条消息) vite.config.js 配置全局src别名“@“_vite src 别名_Leon4055的博客-CSDN博客](https://blog.csdn.net/weixin_41258075/article/details/122326095)
+- https://blog.csdn.net/qq_37866866/article/details/127616641
+
+**安装path模块：**
+
+```bash
+npm install --save-dev @types/node
+```
+
+**修改vite.config.ts**
+
+```js
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
+```
+
+实例
 
 ```js
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import path from 'path' // 关键代码
+//配置路径
+import path from 'path'
+//开发 - 虚拟接口
+import { viteMockServe } from 'vite-plugin-mock'
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    viteMockServe({// 更多配置见最下方
+      //supportTs: true,
+      //logger: false,
+      mockPath: "./src/mock/" // 文件位置
+    })
+
+  ],
+
+  server: {
+    port: 8080, // 配置Vite服务器端口号
+    hmr: true,//开启热更新
+  },
+
+  //配置路径别名
   resolve: {
     alias: {
-    // 关键代码
-      '@': path.resolve(__dirname, './src')
+      '@': path.resolve(__dirname, 'src')
     }
-  }
+  },
+
+
+
+  css: {
+    preprocessorOptions: {
+      //公共样式
+      less: {
+        charset: false,
+        additionalData: '@import "./src/assets/css/home.less";',
+      },
+    },
+  },
+
+
+
+
 })
 
+```
+
+**修改tsconfig.json：**
+
+配置 baseUrl、paths
+
+```json
+    //配置路径
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+```
+
+实例
+
+```json
+{
+  //TypeScript配置文件
+  "compilerOptions": {
+    // TypeScript 默认会把代码编译为 ECMAScript 3
+    // esnext 表示仅仅校验转换 TypeScript 类型，不进行语法编译
+    "target": "esnext",
+    "module": "esnext",
+    // 开启严格模式，这使得对“this”的数据属性进行更严格的推断成为可能
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    //全局变量
+    "types": ["vite/client"],
+    //配置路径
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+  },
+
+  // 配置需要校验的文件
+  "include": ["src/**/*.ts", "src/**/*.vue"],
+
+  // 排除不需要 TypeScript 校验的文件
+  "exclude": ["node_modules"]
+}
 
 ```
+
+
 
 使用
 

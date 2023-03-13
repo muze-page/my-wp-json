@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "SF Pro SC";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/PingFangSC-Medium.woff2") format("woff2");
+  /* (C) 2015 Apple Inc. All rights reserved. */
+}
 ul,
 ol,
 li,

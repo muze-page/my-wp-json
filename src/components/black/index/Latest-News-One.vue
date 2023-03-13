@@ -23,6 +23,8 @@ data.value = [get.data.latest[0]];
 </script>
 
 <template>
+  
+
   <el-row :gutter="20">
     <el-col :span="24" v-for="item in data" :key="item.id">
       <a :href="item.url" target="_blank" class="tile tile-hero">
@@ -32,6 +34,7 @@ data.value = [get.data.latest[0]];
 
         <div class="tile__description">
           <div class="tile__head">
+            <router-link :to="{ name: 'single', params: { id: item.id } }">传一下：{{ item.id }}</router-link>
             <div class="tile__category">{{ item.cat }}</div>
 
             <div class="tile__headline">
