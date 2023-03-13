@@ -1,12 +1,11 @@
 <script setup>
-//更多
-import { ref, reactive } from "vue";
-import useGetData from "../../../store/get";
-
+//分类
+import { ref, watchEffect } from "vue";
+import useGetData from "@/store/get";
 // 实例化 store
-const get = useGetData();
-//拿到需要的数据
-const list = get.data.cat;
+const store = useGetData();
+
+//需要的数据
 const data = ref([
   {
     id: "",
@@ -17,8 +16,10 @@ const data = ref([
     cat: "",
   },
 ]);
-data.value = list;
 
+watchEffect(() => {
+  data.value = store.data.cat;
+});
 
 //const data = reactive({
 //  list: [
@@ -92,7 +93,7 @@ data.value = list;
       </el-row>
     </div>
 
-    <div class="view-archive-wrapper" >
+    <div class="view-archive-wrapper">
       <a href="#" class="nr-cta-primary-light"> 阅读历史文章 </a>
     </div>
   </section>
@@ -107,7 +108,6 @@ data.value = list;
 
   .section-head {
     margin-bottom: 40px;
-   
   }
   .section-tiles {
     margin-right: -64px;

@@ -1,15 +1,13 @@
 <script lang="ts" setup>
 //第一个
-import { ref, reactive } from "vue";
-import useGetData from "../../../store/get";
-
-
-
-
+import { ref, reactive, watchEffect } from "vue";
+import useGetData from "@/store/get";
 // 实例化 store
-const get = useGetData();
-//拿到需要的数据
-const data = ref([
+const store = useGetData();
+
+
+//原始数据
+const meat = ref([
   {
     id: "",
     url: "",
@@ -19,11 +17,18 @@ const data = ref([
     cat: "",
   },
 ]);
-data.value = [get.data.latest[0]];
+
+//需要的数据
+const data = ref();
+
+watchEffect(() => {
+  meat.value = store.data.latest;
+  data.value = meat.value.slice(0, 1);
+});
 </script>
 
 <template>
-  
+  拿到的值：{{ data }}
 
   <el-row :gutter="20">
     <el-col :span="24" v-for="item in data" :key="item.id">
@@ -34,7 +39,10 @@ data.value = [get.data.latest[0]];
 
         <div class="tile__description">
           <div class="tile__head">
-            <router-link :to="{ name: 'single', params: { id: item.id } }">传一下：{{ item.id }}</router-link>
+            <!--
+<router-link :to="{ name: 'single', params: { id: item.id } }">传一下：{{ item.id }}</router-link>
+            -->
+
             <div class="tile__category">{{ item.cat }}</div>
 
             <div class="tile__headline">
@@ -46,8 +54,6 @@ data.value = [get.data.latest[0]];
       </a>
     </el-col>
   </el-row>
-
-
 </template>
 
 <style lang="less" scoped>

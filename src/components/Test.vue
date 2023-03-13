@@ -10,7 +10,7 @@ import test3 from "../components/black/test/test3.vue";
 
 <test3></test3>
 -->
-<test1></test1>
+<test3></test3>
   
 
 </template>

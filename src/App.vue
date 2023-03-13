@@ -4,7 +4,6 @@ import Index from "./components/Index.vue";
 </script>
 
 <template>
-
   <!--
   <HelloWorld msg="Vite + Vue" />
   -->

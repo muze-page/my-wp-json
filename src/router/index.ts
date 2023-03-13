@@ -11,7 +11,7 @@ import Test from "../components/Test.vue";
 //定义路由
 const routes = [
     { path: "/",name:'index', component: Home },
-    { path: "/:id",name:'single', component: Single },
+    { path: "/single/:id",name:'single', component: Single },
     { path: "/category",name:'category', component: Category },
     { path: '/:pathMatch(.*)',name:'notfound', component: NotFoundComponent },
     { path: '/test',name:'test', component: Test },

@@ -6,7 +6,7 @@ import SingleRecommend from "@/components/black/single/Single-Recommend.vue";
 import SingleBrand from "@/components/black/single/Single-Brand.vue";
 import Aside from "@/components/black/Aside.vue";
 
-import { ref } from "vue";
+import { ref, Ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
 import useGetData from "../store/get";
@@ -31,7 +31,17 @@ if (typeof id === "string") {
 //获取当前文章数据，并将数据存入pinia
 get.getPostData(postId.value);
 
-const postData = ref({
+const postData: Ref<{
+  id: string;
+  url: string;
+  data: string;
+  title: string;
+  image: string;
+  cat: string;
+  content: string;
+  excerpt: string;
+  authort: string;
+}> = ref({
   id: "",
   url: "",
   data: "",
@@ -50,7 +60,7 @@ postData.value = get.data.post;
     拿到的ID：{{ route.params.id }}
    拿到的值{{ get.data.post }}
   -->
-  
+
   <Aside></Aside>
   <section>
     <article class="article">

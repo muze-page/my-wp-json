@@ -1,17 +1,9 @@
-<script setup>
+<script lang="ts" setup>
 import "../assets/css/home.css";
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 
-import useGetData from "@/store/get";
-// 实例化 store
-const get = useGetData();
 
-//获取顶部11个数据
-get.getLatest();
-
-//获取顶部6个数据
-get.getCat();
 </script>
 
 <template>

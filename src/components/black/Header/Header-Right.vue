@@ -29,7 +29,7 @@ function switchMenu() {
         </li>
         <li class="ac-ln-menu-item">
           <el-button class="nr-sf-link bt-menu">
-            <router-link to="/2311">文章页</router-link>
+            <router-link to="/single/2311">文章页</router-link>
           </el-button>
         </li>
         <li class="ac-ln-menu-item">

@@ -64,6 +64,7 @@ const useGetData = defineStore("userss", {
     default: {
       site: "http://magick.plugin",
     },
+    test: {},
   }),
 
   // 定义 getters，等同于组件的计算属性
@@ -82,7 +83,7 @@ const useGetData = defineStore("userss", {
       try {
         const response = await axios.get(api);
 
-        this.data.latest = response.data;
+        //this.data.latest = response.data;
         //this.data.latest = "9527";
         //console.log("我运行了一下");
         return response.data;
@@ -192,6 +193,7 @@ const useGetData = defineStore("userss", {
         //latest.value.shift();
       }
       this.data.latest = latest.value;
+       console.log("8893执行了");
     },
 
     //将Latest列表中的原始数据处理后传出
@@ -239,14 +241,15 @@ const useGetData = defineStore("userss", {
         //对拿到的值进行处理
         obj.value.id = response.data.id;
         obj.value.url = response.data.link;
-        obj.value.date = moment(response.data.date).format("YYYY 年  M 月 D 日");
+        obj.value.date = moment(response.data.date).format(
+          "YYYY 年  M 月 D 日"
+        );
         obj.value.title = response.data.title.rendered;
         obj.value.image = await this.requestMedia(response.data.featured_media);
         obj.value.cat = await this.getCategory(response.data.categories);
         obj.value.content = response.data.content.rendered;
         obj.value.excerpt = response.data.excerpt.rendered;
         obj.value.author = response.data.author;
-        
 
         this.data.post = obj.value;
         return response.data.content.rendered;

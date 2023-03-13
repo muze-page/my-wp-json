@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 //第二个
-import { ref, reactive } from "vue";
-import useGetData from "../../../store/get";
-
+import { ref, reactive,watchEffect } from "vue";
+import useGetData from "@/store/get";
 // 实例化 store
-const get = useGetData();
-//拿到需要的数据
-const list = get.data.latest;
-const data = ref([
+const store = useGetData();
+
+
+//原始数据
+const meat = ref([
   {
     id: "",
     url: "",
@@ -17,20 +17,15 @@ const data = ref([
     cat: "",
   },
 ]);
-data.value = list.slice(1, 5);
 
-//export interface Props {
-//  data: [
-//    {
-//      link: string;
-//      featured_media: string;
-//      categories: string;
-//      titles: string;
-//      date: string;
-//    }
-//  ];
-//}
-//const props = defineProps<Props>();
+//需要的数据
+const data = ref();
+
+watchEffect(() => {
+  meat.value = store.data.latest;
+  data.value = meat.value.slice(1, 5);
+});
+
 
 //const data = reactive({
 //  list: [

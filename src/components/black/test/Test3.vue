@@ -1,35 +1,26 @@
-<template>
-  <el-button @click="visible = true">
-    Open Dialog with customized header
-  </el-button>
-
-  
-  <el-dialog v-model="visible" :show-close="false">
-    <template #header="{ close, titleId, titleClass }">
-      <div class="my-header">
-        <h4 :id="titleId" :class="titleClass">This is a custom header!</h4>
-        <el-button type="danger" @click="close">
-          <el-icon class="el-icon--left"><CircleCloseFilled /></el-icon>
-          Close
-        </el-button>
-      </div>
-    </template>
-    This is dialog content.
-  </el-dialog>
-</template>
-
 <script lang="ts" setup>
+import axios from "axios";
 import { ref } from "vue";
-import { ElButton, ElDialog } from "element-plus";
-import { CircleCloseFilled } from "@element-plus/icons-vue";
 
-const visible = ref(false);
+import useGetData from "@/store/get";
+// 实例化 store
+const store = useGetData();
+
+//新建一个变量，存储待渲染数据
+const list = ref({});
+//通过axios拿到值
+axios
+  .get("http://magick.plugin/wp-json/wp/v2/media/2312?_fields=source_url")
+  .then((resp) => {
+    store.test = resp.data;
+  });
+
+store.getLatest();
+
+//list从pinia中取值
+list.value = store.test;
 </script>
 
-<style scoped>
-.my-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-</style>
+<template>我拿到的值{{ store.data.latest }}</template>
+
+<style scoped></style>
